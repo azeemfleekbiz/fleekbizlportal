@@ -84,6 +84,15 @@
           </a>
         </li>
         
+        <li>
+          <a href="{{ url('/admin/users') }}">
+            <i class="fa fa-envelope"></i> <span>Users</span>        
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        
       </ul>
     </section>
     <!-- /.sidebar -->

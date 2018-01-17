@@ -2,19 +2,18 @@
 @section('contents')
 <section class="content-header">
       <h1>
-        Logo Feel        
+        Users        
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Logo Feel </a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Users</a></li>
         <li class="active">Dashboard</li>
       </ol>
     </section>
-
-<div class="box">
+ <div class="box">
             <div class="box-header">
-             <button rel="{{url('')}}" type="button" 
+              <button rel="{{url('')}}" type="button" 
                 class="btn btn-info make-modal-large iframe-form-open" 
-                data-toggle="modal" data-target="#modal-default" title="Add Logo Feel">
+                data-toggle="modal" data-target="#modal-default" title="Add Coupon">
             <span class="glyphicon glyphicon-plus"></span>Add
         </button>
             </div>
@@ -438,8 +437,7 @@
                   <td>-</td>
                   <td>U</td>
                 </tr>
-                </tbody>
-                
+                </tbody>                
               </table>
             </div>
             <!-- /.box-body -->

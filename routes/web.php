@@ -21,4 +21,6 @@ Route::get('/admin/invoices', ['uses' => 'Admin\Invoices\InvoicesController@inde
 
 Route::get('/admin/payments', ['uses' => 'Admin\Payments\PaymentController@index']);  //get payments list
 
+Route::get('/admin/users', ['uses' => 'Admin\Users\UsersController@index']);  //get payments list
+
 
