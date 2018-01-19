@@ -11,6 +11,8 @@ Route::get('/admin/coupons', ['uses' => 'Admin\Coupons\CouponController@index'])
 
 Route::get('/admin/packages', ['uses' => 'Admin\Packages\PackagesController@index']);  //get packages list
 
+Route::get('/admin/packages/save-package', ['uses' => 'Admin\Packages\PackagesController@savePackage']);  //add new package
+
 Route::get('/admin/logotypes', ['uses' => 'Admin\LogoTypes\LogoTypeController@index']);  //get logotypes list
 
 Route::get('/admin/logofeel', ['uses' => 'Admin\LogoFeel\LogoFeelController@index']);  //get logofeel list
@@ -21,13 +23,13 @@ Route::get('/admin/invoices', ['uses' => 'Admin\Invoices\InvoicesController@inde
 
 Route::get('/admin/payments', ['uses' => 'Admin\Payments\PaymentController@index']);  //get payments list
 
-Route::get('/admin/order-type', ['uses' => 'Admin\OrdersType\OrderTypeController@index']);  //get payments list
+Route::get('/admin/order-type', ['uses' => 'Admin\OrdersType\OrderTypeController@index']);  //get order types list
 
-Route::post('/admin/order-type/save-Order-type', ['uses' => 'Admin\OrdersType\OrderTypeController@saveOrderType']);  //get payments list
+Route::post('/admin/order-type/save-Order-type', ['uses' => 'Admin\OrdersType\OrderTypeController@saveOrderType']);  //add new order
 
-Route::post('/admin/order-type/update-Order-type', ['uses' => 'Admin\OrdersType\OrderTypeController@updateOrderType']);  //get payments list
+Route::post('/admin/order-type/update-Order-type', ['uses' => 'Admin\OrdersType\OrderTypeController@updateOrderType']);  //update order
 
-Route::get('/admin/order-type/destroy/{slug}', ['uses' => 'Admin\OrdersType\OrderTypeController@destroy']);  //get payments list
+Route::get('/admin/order-type/destroy/{slug}', ['uses' => 'Admin\OrdersType\OrderTypeController@destroy']);  //delete order
 
 
 
