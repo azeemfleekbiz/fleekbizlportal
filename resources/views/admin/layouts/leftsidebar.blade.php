@@ -36,7 +36,7 @@
             <li class="active"><a href="{{ url('/admin/order-type') }}"><i class="fa fa-circle-o"></i>Order Type</a></li>
             <li><a href="{{ url('/admin/packages') }}"><i class="fa fa-circle-o"></i> Packages</a></li>            
             <li><a href="{{ url('/admin/logotypes') }}"><i class="fa fa-circle-o"></i> Logo Type</a></li>
-            <li><a href="{{ url('/admin/logofeel') }}"><i class="fa fa-circle-o"></i> Logo Feel</a></li>
+            <li><a href="{{ url('/admin/logo-usage') }}"><i class="fa fa-circle-o"></i> Logo Usage</a></li>
             
           </ul>
         </li>        

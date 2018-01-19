@@ -41,5 +41,12 @@ Route::post('/admin/order-type/update-Order-type', ['uses' => 'Admin\OrdersType\
 
 Route::get('/admin/order-type/destroy/{slug}', ['uses' => 'Admin\OrdersType\OrderTypeController@destroy']);  //delete order
 
+Route::get('/admin/logo-usage', ['uses' => 'Admin\LogoUsage\LogoUsageController@index']);  //get logo usage list
+
+Route::post('/admin/logo-usage/save-logo-usage', ['uses' => 'Admin\LogoUsage\LogoUsageController@saveLogoUsage']);  //get logo usage list
+
+Route::post('/admin/logo-usage/update-logo-usage', ['uses' => 'Admin\LogoUsage\LogoUsageController@updateLogoUsage']);  //get logo usage list
+
+Route::get('/admin/logo-usage/destroy/{slug}', ['uses' => 'Admin\OrdersType\LogoUsageController@destroy']);  //delete order
 
 
