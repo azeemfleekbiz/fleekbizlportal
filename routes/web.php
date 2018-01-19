@@ -19,6 +19,12 @@ Route::get('/admin/packages/destroy/{slug}', ['uses' => 'Admin\Packages\Packages
 
 Route::get('/admin/logotypes', ['uses' => 'Admin\LogoTypes\LogoTypeController@index']);  //get logotypes list
 
+Route::post('/admin/logotypes/save-logo', ['uses' => 'Admin\LogoTypes\LogoTypeController@saveLogoType']);  //add new logo
+
+Route::post('/admin/logotypes/update-logo', ['uses' => 'Admin\LogoTypes\LogoTypeController@updateLogoType']);
+
+Route::get('/admin/logotypes/destroy/{slug}', ['uses' => 'Admin\LogoTypes\LogoTypeController@destroy']);
+
 Route::get('/admin/logofeel', ['uses' => 'Admin\LogoFeel\LogoFeelController@index']);  //get logofeel list
 
 Route::get('/admin/orders', ['uses' => 'Admin\Orders\OrdersController@index']);  //get orders list
