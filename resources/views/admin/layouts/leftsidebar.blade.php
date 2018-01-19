@@ -24,32 +24,22 @@
             </span>
           </a>          
         </li>
-        <li>
-          <a href="{{ url('/admin/packages') }}">
-            <i class="fa fa-files-o"></i>
-            <span>Packages</span>            
+       <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Orders</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-        </li>
-        <li>
-          <a href="{{ url('/admin/logotypes') }}">
-            <i class="fa fa-th"></i> <span>logo Types</span>    
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{ url('/admin/logofeel') }}">
-            <i class="fa fa-pie-chart"></i>
-            <span>Logo Feel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>          
-        </li>
+          <ul class="treeview-menu">
+              <li class="active"><a href="{{ url('/admin/orders') }}"><i class="fa fa-circle-o"></i>Orders</a></li>
+            <li class="active"><a href="{{ url('/admin/order-type') }}"><i class="fa fa-circle-o"></i>Order Type</a></li>
+            <li><a href="{{ url('/admin/packages') }}"><i class="fa fa-circle-o"></i> Packages</a></li>            
+            <li><a href="{{ url('/admin/logotypes') }}"><i class="fa fa-circle-o"></i> Logo Type</a></li>
+            <li><a href="{{ url('/admin/logofeel') }}"><i class="fa fa-circle-o"></i> Logo Feel</a></li>
+            
+          </ul>
+        </li>        
         <li>
           <a href="{{ url('/admin/coupons') }}">
             <i class="fa fa-laptop"></i>
@@ -58,15 +48,7 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>          
-        </li>
-        <li>
-          <a href="{{ url('/admin/orders') }}">
-            <i class="fa fa-edit"></i> <span>Orders</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>          
-        </li>
+        </li>        
         <li>
           <a href="{{ url('/admin/invoices') }}">
             <i class="fa fa-table"></i> <span>Invoices</span>

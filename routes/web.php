@@ -21,6 +21,13 @@ Route::get('/admin/invoices', ['uses' => 'Admin\Invoices\InvoicesController@inde
 
 Route::get('/admin/payments', ['uses' => 'Admin\Payments\PaymentController@index']);  //get payments list
 
-Route::get('/admin/users', ['uses' => 'Admin\Users\UsersController@index']);  //get payments list
+Route::get('/admin/order-type', ['uses' => 'Admin\OrdersType\OrderTypeController@index']);  //get payments list
+
+Route::post('/admin/order-type/save-Order-type', ['uses' => 'Admin\OrdersType\OrderTypeController@saveOrderType']);  //get payments list
+
+Route::post('/admin/order-type/update-Order-type', ['uses' => 'Admin\OrdersType\OrderTypeController@updateOrderType']);  //get payments list
+
+Route::get('/admin/order-type/destroy/{slug}', ['uses' => 'Admin\OrdersType\OrderTypeController@destroy']);  //get payments list
+
 
 
