@@ -30,4 +30,28 @@ class PackagesController extends Controller
         return Redirect::back()->withMessage('Package Successfuly Created.'); 
         
     }
+    
+    //----------------------------------update package-------------------------------
+    public function updatePackage(Request $request)
+    {
+        $package_id     = $request->input("package_id");
+        $order_type_id  = $request->input("order_type_id");
+        $title          = $request->input("title");
+        $regular_price  = $request->input("regular_price");
+        $sale_price     = $request->input("sale_price");
+        $description    = $request->input("description");
+        $created_at    = date("Y-m-d H:i:s"); 
+        DB::table('packages')->where('id', $package_id)->update(
+                    ['order_type_id' => $order_type_id,'title' => $title,'sale_price' => $sale_price,'regular_price' => $regular_price,'descp' => $description,  'updated_at' => $created_at] );
+        return Redirect::back()->withMessage('Package Successfuly update.'); 
+    }        
+            
+   //----------------------------------delete package----------------------------------
+    public function destroy($package_id)
+    {        
+       $package = \App\Packages::find($package_id);   
+       $package->delete();     
+       return Redirect::back()->withMessage('Pacakge Successfuly deleted.');  
+    }
+    
 }

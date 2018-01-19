@@ -11,7 +11,11 @@ Route::get('/admin/coupons', ['uses' => 'Admin\Coupons\CouponController@index'])
 
 Route::get('/admin/packages', ['uses' => 'Admin\Packages\PackagesController@index']);  //get packages list
 
-Route::get('/admin/packages/save-package', ['uses' => 'Admin\Packages\PackagesController@savePackage']);  //add new package
+Route::post('/admin/packages/save-package', ['uses' => 'Admin\Packages\PackagesController@savePackage']);  //add new package
+
+Route::post('/admin/packages/update-package', ['uses' => 'Admin\Packages\PackagesController@updatePackage']);  // update package
+
+Route::get('/admin/packages/destroy/{slug}', ['uses' => 'Admin\Packages\PackagesController@destroy']);//delete package
 
 Route::get('/admin/logotypes', ['uses' => 'Admin\LogoTypes\LogoTypeController@index']);  //get logotypes list
 
