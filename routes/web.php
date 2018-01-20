@@ -17,7 +17,18 @@ Route::post('/admin/packages/update-package', ['uses' => 'Admin\Packages\Package
 
 Route::get('/admin/packages/destroy/{slug}', ['uses' => 'Admin\Packages\PackagesController@destroy']);//delete package
 
-Route::get('/admin/logotypes', ['uses' => 'Admin\LogoTypes\LogoTypeController@index']);  //get logotypes list
+Route::get('/admin/payment-adons', ['uses' => 'Admin\PaymentAdons\PaymentAdonsController@index']);  //get logo fonts list
+
+Route::post('/admin/payment-adons/save-payment-adon', ['uses' => 'Admin\PaymentAdons\PaymentAdonsController@savePaymentAdon']);  //add new logo fonts
+
+Route::post('/admin/payment-adons/update-payment-adon', ['uses' => 'Admin\PaymentAdons\PaymentAdonsController@updatePaymentAdon']); //update logo fonts
+
+Route::get('/admin/payment-adons/destroy/{slug}', ['uses' => 'Admin\PaymentAdons\PaymentAdonsController@destroy']);    //delete logo fonts
+
+
+
+
+Route::get('/admin/logo-types', ['uses' => 'Admin\LogoTypes\LogoTypeController@index']);  //get logotypes list
 
 Route::post('/admin/logotypes/save-logo', ['uses' => 'Admin\LogoTypes\LogoTypeController@saveLogoType']);  //add new logo
 
@@ -50,3 +61,10 @@ Route::post('/admin/logo-usage/update-logo-usage', ['uses' => 'Admin\LogoUsage\L
 Route::get('/admin/logo-usage/destroy/{slug}', ['uses' => 'Admin\OrdersType\LogoUsageController@destroy']);  //delete order
 
 
+Route::get('/admin/logo-fonts', ['uses' => 'Admin\LogoFonts\LogoFontsController@index']);  //get logo fonts list
+
+Route::post('/admin/logo-fonts/save-logo-font', ['uses' => 'Admin\LogoFonts\LogoFontsController@saveLogoFont']);  //add new logo fonts
+
+Route::post('/admin/logo-fonts/update-logo-font', ['uses' => 'Admin\LogoFonts\LogoFontsController@updateLogoFont']); //update logo fonts
+
+Route::get('/admin/logo-fonts/destroy/{slug}', ['uses' => 'Admin\LogoFonts\LogoFontsController@destroy']);    //delete logo fonts

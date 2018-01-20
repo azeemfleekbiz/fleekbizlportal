@@ -34,9 +34,11 @@
           <ul class="treeview-menu">
               <li class="active"><a href="{{ url('/admin/orders') }}"><i class="fa fa-circle-o"></i>Orders</a></li>
             <li class="active"><a href="{{ url('/admin/order-type') }}"><i class="fa fa-circle-o"></i>Order Type</a></li>
-            <li><a href="{{ url('/admin/packages') }}"><i class="fa fa-circle-o"></i> Packages</a></li>            
-            <li><a href="{{ url('/admin/logotypes') }}"><i class="fa fa-circle-o"></i> Logo Type</a></li>
+            <li><a href="{{ url('/admin/packages') }}"><i class="fa fa-circle-o"></i> Packages</a></li>    
+            <li><a href="{{ url('/admin/payment-adons') }}"><i class="fa fa-circle-o"></i> Packages Payment Adons</a></li>  
+            <li><a href="{{ url('/admin/logo-types') }}"><i class="fa fa-circle-o"></i> Logo Type</a></li>
             <li><a href="{{ url('/admin/logo-usage') }}"><i class="fa fa-circle-o"></i> Logo Usage</a></li>
+            <li><a href="{{ url('/admin/logo-fonts') }}"><i class="fa fa-circle-o"></i> Logo Fonts</a></li>
             
           </ul>
         </li>        
