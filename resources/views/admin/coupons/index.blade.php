@@ -34,7 +34,7 @@
                     <td>{{$coupon_code->price}}</td>
                     <td><a href="#editcoupons{{$coupon_code->id}}" rel="" type="button" 
                            class="btn btn-info make-modal-large iframe-form-open" 
-                           data-toggle="modal"  title="Edit logo font {{$coupon_code->title}}">
+                           data-toggle="modal"  title="Edit logo font {{$coupon_code->coupon_code}}">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                         <a href="#deletecoupons{{$coupon_code->id}}" rel="" type="button" 
@@ -110,7 +110,7 @@
                             <h4 class="modal-title" id="myModalLabel">Delete Coupon Code</h4>
                         </div>
                         <div class="modal-body">
-                            <p>Are you sure you want to Delete this Coupon Code <b>{{$coupon_code->title}}</b>?</p>  
+                            <p>Are you sure you want to Delete this Coupon Code <b>{{$coupon_code->coupon_code}}</b>?</p>  
 
                             <div class="modal-footer">
                                 <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
