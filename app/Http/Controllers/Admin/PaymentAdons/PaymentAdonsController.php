@@ -82,7 +82,7 @@ class PaymentAdonsController extends Controller
     {
        $payments_adons = \App\PaymentAdons::find($payment_adon_id);   
        $payments_adons->delete();     
-       return Redirect::back()->withMessage('Logo Font Successfuly deleted.');  
+       return Redirect::back()->withMessage('Payment Adnon Successfuly deleted.');  
     }
             
     

@@ -9,6 +9,12 @@ Route::get('/admin', ['uses' => 'Admin\AdminController@index']);
 
 Route::get('/admin/coupons', ['uses' => 'Admin\Coupons\CouponController@index']);  //get coupons list
 
+Route::post('/admin/coupons/save-coupon', ['uses' => 'Admin\Coupons\CouponController@saveCouponCode']);  //add new package
+
+Route::post('/admin/coupons/update-coupon', ['uses' => 'Admin\Coupons\CouponController@updateCouponCode']);  // update package
+
+Route::get('/admin/coupons/destroy/{slug}', ['uses' => 'Admin\Coupons\CouponController@destroy']);//delete package
+
 Route::get('/admin/packages', ['uses' => 'Admin\Packages\PackagesController@index']);  //get packages list
 
 Route::post('/admin/packages/save-package', ['uses' => 'Admin\Packages\PackagesController@savePackage']);  //add new package
@@ -24,9 +30,6 @@ Route::post('/admin/payment-adons/save-payment-adon', ['uses' => 'Admin\PaymentA
 Route::post('/admin/payment-adons/update-payment-adon', ['uses' => 'Admin\PaymentAdons\PaymentAdonsController@updatePaymentAdon']); //update logo fonts
 
 Route::get('/admin/payment-adons/destroy/{slug}', ['uses' => 'Admin\PaymentAdons\PaymentAdonsController@destroy']);    //delete logo fonts
-
-
-
 
 Route::get('/admin/logo-types', ['uses' => 'Admin\LogoTypes\LogoTypeController@index']);  //get logotypes list
 
