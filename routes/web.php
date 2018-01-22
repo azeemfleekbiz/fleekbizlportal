@@ -3,12 +3,24 @@
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 
 
 Route::get('/admin', 'Admin\AdminController@index');
+=======
+//FRONTEND
+Route::get('/', ['uses' => 'PagesController@homeVersion']);
+Route::post('/create', ['uses' => 'PagesController@create']);
+>>>>>>> 644a4b59719030f26edd079ccb67ddb16b3289fd
 
 
+//BACKEND
+Route::get('/admin', ['uses' => 'Admin\AdminController@index']);
 Route::get('/admin/coupons', ['uses' => 'Admin\Coupons\CouponController@index']);  //get coupons list
+<<<<<<< HEAD
+Route::get('/admin/packages', ['uses' => 'Admin\Packages\PackagesController@index']);  //get packages list
+Route::get('/admin/logotypes', ['uses' => 'Admin\LogoTypes\LogoTypeController@index']);  //get logotypes list
+=======
 
 Route::post('/admin/coupons/save-coupon', ['uses' => 'Admin\Coupons\CouponController@saveCouponCode']);  //add new package
 
@@ -40,13 +52,14 @@ Route::post('/admin/logotypes/update-logo', ['uses' => 'Admin\LogoTypes\LogoType
 
 Route::get('/admin/logotypes/destroy/{slug}', ['uses' => 'Admin\LogoTypes\LogoTypeController@destroy']);
 
+>>>>>>> 3813f3a3d6ada7776a99ecc7e5838975997d4ea0
 Route::get('/admin/logofeel', ['uses' => 'Admin\LogoFeel\LogoFeelController@index']);  //get logofeel list
-
 Route::get('/admin/orders', ['uses' => 'Admin\Orders\OrdersController@index']);  //get orders list
-
 Route::get('/admin/invoices', ['uses' => 'Admin\Invoices\InvoicesController@index']);  //get invoices list
-
 Route::get('/admin/payments', ['uses' => 'Admin\Payments\PaymentController@index']);  //get payments list
+<<<<<<< HEAD
+Route::get('/admin/users', ['uses' => 'Admin\Users\UsersController@index']);  //get payments list
+=======
 
 Route::get('/admin/order-type', ['uses' => 'Admin\OrdersType\OrderTypeController@index']);  //get order types list
 
@@ -68,6 +81,7 @@ Route::get('/admin/logo-usage/destroy/{slug}', ['uses' => 'Admin\OrdersType\Logo
 Route::get('/admin/logo-fonts', ['uses' => 'Admin\LogoFonts\LogoFontsController@index']);  //get logo fonts list
 
 Route::post('/admin/logo-fonts/save-logo-font', ['uses' => 'Admin\LogoFonts\LogoFontsController@saveLogoFont']);  //add new logo fonts
+>>>>>>> 3813f3a3d6ada7776a99ecc7e5838975997d4ea0
 
 Route::post('/admin/logo-fonts/update-logo-font', ['uses' => 'Admin\LogoFonts\LogoFontsController@updateLogoFont']); //update logo fonts
 
