@@ -16,7 +16,7 @@
             </span>
           </a>          
         </li>
-       <li class="treeview">
+       <li class="active treeview">
           <a href="">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Orders</span>
             <span class="pull-right-container">

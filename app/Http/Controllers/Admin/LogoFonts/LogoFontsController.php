@@ -3,11 +3,18 @@
 namespace App\Http\Controllers\Admin\LogoFonts;
 use DB;
 use Redirect;
+use Auth;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class LogoFontsController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
    //----------------------get all logo types list-----------------//
     public function index()
     {

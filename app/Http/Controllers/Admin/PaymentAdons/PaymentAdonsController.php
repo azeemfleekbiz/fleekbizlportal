@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers\Admin\PaymentAdons;
 use DB,Redirect;
+use Auth;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PaymentAdonsController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //----------------------get all Payment Adons list-----------------//
     public function index()
     {

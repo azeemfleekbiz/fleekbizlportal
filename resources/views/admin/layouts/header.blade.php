@@ -68,7 +68,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               
-              <span class="hidden-xs">Author Admin</span>
+              <span class="hidden-xs">{{ Auth::user()->f_name }}  {{ Auth::user()->l_name }}</span>
             </a>
             <ul class="dropdown-menu">              <!-- User image -->
               
@@ -79,7 +79,7 @@
                 <div class="pull-right">
                      <a href="#" class="btn btn-default btn-flat">Change Password</a>
                      <div style="height: 20px;"></div>
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>

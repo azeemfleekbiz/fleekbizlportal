@@ -4,7 +4,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', ['uses' => 'Admin\AdminController@index']);
+
+Route::get('/admin', 'Admin\AdminController@index');
 
 
 Route::get('/admin/coupons', ['uses' => 'Admin\Coupons\CouponController@index']);  //get coupons list
@@ -71,3 +72,9 @@ Route::post('/admin/logo-fonts/save-logo-font', ['uses' => 'Admin\LogoFonts\Logo
 Route::post('/admin/logo-fonts/update-logo-font', ['uses' => 'Admin\LogoFonts\LogoFontsController@updateLogoFont']); //update logo fonts
 
 Route::get('/admin/logo-fonts/destroy/{slug}', ['uses' => 'Admin\LogoFonts\LogoFontsController@destroy']);    //delete logo fonts
+Auth::routes();
+
+Route::get('/home', 'Admin\AdminController@index');
+Route::get('/admin/dashboard', 'Admin\AdminController@index');
+
+Route::get('logout', 'Auth\LoginController@logout');

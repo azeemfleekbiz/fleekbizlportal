@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers\Admin\Coupons;
 use DB,Redirect;
+use Auth;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CouponController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     //----------------------------------get coupon code list-----------------------------
     public function index()
     {

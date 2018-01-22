@@ -3,11 +3,18 @@
 namespace App\Http\Controllers\Admin\Packages;
 use DB;
 use Redirect;
+use Auth;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PackagesController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //-----------------------all Packages List-----------------------------
     public function index()
     {
