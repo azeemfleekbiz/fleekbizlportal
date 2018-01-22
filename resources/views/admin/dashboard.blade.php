@@ -1,5 +1,5 @@
 @extends('admin.layouts.header')
-@section('heading')
+@section('contents')
 <section class="content-header">
       <h1>
         Dashboard
@@ -10,8 +10,6 @@
         <li class="active">Dashboard</li>
       </ol>
     </section>
-@endsection
-@section('contents')
  <section>
       <!-- Small boxes (Stat box) -->
       <div class="row">
