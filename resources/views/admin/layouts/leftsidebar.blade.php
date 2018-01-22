@@ -47,7 +47,7 @@
           </ul>
         </li>  
               
-        <li>
+        <li style="display:none;">
           <a href="{{ url('/admin/invoices') }}">
             <i class="fa fa-files-o" aria-hidden="true"></i> <span>Invoices</span>
             <span class="pull-right-container">
@@ -55,9 +55,11 @@
             </span>
           </a>          
         </li>        
-        <li>
-          <a href="{{ url('/admin/payments') }}">
-            <i class="fa fa-money" aria-hidden="true"></i> <span>Payments</span>        
+        
+        
+        <li style="display:none;">
+          <a href="{{ url('/admin/users') }}">
+            <i class="fa fa-user" aria-hidden="true"></i> <span>Users</span>        
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -65,11 +67,8 @@
         </li>
         
         <li>
-          <a href="{{ url('/admin/users') }}">
-            <i class="fa fa-user" aria-hidden="true"></i> <span>Users</span>        
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+          <a href="{{ route('logout') }}">
+            <i class="fa fa-sign-out" aria-hidden="true"></i> <span>Logout</span>  
           </a>
         </li>
         
