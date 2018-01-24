@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app()->getLocale() }}">
   <head>
     <meta charset="UTF-8">
     <title>{{$page_title}}| Admin Area</title>
+     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link rel="stylesheet" href="{{asset('public/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
@@ -68,18 +69,14 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               
-              <span class="hidden-xs">Author Admin</span>
+              <span class="hidden-xs">{{ Auth::user()->f_name }}  {{ Auth::user()->l_name }}</span>
             </a>
-            <ul class="dropdown-menu">              <!-- User image -->
-              
-              <!-- Menu Body -->
-              
-              <!-- Menu Footer-->
+            <ul class="dropdown-menu">
               <li class="user-footer">               
                 <div class="pull-right">
-                     <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                     <a href="{{ url('/admin/change-password') }}" class="btn btn-default btn-flat">Change Password</a>
                      <div style="height: 20px;"></div>
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>

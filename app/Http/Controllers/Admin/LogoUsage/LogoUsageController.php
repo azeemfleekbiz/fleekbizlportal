@@ -3,11 +3,18 @@
 namespace App\Http\Controllers\Admin\LogoUsage;
 use DB;
 use Redirect;   
+use Auth;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class LogoUsageController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //----------------------get all logo usage list-----------------//
     public function index()
     {

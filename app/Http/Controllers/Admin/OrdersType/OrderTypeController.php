@@ -4,12 +4,19 @@ namespace App\Http\Controllers\Admin\OrdersType;
 use DB;
 use Redirect;
 use Session;
+use Auth;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class OrderTypeController extends Controller
 {
     
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //------------------get order type list------------------------------
     public function index()
     {
