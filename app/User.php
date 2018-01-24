@@ -9,6 +9,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    
+    
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -26,4 +29,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
 }
