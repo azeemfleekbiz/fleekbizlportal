@@ -13,3 +13,5 @@ yarn-error.log
 routes/web.php
 routes/web.php
 routes/web.php
+.env
+.env

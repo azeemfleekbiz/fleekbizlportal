@@ -30,6 +30,8 @@
 </div>
 <form role="form" name="logoForm" id="logoForm" method="post" action="{{ url('/create') }}" enctype="multipart/form-data">
 	{{csrf_field()}}
+<input  type="hidden" name="user_role" id="user_role" value="3" />
+<input  type="hidden" name="order_type" id="order_type" value="2" />	
 <div class="row setup-content" id="step-1">
 <div class="col-xs-12">
 <div class="col-md-12">
