@@ -4,6 +4,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//FRONTEND
+Route::get('/', ['uses' => 'PagesController@homeVersion']);
+Route::post('/create', ['uses' => 'PagesController@createOrders']);
+
+
 Route::get('/admin/dashboard', 'Admin\AdminController@index');
 
 Route::prefix('admin')->group(function(){    
@@ -88,6 +93,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/', 'Admin\AdminController@index');    
 });
 
+
 Route::get('/contributor/dashboard', 'Contributor\ContributorController@index');
 
 Route::prefix('contributor')->group(function(){    
@@ -102,6 +108,7 @@ Route::prefix('contributor')->group(function(){
 
 Route::get('/', ['uses' => 'PagesController@homeVersion']);
 Route::post('/create', ['uses' => 'PagesController@create']);
+
 
 Auth::routes();
 

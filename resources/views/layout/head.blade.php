@@ -9,6 +9,7 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.mask.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 </head>
 <body>

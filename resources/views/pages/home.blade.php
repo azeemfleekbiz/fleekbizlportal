@@ -28,8 +28,10 @@
 </div>
 </div>
 </div>
-<form role="form" name="logoForm" id="logoForm" method="POST" action="{{ url('/create') }}">
+<form role="form" name="logoForm" id="logoForm" method="post" action="{{ url('/create') }}" enctype="multipart/form-data">
 	{{csrf_field()}}
+<input  type="hidden" name="user_role" id="user_role" value="3" />
+<input  type="hidden" name="order_type" id="order_type" value="2" />	
 <div class="row setup-content" id="step-1">
 <div class="col-xs-12">
 <div class="col-md-12">
@@ -44,7 +46,7 @@
 </div>
 <div class="form-group">
 <label class="control-label">Email</label>
-<input type="text" name="email" id="email" required="required" class="form-control" />
+<input type="email" name="email" id="email" required="required" class="form-control" />
 </div>
 <div class="form-group">
 <label class="control-label">Phone Number</label>
@@ -80,7 +82,7 @@
 </div>
 <div class="form-group">
 <label class="control-label">Website</label>
-<input type="text" name="website_url" id="website_url" required="required" class="form-control" />
+<input type="url" name="website_url" id="website_url" required="required" class="form-control" />
 </div>
 <div class="form-group">
 <label class="control-label">Description</label>
@@ -88,50 +90,61 @@
 </div>
 <div class="form-group">
 <label class="control-label">Sample Logos</label>
-<input type="text" name="sample_logos" id="sample_logos" required="required" class="form-control" />
+<input type="file" name="sample_logos[]" id="sample_logos" required="required" class="form-control user_picked_files" multiple="multiple"/>
+<input type="hidden" name="sample_file_total" id="sample_file_total" value="">
+<input type="hidden" name="uploadfiles_name" id="uploadfiles_name" value="">
+<ul class = "cvf_uploaded_files"></ul>
 </div>
 <h3> visual representation</h3>
 <div class="form-group">
 <label class="control-label">Describe images you LIKE to represent your business</label>
-<textarea name="describe_imgs_like" id="describe_imgs_like" cols="50" rows="10" required="required"></textarea>
+<textarea name="describe_imgs_like" id="describe_imgs_like" cols="50" rows="10"></textarea>
 </div>
 <div class="form-group">
 <label class="control-label">Describe images you DON'T LIKE to represent your business</label>
-<textarea name="describe_imgs_dont_like" id="describe_imgs_dont_like" cols="50" rows="10" required="required"></textarea>
+<textarea name="describe_imgs_dont_like" id="describe_imgs_dont_like" cols="50" rows="10"></textarea>
 </div>
 <h3>Logo type</h3>
 <div class="form-group">
 <div class="col-xs-3">
 <div class="titles">Wordmark</div>    
 <img src="{{ asset('images/order2-logo1.png')}}">
+<input type="checkbox" name="logo_type[]" id="logo_type1" value="wordmark">
 </div>    
 <div class="col-xs-3">
 <div class="titles">Lettermark</div>    
 <img src="{{ asset('images/order2-logo2.png')}}">
+<input type="checkbox" name="logo_type[]" id="logo_type2" value="lettermark">
 </div> 
 <div class="col-xs-3">
 <div class="titles">Combination Mark</div>    
 <img src="{{ asset('images/order2-logo3.png')}}">
+<input type="checkbox" name="logo_type[]" id="logo_type3" value="combination_mark">
 </div> 
 <div class="col-xs-3">
 <div class="titles">iconic / abstract</div>    
 <img src="{{ asset('images/order2-logo4.png')}}">
+<input type="checkbox" name="logo_type[]" id="logo_type4" value="iconic_abstract">
 </div> 
 <div class="col-xs-3">
 <div class="titles">Emblem</div>    
 <img src="{{ asset('images/order2-logo5.png')}}">
+<input type="checkbox" name="logo_type[]" id="logo_type5" value="emblem">
 </div> 
 <div class="col-xs-3">
 <div class="titles">vintage</div>    
 <img src="{{ asset('images/order2-logo6.png')}}">
+<input type="checkbox" name="logo_type[]" id="logo_type6" value="vintage">
 </div> 
 <div class="col-xs-3">
 <div class="titles">Fun</div>    
 <img src="{{ asset('images/order2-logo7.png')}}">
+<input type="checkbox" name="logo_type[]" id="logo_type7" value="fun">
 </div> 
 <div class="col-xs-3">
 <div class="titles">mascot</div>    
 <img src="{{ asset('images/order2-logo8.png')}}">
+<input type="checkbox" name="logo_type[]" id="logo_type8" value="mascot">
 </div> 
 </div>
 <h3>COLORS</h3>
@@ -176,67 +189,67 @@
 <div class="form-group">
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font1.jpg')}}">
-<input type="radio" name="font_type" id="font_type1" class="form-control" checked="checked" />
+<input type="radio" name="font_type" id="font_type1" class="form-control" checked="checked" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font2.jpg')}}">
-<input type="radio" name="font_type" id="font_type2" class="form-control" />
+<input type="radio" name="font_type" id="font_type2" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font3.jpg')}}">
-<input type="radio" name="font_type" id="font_type3" class="form-control" />
+<input type="radio" name="font_type" id="font_type3" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font4.jpg')}}">
-<input type="radio" name="font_type" id="font_type4" class="form-control" />
+<input type="radio" name="font_type" id="font_type4" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font5.jpg')}}">
-<input type="radio" name="font_type" id="font_type5" class="form-control" />
+<input type="radio" name="font_type" id="font_type5" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font6.jpg')}}">
-<input type="radio" name="font_type" id="font_type6" class="form-control" />
+<input type="radio" name="font_type" id="font_type6" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font7.jpg')}}">
-<input type="radio" name="font_type" id="font_type7" class="form-control" />
+<input type="radio" name="font_type" id="font_type7" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font8.jpg')}}">
-<input type="radio" name="font_type" id="font_type8" class="form-control" />
+<input type="radio" name="font_type" id="font_type8" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font9.jpg')}}">
-<input type="radio" name="font_type" id="font_type9" class="form-control" />
+<input type="radio" name="font_type" id="font_type9" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font10.jpg')}}">
-<input type="radio" name="font_type" id="font_type10" class="form-control" />
+<input type="radio" name="font_type" id="font_type10" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font11.jpg')}}">
-<input type="radio" name="font_type" id="font_type11" class="form-control" />
+<input type="radio" name="font_type" id="font_type11" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font12.jpg')}}">
-<input type="radio" name="font_type" id="font_type12" class="form-control" />
+<input type="radio" name="font_type" id="font_type12" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font13.jpg')}}">
-<input type="radio" name="font_type" id="font_type13" class="form-control" />
+<input type="radio" name="font_type" id="font_type13" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font14.jpg')}}">
-<input type="radio" name="font_type" id="font_type14" class="form-control" />
+<input type="radio" name="font_type" id="font_type14" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font15.jpg')}}">
-<input type="radio" name="font_type" id="font_type15" class="form-control" />
+<input type="radio" name="font_type" id="font_type15" class="form-control" value="comic" />
 </div> 
 <div class="col-xs-3">
 <img src="{{ asset('images/orderflow2-font16.jpg')}}">
-<input type="radio" name="font_type" id="font_type16" class="form-control" />
+<input type="radio" name="font_type" id="font_type16" class="form-control" value="comic" />
 </div> 
 </div>
 <div class="form-group">
@@ -248,34 +261,42 @@
 <div class="col-xs-3">
 <div class="titles">Artistic</div>    
 <img src="{{ asset('images/order2-logo9.png')}}">
+<input type="checkbox" name="logo_feel[]" id="logo_feel1" value="artistic">
 </div>    
 <div class="col-xs-3">
 <div class="titles">Minimal</div>    
 <img src="{{ asset('images/order2-logo10.png')}}">
+<input type="checkbox" name="logo_feel[]" id="logo_feel2" value="minimal">
 </div> 
 <div class="col-xs-3">
 <div class="titles">Sophisticated</div>    
 <img src="{{ asset('images/order2-logo11.png')}}">
+<input type="checkbox" name="logo_feel[]" id="logo_feel3" value="sophisticated">
 </div> 
 <div class="col-xs-3">
 <div class="titles">Corporate</div>    
 <img src="{{ asset('images/order2-logo12.png')}}">
+<input type="checkbox" name="logo_feel[]" id="logo_feel4" value="corporate">
 </div> 
 <div class="col-xs-3">
 <div class="titles">Childish</div>    
 <img src="{{ asset('images/order2-logo13.png')}}">
+<input type="checkbox" name="logo_feel[]" id="logo_feel5" value="childish">
 </div> 
 <div class="col-xs-3">
 <div class="titles">Web 2.0</div>    
 <img src="{{ asset('images/order2-logo14.png')}}">
+<input type="checkbox" name="logo_feel[]" id="logo_feel6" value="web_2.0">
 </div> 
 <div class="col-xs-3">
 <div class="titles">Fun</div>    
 <img src="{{ asset('images/order2-logo15.png')}}">
+<input type="checkbox" name="logo_feel[]" id="logo_feel7" value="fun">
 </div> 
 <div class="col-xs-3">
 <div class="titles">Retro</div>    
 <img src="{{ asset('images/order2-logo16.png')}}">
+<input type="checkbox" name="logo_feel[]" id="logo_feel8" value="retro">
 </div> 
 </div>
 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
@@ -293,7 +314,10 @@
 </div>
 <div class="form-group">
 <label class="control-label">Do you have any other images or documents that might be helpful to our designers?</label>
-<input type="file" name="deigner_help_imgs" id="deigner_help_imgs" class="form-control" />
+<input type="file" name="deigner_help_imgs[]" id="deigner_help_imgs" class="form-control user_help_files" multiple="multiple"/>
+<input type="hidden" name="deigner_help_file_total" id="deigner_help_file_total" value="">
+<input type="hidden" name="deigner_help_files_name" id="deigner_help_files_name" value="">
+<ul class = "cvf_uploaded_help_files"></ul>
 </div>
 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
 <button class="btn btn-primary prevBtn btn-lg pull-left" type="button" >Previous</button>
@@ -322,7 +346,7 @@
 <li><span>FREE</span> Stationery Design</li>
 <li class="last"><span>FREE</span> Stationery Printing</li>
 </ul>
-<a class="main-button main-button-white active">Get Started</a>
+<a class="main-button main-button-white selectpackage" name="Logo Basic" amount="79">Get Started</a>
 </div>
 
 <div class="col-md-3 pricing-div pricing-div-2 active">
@@ -341,7 +365,7 @@
 <li><span>FREE</span> Stationery Design</li>
 <li class="last"><span>FREE</span> Stationery Printing</li>
 </ul>
-<a class="main-button main-button-white">Get Started</a>
+<a class="main-button main-button-white selectpackage" name="Logo Plus" amount="179">Get Started</a>
 </div>
 
 
@@ -361,7 +385,7 @@
 <li><span>FREE</span> Stationery Printing</li>
 <li class="last"><span>FREE</span> 500 Business Cards Prints</li>
 </ul>
-<a class="main-button main-button-white">Get Started</a>
+<a class="main-button main-button-white selectpackage" name="Logo Infinity" amount="359">Get Started</a>
 </div>
 
 <div class="col-md-3 pricing-div pricing-div-4">
@@ -380,9 +404,12 @@
 <li><span>FREE</span> StationeryPrinting</li>
 <li class="last"><span>FREE</span> 500 Business Cards Prints</li>
 </ul>
-<a class="main-button main-button-white">Get Started</a>
+<a class="main-button main-button-white selectpackage" name="Logo Advanced" amount="499">Get Started</a>
 </div>
-
+<input type="hidden" name="package_name" id="package_name" value="Logo Basic">
+<input type="hidden" name="package_amount" id="package_amount" value="79">
+<input type="hidden" name="addon_name" id="addon_name" value="">
+<input type="hidden" name="addon_amount" id="addon_amount" value="">
 </div>
 <div class="form-group">
 <h3>Additional options</h3>    
@@ -393,15 +420,17 @@
 <div class="addi-content">
 <h5>Rush - $75</h5>
 <p>If you’re in a hurry, rush the order and we’ll make sure you get your initial designs in just 2 business days!</p>
+<a href="javascript:void(0);" class="add_adon" amount="75" title="rush">Add</a>
 </div>
 </div>
 <div class="additional-left col-md-6">
 <div class="addi-thumb">
-<img src="{{ asset('images/addi-man-icon.png')}}" alt="">
+<img src="{{ asset('images/orderflow4-img2.png')}}" alt="">
 </div>
 <div class="addi-content">
 <h5>Experts Only - $99</h5>
 <p>If you’re in a hurry, rush the order and we’ll make sure you get your initial designs in just 2 business days!</p>
+<a href="javascript:void(0);" class="add_adon" amount="99" title="Experts Only">Add</a>
 </div>
 </div>
 </div>    
@@ -420,7 +449,7 @@
 </div>
 
 <button class="btn btn-primary prevBtn btn-lg pull-left" type="button" >Previous</button>
-<button class="btn btn-success btn-lg pull-right" type="submit">Place Order</button>
+<input type="submit" name="submit" id="submit" value="Place Order" class="btn btn-success btn-lg pull-right" >
 </div>
 </div>
 </div>
