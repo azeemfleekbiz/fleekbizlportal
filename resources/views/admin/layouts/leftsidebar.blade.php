@@ -8,7 +8,7 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">        
-        <li class="active treeview">
+        <li class="treeview">
           <a href="{{ url('/admin/dashboard') }}">
             <i class="fa fa-dashboard" aria-hidden="true"></i> <span>Dashboard</span>        
             <span class="pull-right-container">

@@ -157,4 +157,5 @@
      
 
     </section>
+ @extends('contributor.layouts.footer')
 @endsection

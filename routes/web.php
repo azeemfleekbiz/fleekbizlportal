@@ -88,6 +88,18 @@ Route::prefix('admin')->group(function(){
     Route::get('/', 'Admin\AdminController@index');    
 });
 
+Route::get('/contributor/dashboard', 'Contributor\ContributorController@index');
+
+Route::prefix('contributor')->group(function(){    
+    
+    Route::get('/', 'Contributor\ContributorController@index');  
+    Route::get('/login', 'Auth\ContributorAdminController@showLoginForm')->name('contributor.login');
+    Route::post('/login', 'Auth\ContributorAdminController@login')->name('contributor.login.submit');
+    Route::get('/profile', 'Contributor\ContributorController@profile');
+});
+
+
+
 Route::get('/', ['uses' => 'PagesController@homeVersion']);
 Route::post('/create', ['uses' => 'PagesController@create']);
 
