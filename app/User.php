@@ -34,4 +34,8 @@ class User extends Authenticatable
     {
         return $this->password;
     }
+    
+    public function logoorders() {
+      return $this->hasMany('\App\LogoOrder');
+    }
 }

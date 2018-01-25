@@ -7,7 +7,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class OrdersController extends Controller
+class SettingController extends Controller
 {
     public function __construct()
     {

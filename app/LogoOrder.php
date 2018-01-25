@@ -34,4 +34,9 @@ class LogoOrder extends Model
     protected $helpful_images;
     protected $created_at;
     protected $updated_at;
+    
+    
+        public function user() {
+        return $this->belongsTo('App\User');
+        }
 }

@@ -56,6 +56,8 @@ Route::prefix('admin')->group(function(){
     
     Route::get('/orders',  'Admin\Orders\OrdersController@index');  //get orders list
     
+    Route::get('/orders/order-detail/{slug}',  'Admin\Orders\OrdersController@viewOrder');  //get orders list
+    
     Route::get('/invoices',  'Admin\Invoices\InvoicesController@index');  //get invoices list
     
     Route::get('/payments',  'Admin\Payments\PaymentController@index');  //get payments list     
@@ -86,6 +88,9 @@ Route::prefix('admin')->group(function(){
     
     Route::get('/logo-fonts/destroy/{slug}',  'Admin\LogoFonts\LogoFontsController@destroy');    //delete logo fonts
     
+    Route::get('/setting',  'Admin\Settings\SettingController@index');    //delete logo fonts
+    
+    
     Route::get('/change-password', 'Admin\AdminController@changePassword');
     
     Route::post('/password-reset', 'Admin\AdminController@resetPassword');
@@ -102,6 +107,7 @@ Route::prefix('contributor')->group(function(){
     Route::get('/login', 'Auth\ContributorAdminController@showLoginForm')->name('contributor.login');
     Route::post('/login', 'Auth\ContributorAdminController@login')->name('contributor.login.submit');
     Route::get('/profile', 'Contributor\ContributorController@profile');
+    Route::post('/update-profile', 'Contributor\ContributorController@updateProfile');
 });
 
 Auth::routes();

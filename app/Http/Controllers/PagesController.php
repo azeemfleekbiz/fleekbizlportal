@@ -20,7 +20,7 @@ class PagesController extends Controller
       $logoType = \App\logoType::latest('id','desc')->where('type_of_logo','Logo Type')->where('order_types',2)->get();
       $logoFeel = \App\logoType::latest('id','desc')->where('type_of_logo','Logo Feel')->where('order_types',2)->get();
       $logoUsage = \App\LogoUsage::latest('id','desc')->where('status',1)->where('order_types',2)->get();
-      $fontType = \App\logoFonts::latest('id','desc')->where('order_types',2)->get();
+      $fontType = \App\LogoFonts::latest('id','desc')->where('order_types',2)->get();
       $packages = \App\Packages::latest('id','desc')->where('order_type_id',2)->get();
       $packages_addon = \App\PaymentAdons::latest('id','desc')->where('order_type_id',2)->get();
       return view('pages.'.$home)->with('logo_type',$logoType)->with('logo_usage',$logoUsage)->with('font_tpe',$fontType)->with('logo_feel',$logoFeel)->with('packages',$packages)->with('addon',$packages_addon);
@@ -132,6 +132,6 @@ class PagesController extends Controller
 
       echo 'User Id '.$userId.'<br>';
       echo 'Order Id '.$orderId.'<br>';
-       exit;
+      exit;
     }
 }

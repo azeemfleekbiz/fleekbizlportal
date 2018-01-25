@@ -8,17 +8,22 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">     
-      <li>
+      <li class="active">
           <a href="{{ url('/admin/dashboard') }}">
-            <i class="fa fa-dashboard" aria-hidden="true"></i> <span>Dashboard</span>
+            <i class="fa fa-dashboard" aria-hidden="true"></i> <span>Dashboard</span>            
+          </a>          
+        </li>   
+      
+        <li>
+          <a href="{{ url('/admin/orders') }}">
+            <i class="fa fa-first-order" aria-hidden="true"></i> <span>Orders</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>          
-        </li>   
-      
-                 
-       <li class="active treeview">
+        </li>        
+        
+       <li class="treeview">
           <a href="">
            <i class="fa fa-gears" aria-hidden="true"></i><span>Settings</span>
             <span class="pull-right-container">
@@ -33,6 +38,7 @@
             <li><a href="{{ url('/admin/logo-types') }}"><i class="fa fa-circle-o"></i> Logo Type</a></li>
             <li><a href="{{ url('/admin/logo-usage') }}"><i class="fa fa-circle-o"></i> Logo Usage</a></li>
             <li><a href="{{ url('/admin/logo-fonts') }}"><i class="fa fa-circle-o"></i> Logo Fonts</a></li>
+            <li><a href="{{ url('/admin/setting') }}"><i class="fa fa-circle-o"></i> Setting</a></li>
             
           </ul>
         </li>
@@ -49,14 +55,7 @@
           </ul>
         </li>  
               
-        <li style="display:none;">
-          <a href="{{ url('/admin/invoices') }}">
-            <i class="fa fa-files-o" aria-hidden="true"></i> <span>Invoices</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>          
-        </li>        
+              
         
         
         <li style="display:none;">
