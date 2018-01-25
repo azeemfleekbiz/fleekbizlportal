@@ -11,6 +11,12 @@
     </section>
  <div class="box">
             <div class="box-header">
+                @if (Session::has('message'))
+                <div class="alert alert-success">{{ Session::get('message') }}</div>
+            @endif
+            @if (Session::has('error'))
+                <div class="alert alert-danger">{{ Session::get('error') }}</div>
+            @endif
         <button rel="{{url('')}}" type="button" 
                 class="btn btn-info make-modal-large iframe-form-open" 
                 data-toggle="modal" data-target="#modal-default" title="Add Coupon">
@@ -62,25 +68,25 @@
                                         <select class="form-control" name="order_type_id" id="order_type_id" required="required">
                                             <option value="">Select Order Type</option> 
                                             @foreach( $order_types as $order_type )
-                                            <option value="{{$order_type->id}}" @if ($order_type->id === $coupon_code->order_type_id) selected="selected"  @endif>{{$order_type->name}}</option>                   
+                                            <option value="{{$order_type->id}}" @if ($order_type->id == $coupon_code->order_type_id) selected="selected"  @endif>{{$order_type->name}}</option>                   
                                             @endforeach
                                         </select>          
                                     </div> 
                                     <div class="form-group">
                             <label for="exampleInputEmail1">Coupon Code</label>
-                            <input type="text" name="coupon_code" value="{{$coupon_code->coupon_code}}" class="form-control" id="exampleInputEmail1" placeholder="Enter Logo Title" required="required">
+                            <input type="text" name="coupon_code" value="{{$coupon_code->coupon_code}}" class="form-control" id="exampleInputEmail1" placeholder="Enter Coupon Code" required="required">
                         </div> 
                         
                         <div class="form-group">
                             <label for="exampleInputEmail1">Coupon Price</label>
-                            <input type="text" name="price" value="{{$coupon_code->price}}"  class="form-control" id="exampleInputEmail1" placeholder="Enter Logo Title" required="required">
+                            <input type="text" name="price" value="{{$coupon_code->price}}"  class="form-control" id="exampleInputEmail1" placeholder="Enter Coupon Price" required="required">
                         </div> 
                         
                          <div class="form-group">
                             <label for="exampleInputEmail1">Description </label>
                             <br>
                             <div class="col-sm-10">
-                                <textarea required="required" name="description" class="textarea" placeholder="Package Payment Adon Description"
+                                <textarea required="required" name="description" class="textarea" placeholder="Coupon Code Description"
                                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$coupon_code->descp}}</textarea>
                             </div>
                             <div style="height: 10px"></div>
@@ -149,7 +155,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Select Order Type</label>
                             <select class="form-control" name="order_type_id" id="order_type_id" required="required">
-                                <option value="">Select Order Role</option> 
+                                <option value="">Select Order Type</option> 
                                 @foreach( $order_types as $order_type )
                                 <option value="{{$order_type->id}}">{{$order_type->name}}</option>                   
                                 @endforeach
@@ -158,19 +164,19 @@
                         
                         <div class="form-group">
                             <label for="exampleInputEmail1">Coupon Code</label>
-                            <input type="text" name="coupon_code" class="form-control" id="exampleInputEmail1" placeholder="Enter Logo Title" required="required">
+                            <input type="text" name="coupon_code" class="form-control" id="exampleInputEmail1" placeholder="Enter Coupon Code" required="required">
                         </div> 
                         
                         <div class="form-group">
                             <label for="exampleInputEmail1">Coupon Price</label>
-                            <input type="text" name="price" class="form-control" id="exampleInputEmail1" placeholder="Enter Logo Title" required="required">
+                            <input type="text" name="price" class="form-control" id="exampleInputEmail1" placeholder="Enter Coupon Code Price" required="required">
                         </div> 
                         
                          <div class="form-group">
                             <label for="exampleInputEmail1">Description </label>
                             <br>
                             <div class="col-sm-10">
-                                <textarea required="required" name="description" class="textarea" placeholder="Package Payment Adon Description"
+                                <textarea required="required" name="description" class="textarea" placeholder="Coupon Code Description"
                                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                             </div>
                             <div style="height: 10px"></div>

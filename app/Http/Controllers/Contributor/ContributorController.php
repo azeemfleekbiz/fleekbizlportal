@@ -36,6 +36,26 @@ class ContributorController extends Controller
         return view('contributor.user_profile')->with('page_title', "Contributor Profile")->with("user",$user_id)->with("user_role",$user_role);
     }
     
+    //---------------------------update Profile----------------------------------------------
+    public function updateProfile(Request $request)
+    {
+        if($request->input('submit'))
+        {
+        $user = \App\User::find($request->input('user_id'));
+        $user->user_role = $request->input('user_role');
+        $user->f_name = $request->input('f_name');
+        $user->l_name = $request->input('l_name');
+        $user->email = $request->input('email');
+        $user->phone = $request->input('phone');
+        $user->updated_at     = date("Y-m-d H:i:s");
+        $user->save();
+        return Redirect::back()->with('message','User Detail Successfuly Updated.');
+        } else {
+            return Redirect::back()->with('error','Error occured! Try again later.'); 
+        }
+    }
+    
+    
     
     
     

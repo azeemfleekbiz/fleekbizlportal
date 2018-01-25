@@ -7,24 +7,26 @@
       
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">        
-        <li class="treeview">
+      <ul class="sidebar-menu" data-widget="tree">     
+      <li>
           <a href="{{ url('/admin/dashboard') }}">
-            <i class="fa fa-dashboard" aria-hidden="true"></i> <span>Dashboard</span>        
+            <i class="fa fa-dashboard" aria-hidden="true"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
-        </li>          
+          </a>          
+        </li>   
+      
+                 
        <li class="active treeview">
           <a href="">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Orders</span>
+           <i class="fa fa-gears" aria-hidden="true"></i><span>Settings</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-              <li class="active"><a href="{{ url('/admin/orders') }}"><i class="fa fa-circle-o"></i>Orders</a></li>
+              <li class="active" style="display:none;"><a href="{{ url('/admin/orders') }}"><i class="fa fa-circle-o"></i>Orders</a></li>
             <li class="active"><a href="{{ url('/admin/order-type') }}"><i class="fa fa-circle-o"></i>Order Type</a></li>
             <li><a href="{{ url('/admin/packages') }}"><i class="fa fa-circle-o"></i> Packages</a></li>    
             <li><a href="{{ url('/admin/payment-adons') }}"><i class="fa fa-circle-o"></i> Packages Payment Adons</a></li>  
@@ -43,7 +45,7 @@
           </a>
           <ul class="treeview-menu">
               <li><a href="{{ url('/admin/coupons') }}"><i class="fa fa-gift" aria-hidden="true"></i>Coupon Codes</a></li>
-             <li><a href=""><i class="fa fa-gift" aria-hidden="true"></i>Used Coupons</a></li>
+             <li><a href="" style="display:none;"><i class="fa fa-gift" aria-hidden="true"></i>Used Coupons</a></li>
           </ul>
         </li>  
               

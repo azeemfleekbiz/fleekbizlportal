@@ -12,6 +12,9 @@
 
 <div class="box">
             <div class="box-header">
+                @if (Session::has('message'))
+                <div class="alert alert-success">{{ Session::get('message') }}</div>
+            @endif
              <button rel="{{url('')}}" type="button" 
                 class="btn btn-info make-modal-large iframe-form-open" 
                 data-toggle="modal" data-target="#modal-default" title="Add Logo Feel">
