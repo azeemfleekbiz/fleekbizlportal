@@ -105,48 +105,7 @@
 <textarea name="describe_imgs_dont_like" id="describe_imgs_dont_like" cols="50" rows="10"></textarea>
 </div>
 <h3>Logo type</h3>
-<div class="form-group">
-<div class="col-xs-3">
-<div class="titles">Wordmark</div>    
-<img src="{{ asset('images/order2-logo1.png')}}">
-<input type="checkbox" name="logo_type[]" id="logo_type1" value="wordmark">
-</div>    
-<div class="col-xs-3">
-<div class="titles">Lettermark</div>    
-<img src="{{ asset('images/order2-logo2.png')}}">
-<input type="checkbox" name="logo_type[]" id="logo_type2" value="lettermark">
-</div> 
-<div class="col-xs-3">
-<div class="titles">Combination Mark</div>    
-<img src="{{ asset('images/order2-logo3.png')}}">
-<input type="checkbox" name="logo_type[]" id="logo_type3" value="combination_mark">
-</div> 
-<div class="col-xs-3">
-<div class="titles">iconic / abstract</div>    
-<img src="{{ asset('images/order2-logo4.png')}}">
-<input type="checkbox" name="logo_type[]" id="logo_type4" value="iconic_abstract">
-</div> 
-<div class="col-xs-3">
-<div class="titles">Emblem</div>    
-<img src="{{ asset('images/order2-logo5.png')}}">
-<input type="checkbox" name="logo_type[]" id="logo_type5" value="emblem">
-</div> 
-<div class="col-xs-3">
-<div class="titles">vintage</div>    
-<img src="{{ asset('images/order2-logo6.png')}}">
-<input type="checkbox" name="logo_type[]" id="logo_type6" value="vintage">
-</div> 
-<div class="col-xs-3">
-<div class="titles">Fun</div>    
-<img src="{{ asset('images/order2-logo7.png')}}">
-<input type="checkbox" name="logo_type[]" id="logo_type7" value="fun">
-</div> 
-<div class="col-xs-3">
-<div class="titles">mascot</div>    
-<img src="{{ asset('images/order2-logo8.png')}}">
-<input type="checkbox" name="logo_type[]" id="logo_type8" value="mascot">
-</div> 
-</div>
+@include('includes.logo_type');
 <h3>COLORS</h3>
 <div class="form-group">
 <label class="control-label">Color</label>
@@ -157,148 +116,15 @@
 <input type="text" name="other_color" id="other_color" class="form-control" />
 </div>
 <h3>Logo usage</h3>
-<div class="form-group">
-<label class="control-label">Print (Cards, Letterheads, Brochures etc)</label>
-<input type="radio" name="logo_usage" id="logo_usage1" class="form-control" checked="checked" />
-</div>
-<div class="form-group">
-<label class="control-label">Online (Website, Online advertising,banner ads etc)</label>
-<input type="radio" name="logo_usage" id="logo_usage2" class="form-control" />
-</div>
-<div class="form-group">
-<label class="control-label">Merchandise (Pens, Mugs, Bags etc)</label>
-<input type="radio" name="logo_usage" id="logo_usage3" class="form-control" />
-</div>
-<div class="form-group">
-<label class="control-label">Signs (Including shops, Billboards etc)</label>
-<input type="radio" name="logo_usage" id="logo_usage4" class="form-control" />
-</div>
-<div class="form-group">
-<label class="control-label">Television/Screen (Commercials,infomercials etc)</label>
-<input type="radio" name="logo_usage" id="logo_usage5" class="form-control" />
-</div>
-<div class="form-group">
-<label class="control-label">Clothing (T-shirts, Hats, Embroidery etc)</label>
-<input type="radio" name="logo_usage" id="logo_usage6" class="form-control" />
-</div>
-<div class="form-group">
-<label class="control-label">Mention Your Specific Color (If any)</label>
-<input type="text" name="other_logo_usage" id="other_logo_usage" class="form-control" />
-</div>
+@include('includes.logo_usage');
 <h3>FONT type</h3>
-<div class="form-group">
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font1.jpg')}}">
-<input type="radio" name="font_type" id="font_type1" class="form-control" checked="checked" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font2.jpg')}}">
-<input type="radio" name="font_type" id="font_type2" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font3.jpg')}}">
-<input type="radio" name="font_type" id="font_type3" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font4.jpg')}}">
-<input type="radio" name="font_type" id="font_type4" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font5.jpg')}}">
-<input type="radio" name="font_type" id="font_type5" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font6.jpg')}}">
-<input type="radio" name="font_type" id="font_type6" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font7.jpg')}}">
-<input type="radio" name="font_type" id="font_type7" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font8.jpg')}}">
-<input type="radio" name="font_type" id="font_type8" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font9.jpg')}}">
-<input type="radio" name="font_type" id="font_type9" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font10.jpg')}}">
-<input type="radio" name="font_type" id="font_type10" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font11.jpg')}}">
-<input type="radio" name="font_type" id="font_type11" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font12.jpg')}}">
-<input type="radio" name="font_type" id="font_type12" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font13.jpg')}}">
-<input type="radio" name="font_type" id="font_type13" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font14.jpg')}}">
-<input type="radio" name="font_type" id="font_type14" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font15.jpg')}}">
-<input type="radio" name="font_type" id="font_type15" class="form-control" value="comic" />
-</div> 
-<div class="col-xs-3">
-<img src="{{ asset('images/orderflow2-font16.jpg')}}">
-<input type="radio" name="font_type" id="font_type16" class="form-control" value="comic" />
-</div> 
-</div>
+@include('includes.font_type');
 <div class="form-group">
 <label class="control-label">Mention Your Specific Color (If any)</label>
 <input type="text" name="other_font_type" id="other_font_type" class="form-control" />
 </div>
 <h3>Overall logo feel</h3>
-<div class="form-group">
-<div class="col-xs-3">
-<div class="titles">Artistic</div>    
-<img src="{{ asset('images/order2-logo9.png')}}">
-<input type="checkbox" name="logo_feel[]" id="logo_feel1" value="artistic">
-</div>    
-<div class="col-xs-3">
-<div class="titles">Minimal</div>    
-<img src="{{ asset('images/order2-logo10.png')}}">
-<input type="checkbox" name="logo_feel[]" id="logo_feel2" value="minimal">
-</div> 
-<div class="col-xs-3">
-<div class="titles">Sophisticated</div>    
-<img src="{{ asset('images/order2-logo11.png')}}">
-<input type="checkbox" name="logo_feel[]" id="logo_feel3" value="sophisticated">
-</div> 
-<div class="col-xs-3">
-<div class="titles">Corporate</div>    
-<img src="{{ asset('images/order2-logo12.png')}}">
-<input type="checkbox" name="logo_feel[]" id="logo_feel4" value="corporate">
-</div> 
-<div class="col-xs-3">
-<div class="titles">Childish</div>    
-<img src="{{ asset('images/order2-logo13.png')}}">
-<input type="checkbox" name="logo_feel[]" id="logo_feel5" value="childish">
-</div> 
-<div class="col-xs-3">
-<div class="titles">Web 2.0</div>    
-<img src="{{ asset('images/order2-logo14.png')}}">
-<input type="checkbox" name="logo_feel[]" id="logo_feel6" value="web_2.0">
-</div> 
-<div class="col-xs-3">
-<div class="titles">Fun</div>    
-<img src="{{ asset('images/order2-logo15.png')}}">
-<input type="checkbox" name="logo_feel[]" id="logo_feel7" value="fun">
-</div> 
-<div class="col-xs-3">
-<div class="titles">Retro</div>    
-<img src="{{ asset('images/order2-logo16.png')}}">
-<input type="checkbox" name="logo_feel[]" id="logo_feel8" value="retro">
-</div> 
-</div>
+@include('includes.logo_feel');
 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
 <button class="btn btn-primary prevBtn btn-lg pull-left" type="button" >Previous</button>
 </div>
@@ -328,112 +154,7 @@
 <div class="col-xs-12">
 <div class="col-md-12">
 <h3>All of our packages include our fantastic customer service and a dedicated project manager</h3>
-<div class="form-group">
-
-<div class="col-md-3 pricing-div pricing-div-1">
-<p class="package-name">Logo Basic</p>
-<p class="old-price">$99</p>
-<label class="new-price">$<span>79</span></label>
-<ul class="feature-list">
-<li class="first">6 Unique Logo Concepts</li>
-<li>Free Icon</li>
-<li>Unlimited Revisions</li>
-<li>100% Ownership Rights</li>
-<li>AI, PSD, EPS, GIF, BMP, JPEG</li>
-<li>All Formats</li>
-<li>Free Rush Delivery</li>
-<li>Get Initial Concepts within 24</li>
-<li><span>FREE</span> Stationery Design</li>
-<li class="last"><span>FREE</span> Stationery Printing</li>
-</ul>
-<a class="main-button main-button-white selectpackage" name="Logo Basic" amount="79">Get Started</a>
-</div>
-
-<div class="col-md-3 pricing-div pricing-div-2 active">
-<p class="package-name">Logo Plus</p>
-<p class="old-price">$199</p>
-<label class="new-price">$<span>179</span></label>
-<ul class="feature-list">
-<li class="first">12 Unique Logo Concepts</li>
-<li>Free Icon</li>
-<li>Unlimited Revisions</li>
-<li>100% Ownership Rights</li>
-<li>AI, PSD, EPS, GIF, BMP, JPEG</li>
-<li>PNG All All Formats</li>
-<li>Free Rush Delivery</li>
-<li>Get Initial Concepts within 24</li>
-<li><span>FREE</span> Stationery Design</li>
-<li class="last"><span>FREE</span> Stationery Printing</li>
-</ul>
-<a class="main-button main-button-white selectpackage" name="Logo Plus" amount="179">Get Started</a>
-</div>
-
-
-<div class="col-md-3 pricing-div pricing-div-3">
-<p class="package-name">Logo Infinity</p>
-<p class="old-price">$499</p>
-<label class="new-price">$<span>359</span></label>
-<ul class="feature-list">
-<li class="first">Infinite Logo Concepts</li>
-<li>Free Icon</li>
-<li>Unlimited Revisions</li>
-<li>100% Ownership Rights</li>
-<li>AI, PSD, EPS, GIF, BMP, JPEG</li>
-<li>All Formats</li>
-<li>Free Rush Delivery</li>
-<li><span>FREE</span> Stationery Design</li>
-<li><span>FREE</span> Stationery Printing</li>
-<li class="last"><span>FREE</span> 500 Business Cards Prints</li>
-</ul>
-<a class="main-button main-button-white selectpackage" name="Logo Infinity" amount="359">Get Started</a>
-</div>
-
-<div class="col-md-3 pricing-div pricing-div-4">
-<p class="package-name">Logo Advanced</p>
-<p class="old-price">$599</p>
-<label class="new-price">$<span>499</span></label>
-<ul class="feature-list">
-<li class="first">Infinite Logo Concepts</li>
-<li>Free Icon</li>
-<li>Unlimited Revisions</li>
-<li>100% Ownership Rights</li>
-<li>AI, PSD, EPS, GIF, BMP, JPEG</li>
-<li>All Formats</li>
-<li>Free Rush Delivery</li>
-<li><span>FREE</span> Stationery Design</li>
-<li><span>FREE</span> StationeryPrinting</li>
-<li class="last"><span>FREE</span> 500 Business Cards Prints</li>
-</ul>
-<a class="main-button main-button-white selectpackage" name="Logo Advanced" amount="499">Get Started</a>
-</div>
-<input type="hidden" name="package_name" id="package_name" value="Logo Basic">
-<input type="hidden" name="package_amount" id="package_amount" value="79">
-<input type="hidden" name="addon_name" id="addon_name" value="">
-<input type="hidden" name="addon_amount" id="addon_amount" value="">
-</div>
-<div class="form-group">
-<h3>Additional options</h3>    
-<div class="additional-left col-md-6">
-<div class="addi-thumb">
-<img src="{{ asset('images/orderflow4-img1.png')}}" alt="">
-</div>
-<div class="addi-content">
-<h5>Rush - $75</h5>
-<p>If you’re in a hurry, rush the order and we’ll make sure you get your initial designs in just 2 business days!</p>
-<a href="javascript:void(0);" class="add_adon" amount="75" title="rush">Add</a>
-</div>
-</div>
-<div class="additional-left col-md-6">
-<div class="addi-thumb">
-<img src="{{ asset('images/orderflow4-img2.png')}}" alt="">
-</div>
-<div class="addi-content">
-<h5>Experts Only - $99</h5>
-<p>If you’re in a hurry, rush the order and we’ll make sure you get your initial designs in just 2 business days!</p>
-<a href="javascript:void(0);" class="add_adon" amount="99" title="Experts Only">Add</a>
-</div>
-</div>
-</div>    
+@include('includes.packages');   
 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
 <button class="btn btn-primary prevBtn btn-lg pull-left" type="button" >Previous</button>
 </div>

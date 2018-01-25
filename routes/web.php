@@ -104,12 +104,6 @@ Route::prefix('contributor')->group(function(){
     Route::get('/profile', 'Contributor\ContributorController@profile');
 });
 
-
-
-Route::get('/', ['uses' => 'PagesController@homeVersion']);
-Route::post('/create', ['uses' => 'PagesController@create']);
-
-
 Auth::routes();
 
 Route::get('/home', 'Admin\AdminController@index');
