@@ -31,6 +31,7 @@
                   <th>Order Name</th>
                   <th>Amount</th>                  
                   <th>Status</th>
+                  <th>Payment</th>
                    <th>Order Date</th>
                   <th>Actions</th>
                 </tr>
@@ -42,7 +43,8 @@
                   <td>log00{{$order->id}}</td>
                   <td>{{$order->user->f_name}} {{$order->user->l_name}}</td>
                   <td>{{$order->logo_name}}</td>
-                  <td>{{$settings->site_currency_symbol}}500</td>        
+                  <td>{{$settings->site_currency_symbol}}{{$order->orderpayment->total_amount}}</td>        
+                  <td>Pending</td>
                   <td>Pending</td>
                   <td>{{date("d M Y",strtotime($order->created_at))}}</td>
                   <td><a href="{{ url('/admin/orders/order-detail/'.$order->id) }}" rel="" type="button" 

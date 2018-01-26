@@ -37,9 +37,9 @@ class OrdersController extends Controller
         $logo_fonts = \App\LogoFonts::find($logo_font_input);
         $logo_sample = explode(",", $orders->logo_sample);  
         $help_ful_images = explode(",", $orders->helpful_images); 
-        //$packages = \App\Packages::find($orders->logo_fonts);
+        $packages = \App\Packages::find($orders->id);
         $setting=\App\AdminSettings::latest('id', 'asc')->get();  
-        return view('admin.orders.view')->with(array('page_title'=>'Admin Dashboard View Orders','orders'=>$orders,'user'=>$user,'logo_type'=>$logo_type,'logo_feel'=>$logo_feel,'logo_usages'=>$logo_usage,'logo_fonts'=>$logo_fonts,'setting'=>$setting,'logo_samples'=>$logo_sample,'help_ful_images'=>$help_ful_images ));
+        return view('admin.orders.view')->with(array('page_title'=>'Admin Dashboard View Orders','orders'=>$orders,'user'=>$user,'logo_type'=>$logo_type,'logo_feel'=>$logo_feel,'logo_usages'=>$logo_usage,'logo_fonts'=>$logo_fonts,'setting'=>$setting,'logo_samples'=>$logo_sample,'help_ful_images'=>$help_ful_images,'packages'=>$packages ));
         
     }
     

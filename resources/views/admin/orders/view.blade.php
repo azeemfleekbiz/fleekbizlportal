@@ -264,20 +264,7 @@
               </div>
               
               <div class="tab-pane" id="packages">
-                <ul class="timeline timeline-inverse">
-                  <!-- timeline time label -->
-                 
-                  <!-- /.timeline-label -->
-                  <!-- timeline item -->
-                  
-                  <!-- END timeline item -->
-                  <!-- timeline item -->
-                  
-                  <!-- END timeline item -->
-                  <!-- timeline item -->
-                  
-                  <!-- END timeline item -->
-                  <!-- timeline time label -->
+                <ul class="timeline timeline-inverse">                 
                   <li class="time-label">
                         <span class="bg-green">
                          {{date("d M Y",strtotime($orders->created_at))}} 
@@ -289,15 +276,23 @@
                     <i class="fa fa-camera bg-purple"></i>
 
                     <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                      <h3 class="timeline-header"><a href="#">{{$user->f_name}} {{$user->l_name}}</a> Select Package</h3>
+                        <h3 class="timeline-header"><a href="#">{{$user->f_name}} {{$user->l_name}}</a> Select Package : <strong>{{$packages->title}}</strong></h3>
 
                       <div class="timeline-body">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                        <p>
+                              <strong> Package Name  : {{$packages->title}}</strong>                              
+                          </p>
+                          <p>
+                              <strong>Regular Price : {{$packages->regular_price}}</strong>                              
+                          </p>
+                          
+                          <p>
+                              <strong>Sale Price : {{$packages->sale_price}}</strong>                              
+                          </p>
+                          
+                          <p>
+                              <strong>Description : {{strip_tags($packages->descp)}}</strong>                              
+                          </p>
                       </div>
                     </div>
                   </li>

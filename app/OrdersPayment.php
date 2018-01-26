@@ -21,4 +21,8 @@ class OrdersPayment extends Model
     protected $create_at;
     protected $updated_at;
     public $timestamps = false; // for false updated_at and created_at
+    
+    public function logoorder() {
+        return $this->belongsTo('App\LogoOrder','order_id');
+    }
 }

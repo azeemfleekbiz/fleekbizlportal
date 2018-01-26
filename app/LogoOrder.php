@@ -39,4 +39,11 @@ class LogoOrder extends Model
         public function user() {
         return $this->belongsTo('App\User');
         }
+        
+        
+        public function orderpayment() {
+        return $this->hasOne('\App\OrdersPayment','id');
+        }
+        
+        
 }
