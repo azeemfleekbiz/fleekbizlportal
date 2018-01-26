@@ -19,7 +19,8 @@ class PaymentAdonsController extends Controller
     {
         $payments_adons = \App\PaymentAdons::latest('id', 'asc')->get();      
         $ordertypes = \App\OrderType::latest('id', 'asc')->get();
-        return view('admin.paymentsadons.index')->with('page_title', "Admin Dashboard Payments Adons")->with("payments_adons",$payments_adons)->with("order_types",$ordertypes);
+        $setting=\App\AdminSettings::latest('id', 'asc')->first(); 
+        return view('admin.paymentsadons.index')->with('page_title', "Admin Dashboard Payments Adons")->with("payments_adons",$payments_adons)->with("order_types",$ordertypes)->with('settings',$setting);
     }
     
     //--------------------------------save payment adons--------------------------

@@ -11,6 +11,9 @@
 </section>
 
 <div class="box">
+    @if (Session::has('message'))
+                <div class="alert alert-success">{{ Session::get('message') }}</div>
+            @endif
     <div class="box-header">
         <button rel="{{url('')}}" type="button" 
                 class="btn btn-info make-modal-large iframe-form-open" 
@@ -59,9 +62,9 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Select Order Type</label>
                                         <select class="form-control" name="order_type_id" id="order_type_id" required="required">
-                                            <option value="">Select User Role</option> 
+                                            <option value="">Select Order Type </option> 
                                             @foreach( $order_types as $order_type )
-                                            <option value="{{$order_type->id}}" @if ($order_type->id === $logo_font->order_types) selected="selected"  @endif>{{$order_type->name}}</option>                   
+                                            <option value="{{$order_type->id}}" @if ($order_type->id == $logo_font->order_types) selected="selected"  @endif>{{$order_type->name}}</option>                   
                                             @endforeach
                                         </select>          
                                     </div> 
@@ -138,7 +141,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Select Order Type</label>
                             <select class="form-control" name="order_type_id" id="order_type_id" required="required">
-                                <option value="">Select Order Role</option> 
+                                <option value="">Select Order Type</option> 
                                 @foreach( $order_types as $order_type )
                                 <option value="{{$order_type->id}}">{{$order_type->name}}</option>                   
                                 @endforeach

@@ -7,30 +7,45 @@
       
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">        
-        <li class="treeview">
+      <ul class="sidebar-menu" data-widget="tree">     
+      <li class="active">
           <a href="{{ url('/admin/dashboard') }}">
-            <i class="fa fa-dashboard" aria-hidden="true"></i> <span>Dashboard</span>        
+            <i class="fa fa-dashboard" aria-hidden="true"></i> <span>Dashboard</span>            
+          </a>          
+        </li>   
+      
+        <li class="treeview">
+          <a href="">
+            <i class="fa fa-first-order" aria-hidden="true"></i> <span>Orders</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>
-        </li>          
-       <li class="active treeview">
+          </a>     
+            <ul class="treeview-menu">             
+            <li class="active"><a href="{{ url('/admin/orders') }}"><i class="fa fa-circle-o"></i>Orders</a></li>
+            <li><a href="{{ url('/admin/orders/complete-orders') }}"><i class="fa fa-circle-o"></i> Complete Orders</a></li>    
+            <li><a href="{{ url('/admin/orders/pending-orders') }}"><i class="fa fa-circle-o"></i> Pending  Orders</a></li>    
+            
+            
+          </ul>
+        </li>        
+        
+       <li class="treeview">
           <a href="">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Orders</span>
+           <i class="fa fa-gears" aria-hidden="true"></i><span>Settings</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-              <li class="active"><a href="{{ url('/admin/orders') }}"><i class="fa fa-circle-o"></i>Orders</a></li>
+              <li class="active" style="display:none;"><a href="{{ url('/admin/orders') }}"><i class="fa fa-circle-o"></i>Orders</a></li>
             <li class="active"><a href="{{ url('/admin/order-type') }}"><i class="fa fa-circle-o"></i>Order Type</a></li>
             <li><a href="{{ url('/admin/packages') }}"><i class="fa fa-circle-o"></i> Packages</a></li>    
             <li><a href="{{ url('/admin/payment-adons') }}"><i class="fa fa-circle-o"></i> Packages Payment Adons</a></li>  
             <li><a href="{{ url('/admin/logo-types') }}"><i class="fa fa-circle-o"></i> Logo Type</a></li>
             <li><a href="{{ url('/admin/logo-usage') }}"><i class="fa fa-circle-o"></i> Logo Usage</a></li>
             <li><a href="{{ url('/admin/logo-fonts') }}"><i class="fa fa-circle-o"></i> Logo Fonts</a></li>
+            <li><a href="{{ url('/admin/settings') }}"><i class="fa fa-circle-o"></i> Setting</a></li>
             
           </ul>
         </li>
@@ -43,18 +58,11 @@
           </a>
           <ul class="treeview-menu">
               <li><a href="{{ url('/admin/coupons') }}"><i class="fa fa-gift" aria-hidden="true"></i>Coupon Codes</a></li>
-             <li><a href=""><i class="fa fa-gift" aria-hidden="true"></i>Used Coupons</a></li>
+             <li><a href="" style="display:none;"><i class="fa fa-gift" aria-hidden="true"></i>Used Coupons</a></li>
           </ul>
         </li>  
               
-        <li style="display:none;">
-          <a href="{{ url('/admin/invoices') }}">
-            <i class="fa fa-files-o" aria-hidden="true"></i> <span>Invoices</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>          
-        </li>        
+              
         
         
         <li style="display:none;">

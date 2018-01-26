@@ -12,11 +12,12 @@
     </section>
 <div class="box">
             <div class="box box-info">
-            
+              @if (Session::has('message'))
+                <div class="alert alert-success">{{ Session::get('message') }}</div>
+            @endif
             <!-- /.box-header -->
             <!-- form start -->
-            <div class="form-horizontal">
-                 {{ csrf_field() }}
+            <div class="form-horizontal">      
               <div class="box-body">                  
                  <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">User Role</label>
@@ -92,8 +93,9 @@
                 <h4 class="modal-title">Update Profile</h4>
             </div>
             <div class="modal-body">
-                <form role="form" method="POST" action="" enctype="multipart/form-data">
+                <form role="form" method="POST" action="{{url('contributor/update-profile')}}" enctype="multipart/form-data" >
                     {{ csrf_field() }}
+                    <input type="hidden" name="user_id" value="{{$user->id}}">
                     <div class="box-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Select User Role</label>
@@ -117,7 +119,7 @@
                         
                          <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input disabled="" type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Email" required="required" value="{{$user->email}}">
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Email" required="required" value="{{$user->email}}">
                         </div> 
                         
                         <div class="form-group">
@@ -129,7 +131,7 @@
                     <!-- /.box-body -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary" id="btn_save">Update</button>
+                        <button type="submit" class="btn btn-primary" id="btn_save" name="submit">Update</button>
                     </div>
                 </form>
             </div>

@@ -71,7 +71,7 @@
               
               <span class="hidden-xs">{{ Auth::user()->f_name }}  {{ Auth::user()->l_name }}</span>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" style="display:none">
               <li class="user-footer">               
                 <div class="pull-right">
                      <a href="{{ url('/admin/change-password') }}" class="btn btn-default btn-flat">Change Password</a>
@@ -82,9 +82,7 @@
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+          
         </ul>
       </div>
     </nav>
@@ -101,10 +99,8 @@
   </div>  
           
           <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    
+    <strong>Copyright &copy; 2018 <a href="http://www.fleekbiz.com/">FleekBiz</a>.</strong> All rights
     reserved.
   </footer>
 

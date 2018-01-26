@@ -12,6 +12,9 @@
 
 <div class="box">
     <div class="box-header">
+            @if (Session::has('message'))
+                <div class="alert alert-success">{{ Session::get('message') }}</div>
+            @endif
         <button rel="{{url('')}}" type="button" 
                 class="btn btn-info make-modal-large iframe-form-open" 
                 data-toggle="modal" data-target="#modal-default" title="Add Logo Type">
@@ -61,9 +64,9 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Select Order Type</label>
                                         <select class="form-control" name="order_type_id" id="order_type_id" required="required">
-                                            <option value="">Select User Role</option> 
+                                            <option value="">Select Order Type</option> 
                                             @foreach( $order_types as $order_type )
-                                            <option value="{{$order_type->id}}" @if ($order_type->id === $logo_type->order_types) selected="selected"  @endif>{{$order_type->name}}</option>                   
+                                            <option value="{{$order_type->id}}" @if ($order_type->id == $logo_type->order_types) selected="selected"  @endif>{{$order_type->name}}</option>                   
                                             @endforeach
                                         </select>          
                                     </div> 
