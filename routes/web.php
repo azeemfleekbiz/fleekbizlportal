@@ -58,6 +58,10 @@ Route::prefix('admin')->group(function(){
     
     Route::get('/orders/order-detail/{slug}',  'Admin\Orders\OrdersController@viewOrder');  //get orders list
     
+    Route::get('/orders/complete-orders',  'Admin\Orders\OrdersController@completOrders');  //get complete orders list
+    
+    Route::get('/orders/pending-orders',  'Admin\Orders\OrdersController@pendingOrders');  //get pending orders list
+    
     Route::get('/invoices',  'Admin\Invoices\InvoicesController@index');  //get invoices list
     
     Route::get('/payments',  'Admin\Payments\PaymentController@index');  //get payments list     
@@ -88,7 +92,11 @@ Route::prefix('admin')->group(function(){
     
     Route::get('/logo-fonts/destroy/{slug}',  'Admin\LogoFonts\LogoFontsController@destroy');    //delete logo fonts
     
-    Route::get('/setting',  'Admin\Settings\SettingController@index');    //delete logo fonts
+    Route::get('/settings',  'Admin\Settings\SettingsController@index');    //settings list
+    
+    Route::post('/settings/create', 'Admin\Settings\SettingsController@create');  //add new Settings
+    
+    Route::post('/settings/update', 'Admin\Settings\SettingsController@update');  //update Setting 
     
     
     Route::get('/change-password', 'Admin\AdminController@changePassword');
