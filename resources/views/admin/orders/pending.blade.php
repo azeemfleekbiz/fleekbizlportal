@@ -2,10 +2,10 @@
 @section('contents')
 <section class="content-header">
       <h1>
-        Orders        
+       Pending Orders        
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Orders</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Pending Orders</a></li>
         <li class="active">Dashboard</li>
       </ol>
     </section>

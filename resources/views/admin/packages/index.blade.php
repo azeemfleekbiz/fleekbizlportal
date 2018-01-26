@@ -35,8 +35,8 @@
                 @foreach( $packages as $packages )
                 <tr>
                     <td>{{$packages->title}}</td>
-                    <td>{{$packages->regular_price}}</td>
-                    <td>{{$packages->sale_price}}</td>
+                    <td>{{$settings->site_currency_symbol}}{{$packages->regular_price}}</td>
+                    <td>{{$settings->site_currency_symbol}}{{$packages->sale_price}}</td>
                     <td> <a href="#editpackage{{$packages->id}}" rel="" type="button" 
                             class="btn btn-info make-modal-large iframe-form-open" 
                             data-toggle="modal"  title="Edit Package {{$packages->title}}">

@@ -14,13 +14,20 @@
           </a>          
         </li>   
       
-        <li>
-          <a href="{{ url('/admin/orders') }}">
+        <li class="treeview">
+          <a href="">
             <i class="fa fa-first-order" aria-hidden="true"></i> <span>Orders</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-          </a>          
+          </a>     
+            <ul class="treeview-menu">             
+            <li class="active"><a href="{{ url('/admin/orders') }}"><i class="fa fa-circle-o"></i>Orders</a></li>
+            <li><a href="{{ url('/admin/orders/complete-orders') }}"><i class="fa fa-circle-o"></i> Complete Orders</a></li>    
+            <li><a href="{{ url('/admin/orders/pending-orders') }}"><i class="fa fa-circle-o"></i> Pending  Orders</a></li>    
+            
+            
+          </ul>
         </li>        
         
        <li class="treeview">
@@ -38,7 +45,7 @@
             <li><a href="{{ url('/admin/logo-types') }}"><i class="fa fa-circle-o"></i> Logo Type</a></li>
             <li><a href="{{ url('/admin/logo-usage') }}"><i class="fa fa-circle-o"></i> Logo Usage</a></li>
             <li><a href="{{ url('/admin/logo-fonts') }}"><i class="fa fa-circle-o"></i> Logo Fonts</a></li>
-            <li><a href="{{ url('/admin/setting') }}"><i class="fa fa-circle-o"></i> Setting</a></li>
+            <li><a href="{{ url('/admin/settings') }}"><i class="fa fa-circle-o"></i> Setting</a></li>
             
           </ul>
         </li>

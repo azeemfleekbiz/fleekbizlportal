@@ -20,7 +20,8 @@ class PackagesController extends Controller
     {
         $packages = \App\Packages::latest('id', 'asc')->get();      
         $ordertypes = \App\OrderType::latest('id', 'asc')->get();
-        return view('admin.packages.index')->with('page_title', "Admin Dashboard Packages")->with('packages',$packages)->with('order_types',$ordertypes);
+        $setting=\App\AdminSettings::latest('id', 'asc')->first(); 
+        return view('admin.packages.index')->with('page_title', "Admin Dashboard Packages")->with('packages',$packages)->with('order_types',$ordertypes)->with('settings',$setting);
     }
     
     //-------------------------------------save new package------------------------

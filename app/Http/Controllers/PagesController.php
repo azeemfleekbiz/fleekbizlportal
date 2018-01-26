@@ -17,8 +17,8 @@ class PagesController extends Controller
     public function homeVersion()
     {
     	$home = 'home';
-      $logoType = \App\logoType::latest('id','desc')->where('type_of_logo','Logo Type')->where('order_types',2)->get();
-      $logoFeel = \App\logoType::latest('id','desc')->where('type_of_logo','Logo Feel')->where('order_types',2)->get();
+      $logoType = \App\logoType::latest('id','desc')->where('type_of_logo','logo_type')->where('order_types',2)->get();
+      $logoFeel = \App\logoType::latest('id','desc')->where('type_of_logo','logo_feel')->where('order_types',2)->get();
       $logoUsage = \App\LogoUsage::latest('id','desc')->where('status',1)->where('order_types',2)->get();
       $fontType = \App\LogoFonts::latest('id','desc')->where('order_types',2)->get();
       $packages = \App\Packages::latest('id','desc')->where('order_type_id',2)->get();

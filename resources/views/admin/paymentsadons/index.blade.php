@@ -36,7 +36,7 @@
                 @foreach( $payments_adons as $payments_adon )
                 <tr>
                     <td>{{$payments_adon->title}}</td>    
-                    <th>{{$payments_adon->price}}</th>   
+                    <th>{{$settings->site_currency_symbol}}{{$payments_adon->price}}</th>   
                     <th>{{$payments_adon->status}}</th> 
                     <td><a href="#editpaymentsadon{{$payments_adon->id}}" rel="" type="button" 
                            class="btn btn-info make-modal-large iframe-form-open" 

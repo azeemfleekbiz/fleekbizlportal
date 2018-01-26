@@ -2,10 +2,10 @@
 @section('contents')
 <section class="content-header">
       <h1>
-        Orders        
+        Complete Orders        
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Orders</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Complete Orders</a></li>
         <li class="active">Dashboard</li>
       </ol>
     </section>
@@ -43,7 +43,7 @@
                   <td>{{$order->user->f_name}} {{$order->user->l_name}}</td>
                   <td>{{$order->logo_name}}</td>
                   <td>{{$settings->site_currency_symbol}}500</td>        
-                  <td>Pending</td>
+                  <td>Complete</td>
                   <td>{{date("d M Y",strtotime($order->created_at))}}</td>
                   <td><a href="{{ url('/admin/orders/order-detail/'.$order->id) }}" rel="" type="button" 
                           class="btn btn-info make-modal-large iframe-form-open" 
