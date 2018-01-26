@@ -8,6 +8,7 @@ use App\User;
 use App\LogoOrder;
 use App\logoType;
 use App\LogoUsage;
+use App\OrdersPayment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -26,6 +27,10 @@ class PagesController extends Controller
       return view('pages.'.$home)->with('logo_type',$logoType)->with('logo_usage',$logoUsage)->with('font_tpe',$fontType)->with('logo_feel',$logoFeel)->with('packages',$packages)->with('addon',$packages_addon);
     }
 
+    public function payment(){
+        $payment = 'payment';
+        return view('pages.'.$payment);
+    }
     public function createOrders(Request $request)
     {
       if (User::where('email', '=', Input::get('email'))->count() > 0) {
@@ -112,26 +117,47 @@ class PagesController extends Controller
       $order->logo_target_audience=$request->input("target_audience");
       $order->logo_descrip=$request->input("descrp");
       $order->logo_competitor_url=$request->input("compititor_url");
-      $order->logo_sample=implode(",",$sample_images_arr);
+      $order->logo_sample= Input::hasFile('sample_logos') ? implode(",",$sample_images_arr) : '';
       $order->logo_visual_descp=$request->input("describe_imgs_dont_like");
       $order->logo_visual_images=$request->input("describe_imgs_like");
       $order->logo_type=implode(",",$request->input("logo_type"));
       $order->logo_color=$request->input("choose_color");
       $order->logo_other_color=$request->input("other_color");
-      $order->logo_usage=$request->input("logo_usage");
+      $order->logo_usage=implode(",",$request->input("logo_usage"));
       $order->logo_other_usage=$request->input("other_logo_usage");
-      $order->logo_fonts=$request->input("font_type");
+      $order->logo_fonts=implode(",",$request->input("font_type"));
       $order->logo_other_fonts=$request->input("other_font_type");
       $order->logo_feel=implode(",",$request->input("logo_feel"));
       $order->communication_team=$request->input("communicate_designers");
-      $order->helpful_images=implode(",",$designer_help_images_arr);
+      $order->helpful_images=Input::hasFile('deigner_help_imgs') ? implode(",",$designer_help_images_arr) : '';
       $order->created_at=date("Y-m-d H:i:s");
       $order->updated_at=date("Y-m-d H:i:s");
       $order->save();
       $orderId = $order->id;
 
-      echo 'User Id '.$userId.'<br>';
-      echo 'Order Id '.$orderId.'<br>';
-       exit;
+
+      $package_amount = $request->input("package_amount");
+      $addon_amount = $request->input("addon_amount") ? $request->input("addon_amount"): 0;
+      $total = ($package_amount + $addon_amount);
+      $order_payment = new OrdersPayment();
+      $order_payment->order_id=$orderId;
+      $order_payment->user_id=$userId;
+      $order_payment->order_type=$request->input("order_type");
+      $order_payment->package_id=$request->input("package_name");
+      $order_payment->coupon_id=NULL;
+      $order_payment->payment_addon_id=$request->input("addon_name") ? $request->input("addon_name"): NULL;
+      $order_payment->total_amount=$total;
+      $order_payment->status=0;
+      $order_payment->create_at=date("Y-m-d H:i:s");
+      $order_payment->updated_at= date("Y-m-d H:i:s");
+      $order_payment->save();
+      $paymentId = $order_payment->id;
+
+      $user = \App\User::find($userId);
+      $order = \App\LogoOrder::find($orderId);
+      $package = \App\Packages::find($request->input("package_name"));
+      $addon = \App\PaymentAdons::find($request->input("addon_name"));
+      $payment = \App\OrdersPayment::find($paymentId);
+      return view('pages.payment')->with(array('order'=>$order,'user'=>$user,'package'=>$package,'payment'=>$payment,'addon'=>$addon));
     }
 }

@@ -21,11 +21,6 @@
 <span class="btn btn-circle">04</span>
 <p>Pricing & Packages</p>
 </div>
-<div class="stepwizard-step">
-<a href="#step-5" type="button" class="hidden navButton">05</a>
-<span class="btn btn-circle">05</span>
-<p>SECURE PAYMENT</p>
-</div>
 </div>
 </div>
 <form role="form" name="logoForm" id="logoForm" method="post" action="{{ url('/create') }}" enctype="multipart/form-data">
@@ -37,19 +32,19 @@
 <div class="col-md-12">
 <h3> Step 1</h3>
 <div class="form-group">
-<label class="control-label">First Name</label>
+<label class="control-label">First Name *</label>
 <input  type="text" name="fname" id="fname" required="required" class="form-control" />
 </div>
 <div class="form-group">
-<label class="control-label">Last Name</label>
+<label class="control-label">Last Name *</label>
 <input type="text" name="lname" id="lname" required="required" class="form-control" />
 </div>
 <div class="form-group">
-<label class="control-label">Email</label>
+<label class="control-label">Email *</label>
 <input type="email" name="email" id="email" required="required" class="form-control" />
 </div>
 <div class="form-group">
-<label class="control-label">Phone Number</label>
+<label class="control-label">Phone Number *</label>
 <input type="text" name="phone" id="phone" required="required" class="form-control" />
 </div>
 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
@@ -61,36 +56,36 @@
 <div class="col-md-12">
 <h3> LOGO DETAILS</h3>
 <div class="form-group">
-<label class="control-label">Logo Name</label>
+<label class="control-label">Logo Name*</label>
 <input type="text" name="logo_name" id="logo_name" required="required" class="form-control" />
 </div>
 <div class="form-group">
-<label class="control-label">Category</label>
+<label class="control-label">Category*</label>
 <input type="text" name="logo_category" id="logo_category" required="required" class="form-control" />
 </div>
 <div class="form-group">
 <label class="control-label">Target Audience</label>
-<input type="text" name="target_audience" id="target_audience" required="required" class="form-control" />
+<input type="text" name="target_audience" id="target_audience" class="form-control" />
 </div>
 <div class="form-group">
 <label class="control-label">Competitors URLs</label>
-<input type="text" name="compititor_url" id="compititor_url" required="required" class="form-control" />
+<input type="text" name="compititor_url" id="compititor_url" class="form-control" />
 </div>
 <div class="form-group">
 <label class="control-label">Slogan</label>
-<input type="text" name="slogan" id="slogan" required="required" class="form-control" />
+<input type="text" name="slogan" id="slogan" class="form-control" />
 </div>
 <div class="form-group">
 <label class="control-label">Website</label>
-<input type="url" name="website_url" id="website_url" required="required" class="form-control" />
+<input type="url" name="website_url" id="website_url" class="form-control" />
 </div>
 <div class="form-group">
-<label class="control-label">Description</label>
+<label class="control-label">Description *</label>
 <input type="text" name="descrp" id="descrp" required="required" class="form-control" />
 </div>
 <div class="form-group">
 <label class="control-label">Sample Logos</label>
-<input type="file" name="sample_logos[]" id="sample_logos" required="required" class="form-control user_picked_files" multiple="multiple"/>
+<input type="file" name="sample_logos[]" id="sample_logos" class="form-control user_picked_files" multiple="multiple"/>
 <input type="hidden" name="sample_file_total" id="sample_file_total" value="">
 <input type="hidden" name="uploadfiles_name" id="uploadfiles_name" value="">
 <ul class = "cvf_uploaded_files"></ul>
@@ -108,7 +103,7 @@
 @include('includes.logo_type');
 <h3>COLORS</h3>
 <div class="form-group">
-<label class="control-label">Color</label>
+<label class="control-label">Color *</label>
 <input type="text" name="choose_color" id="choose_color" required="required" class="form-control" />
 </div>
 <div class="form-group">
@@ -155,22 +150,8 @@
 <div class="col-md-12">
 <h3>All of our packages include our fantastic customer service and a dedicated project manager</h3>
 @include('includes.packages');   
-<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+<button class="btn btn-success btn-lg pull-right finish-btn" type="button" >Place Order</button>
 <button class="btn btn-primary prevBtn btn-lg pull-left" type="button" >Previous</button>
-</div>
-</div>
-</div>
-<div class="row setup-content" id="step-5">
-<div class="col-xs-12">
-<div class="col-md-12">
-<h3>payment method</h3>
-<div class="form-group">
-<label class="control-label">ORDER SUMMARY</label>
-<strong>Total = $340</strong>
-</div>
-
-<button class="btn btn-primary prevBtn btn-lg pull-left" type="button" >Previous</button>
-<input type="submit" name="submit" id="submit" value="Place Order" class="btn btn-success btn-lg pull-right" >
 </div>
 </div>
 </div>

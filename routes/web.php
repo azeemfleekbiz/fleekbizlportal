@@ -7,7 +7,7 @@ Route::get('/', function () {
 //FRONTEND
 Route::get('/', ['uses' => 'PagesController@homeVersion']);
 Route::post('/create', ['uses' => 'PagesController@createOrders']);
-
+Route::get('/payment', ['uses' => 'PagesController@payment']);
 
 Route::get('/admin/dashboard', 'Admin\AdminController@index');
 

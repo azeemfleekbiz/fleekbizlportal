@@ -5,14 +5,18 @@
 <p class="old-price">${{$packagedata->regular_price}}</p>
 <label class="new-price">$<span>{{$packagedata->sale_price}}</span></label>
 {{strip_tags($packagedata->descp)}}
-<a class="main-button main-button-white selectpackage" name="{{$packagedata->id}}" amount="{{$packagedata->sale_price}}">Get Started</a>
+<label class="main-button main-button-white selectpackage" name="{{$packagedata->id}}" for="chkbx{{$packagedata->id}}" amount="{{$packagedata->sale_price}}"><input type="checkbox" name="packageselect[]" id="chkbx{{$packagedata->id}}" style="opacity: 0;position: absolute;">Get Started</label>
+<!-- <a class="main-button main-button-white selectpackage" name="{{$packagedata->id}}" amount="{{$packagedata->sale_price}}">Get Started</a> -->
 </div>
 @endforeach
+<span class="error-message" style="display: none">Please select atleast one package before place your order!</span>
 <input type="hidden" name="package_name" id="package_name" value="">
 <input type="hidden" name="package_amount" id="package_amount" value="">
 <input type="hidden" name="addon_name" id="addon_name" value="">
 <input type="hidden" name="addon_amount" id="addon_amount" value="">
 </div>
+
+
 <div class="form-group">
 <h3>Additional options</h3>  
 @foreach($addon as $addondata)  

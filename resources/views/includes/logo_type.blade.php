@@ -6,4 +6,5 @@
 <input type="checkbox" name="logo_type[]" id="logo_type1" value="{{$logodata->id}}">
 </div>
 @endforeach		
+<span class="error-message">Please check atleast one checkbox!</span>
 </div>
