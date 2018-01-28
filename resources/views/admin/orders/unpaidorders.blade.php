@@ -2,10 +2,10 @@
 @section('contents')
 <section class="content-header">
       <h1>
-       Pending Orders        
+       UnPaid Orders        
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Pending Orders</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>UnPaid Orders</a></li>
         <li class="active">Dashboard</li>
       </ol>
     </section>
@@ -38,14 +38,14 @@
                 </thead>
                 <tbody>
                  @foreach( $orders as $order )
-                 @if($order->orderpayment->status==0)
+                 @if($order->orderpayment->is_paid==0)
                 <tr>
                   <td>log00{{$order->id}}</td>
                   <td>{{$order->user->f_name}} {{$order->user->l_name}}</td>
                   <td>{{$order->logo_name}}</td>
                   <td>{{$settings->site_currency_symbol}}{{$order->orderpayment->total_amount}}</td>        
                   <td>@if($order->orderpayment->status==1)Complete @else Pending @endif</td>
-                  <td>Pending</td>
+                  <td>@if($order->orderpayment->is_paid==0)Unpaid @else Paid @endif</td>
                   <td>{{date("d M Y",strtotime($order->created_at))}}</td>
                   <td><a href="{{ url('/admin/orders/order-detail/'.$order->id) }}" rel="" type="button" 
                           class="btn btn-info make-modal-large iframe-form-open" 
@@ -57,14 +57,12 @@
                            data-toggle="modal"  title="Delete Order ">
                             <span class="glyphicon glyphicon-remove"></span>
                         </a></td>
-                </tr>  
+                </tr>   
                 @else
                 <tr>
-                    <td colspan="8">No Pending Order Avaliable</td>
-                  
+                    <td colspan="8">No Completed Order Avaliable</td>                  
                 </tr> 
-                 @endif
-                 
+                 @endif                 
                  @endforeach
                 </tbody>
                 
