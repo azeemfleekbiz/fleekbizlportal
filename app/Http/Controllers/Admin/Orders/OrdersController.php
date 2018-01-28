@@ -50,7 +50,12 @@ class OrdersController extends Controller
     //------------------------get complete orders list--------------------------------
     public function completOrders()
     {
-        $orders = \App\LogoOrder::latest('id','asc')->get();  
+        $orders = DB::table('logo_orders')
+            ->join('orders_payments', 'logo_orders.id', '=', 'orders_payments.order_id')
+            ->join('users', 'logo_orders.user_id', '=', 'users.id')
+            ->select('logo_orders.id', 'logo_orders.logo_name', 'logo_orders.created_at', 'orders_payments.status','users.f_name','users.l_name','orders_payments.total_amount','orders_payments.is_paid')->where('orders_payments.status','=','1')
+            ->get();
+        //$orders  = \App\LogoOrder::latest('id','asc')->get();          
         $setting=\App\AdminSettings::latest('id', 'asc')->first();  
         return view('admin.orders.complete')->with('page_title', "Admin Dashboard Orders")->with('orders',$orders)->with('settings',$setting);
     }
@@ -58,7 +63,12 @@ class OrdersController extends Controller
     //------------------------get pending orders list--------------------------------
     public function pendingOrders()
     {
-        $orders = \App\LogoOrder::latest('id','asc')->get();  
+        $orders = DB::table('logo_orders')
+            ->join('orders_payments', 'logo_orders.id', '=', 'orders_payments.order_id')
+            ->join('users', 'logo_orders.user_id', '=', 'users.id')
+            ->select('logo_orders.id', 'logo_orders.logo_name', 'logo_orders.created_at', 'orders_payments.status','users.f_name','users.l_name','orders_payments.total_amount','orders_payments.is_paid')->where('orders_payments.status','=','0')
+            ->get();
+        //$orders = \App\LogoOrder::latest('id','asc')->get();  
         $setting=\App\AdminSettings::latest('id', 'asc')->first();  
         return view('admin.orders.pending')->with('page_title', "Admin Dashboard Orders")->with('orders',$orders)->with('settings',$setting);
     }
@@ -66,7 +76,12 @@ class OrdersController extends Controller
     //------------------------get complete orders list--------------------------------
     public function paidOrders()
     {
-        $orders = \App\LogoOrder::latest('id','asc')->get();  
+        $orders = DB::table('logo_orders')
+            ->join('orders_payments', 'logo_orders.id', '=', 'orders_payments.order_id')
+            ->join('users', 'logo_orders.user_id', '=', 'users.id')
+            ->select('logo_orders.id', 'logo_orders.logo_name', 'logo_orders.created_at', 'orders_payments.status','users.f_name','users.l_name','orders_payments.total_amount','orders_payments.is_paid')->where('orders_payments.is_paid','=','1')
+            ->get();
+        //$orders = \App\LogoOrder::latest('id','asc')->get();  
         $setting=\App\AdminSettings::latest('id', 'asc')->first();  
         return view('admin.orders.paidorders')->with('page_title', "Admin Dashboard Orders")->with('orders',$orders)->with('settings',$setting);
     }
@@ -74,7 +89,12 @@ class OrdersController extends Controller
     //------------------------get pending orders list--------------------------------
     public function unpaidOrders()
     {
-        $orders = \App\LogoOrder::latest('id','asc')->get();  
+        $orders = DB::table('logo_orders')
+            ->join('orders_payments', 'logo_orders.id', '=', 'orders_payments.order_id')
+            ->join('users', 'logo_orders.user_id', '=', 'users.id')
+            ->select('logo_orders.id', 'logo_orders.logo_name', 'logo_orders.created_at', 'orders_payments.status','users.f_name','users.l_name','orders_payments.total_amount','orders_payments.is_paid')->where('orders_payments.is_paid','=','0')
+            ->get();
+        //$orders = \App\LogoOrder::latest('id','asc')->get();  
         $setting=\App\AdminSettings::latest('id', 'asc')->first();  
         return view('admin.orders.unpaidorders')->with('page_title', "Admin Dashboard Orders")->with('orders',$orders)->with('settings',$setting);
     }

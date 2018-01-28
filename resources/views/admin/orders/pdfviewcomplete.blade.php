@@ -28,7 +28,7 @@
 <div class="wrapper">    
     <section class="content-header">
       <h1>
-        Orders        
+        Complete Orders        
       </h1>      
     </section>
     <div class="box">
@@ -42,19 +42,18 @@
                   <th>Amount</th>                  
                   <th>Status</th>
                   <th>Payment</th>
-                   <th>Order Date</th>
-                 
+                   <th>Order Date</th>                 
                 </tr>
                 </thead>
                 <tbody>
                  @foreach( $orders as $order )           
                 <tr>
                   <td>log00{{$order->id}}</td>
-                  <td>{{$order->user->f_name}} {{$order->user->l_name}}</td>
+                  <td>{{$order->f_name}} {{$order->l_name}}</td>
                   <td>{{$order->logo_name}}</td>
-                  <td>{{$settings->site_currency_symbol}}{{$order->orderpayment->total_amount}}</td>        
-                  <td>@if($order->orderpayment->status==1)Complete @else Pending @endif</td>
-                  <td>@if($order->orderpayment->is_paid==0)Unpaid @else Paid @endif</td>
+                  <td>{{$settings->site_currency_symbol}}{{$order->total_amount}}</td>        
+                  <td>@if($order->status==1)Complete @else Pending @endif</td>
+                  <td>@if($order->is_paid==0)Unpaid @else Paid @endif</td>
                   <td>{{date("d M Y",strtotime($order->created_at))}}</td>                  
                 </tr>           
                  @endforeach

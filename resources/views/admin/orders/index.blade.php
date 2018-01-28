@@ -41,7 +41,7 @@
                   <th>Amount</th>                  
                   <th>Status</th>
                   <th>Payment</th>
-                   <th>Order Date</th>
+                  <th>Order Date</th>
                   <th>Actions</th>
                 </tr>
                 </thead>

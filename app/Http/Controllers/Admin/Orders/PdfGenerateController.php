@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 
 class PdfGenerateController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //-----------------------generate Orders PDF--------------------------------
     public function orderPdfGenerate()
     {
@@ -46,4 +50,65 @@ class PdfGenerateController extends Controller
         //$pdf = PDF::loadView('admin/orders/pdforderview', array('page_title'=>'Admin Dashboard View Orders','orders'=>$orders,'user'=>$user,'logo_type'=>$logo_type,'logo_feel'=>$logo_feel,'logo_usages'=>$logo_usage,'logo_fonts'=>$logo_fonts,'setting'=>$setting,'logo_samples'=>$logo_sample,'help_ful_images'=>$help_ful_images,'packages'=>$packages,'order_type'=>$order_type,'payment_adon'=>$payment_adon,'payment'=>$payment,'settings'=>$setting,'coupon_code'=>$coupon_code));
         return $pdf->download($pdf_name);
     }
+    
+    //--------------------------generate complete order PDF---------------------
+    public function completeOrderPdfGenerate()
+    {
+        $orders = DB::table('logo_orders')
+            ->join('orders_payments', 'logo_orders.id', '=', 'orders_payments.order_id')
+            ->join('users', 'logo_orders.user_id', '=', 'users.id')
+            ->select('logo_orders.id', 'logo_orders.logo_name', 'logo_orders.created_at', 'orders_payments.status','users.f_name','users.l_name','orders_payments.total_amount','orders_payments.is_paid')->where('orders_payments.status','=','1')
+            ->get();
+        $setting=\App\AdminSettings::latest('id', 'asc')->first();  
+        $pdf_name = "completeorders.pdf";
+        $pdf = PDF::loadView('admin/orders/pdfviewcomplete', array('page_title'=>'Generate Orders PDF Report','orders'=>$orders,'settings'=>$setting));
+        //$pdf = PDF::loadView('admin/orders/pdforderview', array('page_title'=>'Admin Dashboard View Orders','orders'=>$orders,'user'=>$user,'logo_type'=>$logo_type,'logo_feel'=>$logo_feel,'logo_usages'=>$logo_usage,'logo_fonts'=>$logo_fonts,'setting'=>$setting,'logo_samples'=>$logo_sample,'help_ful_images'=>$help_ful_images,'packages'=>$packages,'order_type'=>$order_type,'payment_adon'=>$payment_adon,'payment'=>$payment,'settings'=>$setting,'coupon_code'=>$coupon_code));
+        return $pdf->download($pdf_name);
+        
+    }
+    //--------------------------generate complete pending PDF---------------------
+    public function pendingOrderPdfGenerate()
+    {
+        $orders = DB::table('logo_orders')
+            ->join('orders_payments', 'logo_orders.id', '=', 'orders_payments.order_id')
+            ->join('users', 'logo_orders.user_id', '=', 'users.id')
+            ->select('logo_orders.id', 'logo_orders.logo_name', 'logo_orders.created_at', 'orders_payments.status','users.f_name','users.l_name','orders_payments.total_amount','orders_payments.is_paid')->where('orders_payments.status','=','0')
+            ->get();
+        $setting=\App\AdminSettings::latest('id', 'asc')->first();  
+        $pdf_name = "pendingorders.pdf";
+        $pdf = PDF::loadView('admin/orders/pdfviewpending', array('page_title'=>'Generate Orders PDF Report','orders'=>$orders,'settings'=>$setting));
+        //$pdf = PDF::loadView('admin/orders/pdforderview', array('page_title'=>'Admin Dashboard View Orders','orders'=>$orders,'user'=>$user,'logo_type'=>$logo_type,'logo_feel'=>$logo_feel,'logo_usages'=>$logo_usage,'logo_fonts'=>$logo_fonts,'setting'=>$setting,'logo_samples'=>$logo_sample,'help_ful_images'=>$help_ful_images,'packages'=>$packages,'order_type'=>$order_type,'payment_adon'=>$payment_adon,'payment'=>$payment,'settings'=>$setting,'coupon_code'=>$coupon_code));
+        return $pdf->download($pdf_name);
+    }
+    
+    //--------------------------generate Paid order PDF---------------------
+    public function paidOrderPdfGenerate()
+    {
+        $orders = DB::table('logo_orders')
+            ->join('orders_payments', 'logo_orders.id', '=', 'orders_payments.order_id')
+            ->join('users', 'logo_orders.user_id', '=', 'users.id')
+            ->select('logo_orders.id', 'logo_orders.logo_name', 'logo_orders.created_at', 'orders_payments.status','users.f_name','users.l_name','orders_payments.total_amount','orders_payments.is_paid')->where('orders_payments.is_paid','=','1')
+            ->get();
+        $setting=\App\AdminSettings::latest('id', 'asc')->first();  
+        $pdf_name = "paidorders.pdf";
+        $pdf = PDF::loadView('admin/orders/pdfviewpaid', array('page_title'=>'Generate Orders PDF Report','orders'=>$orders,'settings'=>$setting));
+        //$pdf = PDF::loadView('admin/orders/pdforderview', array('page_title'=>'Admin Dashboard View Orders','orders'=>$orders,'user'=>$user,'logo_type'=>$logo_type,'logo_feel'=>$logo_feel,'logo_usages'=>$logo_usage,'logo_fonts'=>$logo_fonts,'setting'=>$setting,'logo_samples'=>$logo_sample,'help_ful_images'=>$help_ful_images,'packages'=>$packages,'order_type'=>$order_type,'payment_adon'=>$payment_adon,'payment'=>$payment,'settings'=>$setting,'coupon_code'=>$coupon_code));
+        return $pdf->download($pdf_name);
+    }
+    
+    //--------------------------generate unpaid  order PDF---------------------
+    public function unpaidOrderPdfGenerate()
+    {
+        $orders = DB::table('logo_orders')
+            ->join('orders_payments', 'logo_orders.id', '=', 'orders_payments.order_id')
+            ->join('users', 'logo_orders.user_id', '=', 'users.id')
+            ->select('logo_orders.id', 'logo_orders.logo_name', 'logo_orders.created_at', 'orders_payments.status','users.f_name','users.l_name','orders_payments.total_amount','orders_payments.is_paid')->where('orders_payments.is_paid','=','0')
+            ->get();
+        $setting=\App\AdminSettings::latest('id', 'asc')->first();  
+        $pdf_name = "unpaidorders.pdf";
+        $pdf = PDF::loadView('admin/orders/pdfviewunpaid', array('page_title'=>'Generate Orders PDF Report','orders'=>$orders,'settings'=>$setting));
+        //$pdf = PDF::loadView('admin/orders/pdforderview', array('page_title'=>'Admin Dashboard View Orders','orders'=>$orders,'user'=>$user,'logo_type'=>$logo_type,'logo_feel'=>$logo_feel,'logo_usages'=>$logo_usage,'logo_fonts'=>$logo_fonts,'setting'=>$setting,'logo_samples'=>$logo_sample,'help_ful_images'=>$help_ful_images,'packages'=>$packages,'order_type'=>$order_type,'payment_adon'=>$payment_adon,'payment'=>$payment,'settings'=>$setting,'coupon_code'=>$coupon_code));
+        return $pdf->download($pdf_name);
+    }
+    
 }
