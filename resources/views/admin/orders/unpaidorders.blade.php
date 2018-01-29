@@ -10,14 +10,6 @@
       </ol>
     </section>
  <div class="box">
-       <div class="clearfix" style="margin-top: 20px"></div>
-     <div class="row no-print">
-        <div class="col-xs-12">
-            <button type="button" class="btn btn-primary pull-right" id="generate_pdf" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
-          </button>
-        </div>
-      </div>
      <div class="box-header">
                 @if (Session::has('message'))
                 <div class="alert alert-success">{{ Session::get('message') }}</div>
@@ -45,14 +37,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                 @foreach( $orders as $order )                
+                 @foreach( $orders as $order )
+                 @if($order->orderpayment->is_paid==0)
                 <tr>
                   <td>log00{{$order->id}}</td>
-                  <td>{{$order->f_name}} {{$order->l_name}}</td>
+                  <td>{{$order->user->f_name}} {{$order->user->l_name}}</td>
                   <td>{{$order->logo_name}}</td>
-                  <td>{{$settings->site_currency_symbol}}{{$order->total_amount}}</td>        
-                  <td>@if($order->status==1)Complete @else Pending @endif</td>
-                  <td>@if($order->is_paid==0)Unpaid @else Paid @endif</td>
+                  <td>{{$settings->site_currency_symbol}}{{$order->orderpayment->total_amount}}</td>        
+                  <td>@if($order->orderpayment->status==1)Complete @else Pending @endif</td>
+                  <td>@if($order->orderpayment->is_paid==0)Unpaid @else Paid @endif</td>
                   <td>{{date("d M Y",strtotime($order->created_at))}}</td>
                   <td><a href="{{ url('/admin/orders/order-detail/'.$order->id) }}" rel="" type="button" 
                           class="btn btn-info make-modal-large iframe-form-open" 
@@ -64,7 +57,12 @@
                            data-toggle="modal"  title="Delete Order ">
                             <span class="glyphicon glyphicon-remove"></span>
                         </a></td>
-                </tr>          
+                </tr>   
+                @else
+                <tr>
+                    <td colspan="8">No Completed Order Avaliable</td>                  
+                </tr> 
+                 @endif                 
                  @endforeach
                 </tbody>
                 
@@ -75,12 +73,6 @@
 
 
 @extends('admin.layouts.footer')
-<script>
-    $("#generate_pdf").click(function(){
-    var invoice_url = "/fleekbizportal/admin/orders/unpaid-orders-pdf";
-     window.location.href=invoice_url;
-})
-</script>
 <script>
   $(function () {
     $('#example1').DataTable()

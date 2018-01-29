@@ -25,12 +25,7 @@
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
   
-<div class="wrapper">    
-    <section class="content-header">
-      <h1>
-        Orders        
-      </h1>      
-    </section>
+<div class="wrapper">
     <div class="box">
      <div class="box-body">
 <table id="example1" class="table table-bordered table-striped">
