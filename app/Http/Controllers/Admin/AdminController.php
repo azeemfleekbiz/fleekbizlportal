@@ -22,8 +22,8 @@ class AdminController extends Controller
         { 
             $coupons = \App\CouponCode::where('status','=','1')->count();
             $packages = \App\Packages::latest('id', 'asc')->count();
-            $logo_type = \App\logoType::where('type_of_logo','=','logo_type')->count();
-            $logo_feel = \App\logoType::where('type_of_logo','=','logo_feel')->count();
+            $logo_type = \App\logoType::where('type_of_logo','=','Logo Type')->count();
+            $logo_feel = \App\logoType::where('type_of_logo','=','Logo Feel')->count();
             $payment_adon = \App\PaymentAdons::latest('id', 'asc')->count();
             $logo_usage = \App\LogoUsage::latest('id', 'asc')->count();
             $logo_fonts = \App\LogoFonts::latest('id', 'asc')->count();

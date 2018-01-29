@@ -25,8 +25,6 @@
             <li class="active"><a href="{{ url('/admin/orders') }}"><i class="fa fa-circle-o"></i>Orders</a></li>
             <li><a href="{{ url('/admin/orders/complete-orders') }}"><i class="fa fa-circle-o"></i> Complete Orders</a></li>    
             <li><a href="{{ url('/admin/orders/pending-orders') }}"><i class="fa fa-circle-o"></i> Pending  Orders</a></li>    
-            <li><a href="{{ url('/admin/orders/paid-orders') }}"><i class="fa fa-circle-o"></i> Paid Orders</a></li>    
-            <li><a href="{{ url('/admin/orders/unpaid-orders') }}"><i class="fa fa-circle-o"></i> Un Paid Orders</a></li>    
             
             
           </ul>

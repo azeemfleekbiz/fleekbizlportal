@@ -31,20 +31,18 @@
                   <th>Order Name</th>
                   <th>Amount</th>                  
                   <th>Status</th>
-                  <th>Payment</th>
                    <th>Order Date</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                  @foreach( $orders as $order )
-                 @if($order->orderpayment->status==0)
+           
                 <tr>
                   <td>log00{{$order->id}}</td>
                   <td>{{$order->user->f_name}} {{$order->user->l_name}}</td>
                   <td>{{$order->logo_name}}</td>
-                  <td>{{$settings->site_currency_symbol}}{{$order->orderpayment->total_amount}}</td>        
-                  <td>@if($order->orderpayment->status==1)Complete @else Pending @endif</td>
+                  <td>{{$settings->site_currency_symbol}}500</td>        
                   <td>Pending</td>
                   <td>{{date("d M Y",strtotime($order->created_at))}}</td>
                   <td><a href="{{ url('/admin/orders/order-detail/'.$order->id) }}" rel="" type="button" 
@@ -57,14 +55,8 @@
                            data-toggle="modal"  title="Delete Order ">
                             <span class="glyphicon glyphicon-remove"></span>
                         </a></td>
-                </tr>  
-                @else
-                <tr>
-                    <td colspan="8">No Pending Order Avaliable</td>
-                  
-                </tr> 
-                 @endif
-                 
+                </tr
+           
                  @endforeach
                 </tbody>
                 

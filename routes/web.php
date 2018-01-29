@@ -56,28 +56,13 @@ Route::prefix('admin')->group(function(){
     
     Route::get('/orders',  'Admin\Orders\OrdersController@index');  //get orders list
     
-    Route::get('orders/generate-pdf', 'Admin\Orders\PdfGenerateController@orderPdfGenerate')->name('generate-pdf');
-    
-    Route::get('orders/generatepdf/{slug}', 'Admin\Orders\PdfGenerateController@generateOrderPdf');
-    
     Route::get('/orders/order-detail/{slug}',  'Admin\Orders\OrdersController@viewOrder');  //get orders list
     
     Route::get('/orders/complete-orders',  'Admin\Orders\OrdersController@completOrders');  //get complete orders list
     
     Route::get('/orders/pending-orders',  'Admin\Orders\OrdersController@pendingOrders');  //get pending orders list
     
-    Route::get('/orders/paid-orders',  'Admin\Orders\OrdersController@paidOrders');  //get paid orders list
-    
-    Route::get('/orders/unpaid-orders',  'Admin\Orders\OrdersController@unpaidOrders');  //get un paid orders list
-    
-    Route::get('orders/generate-pdf/{slug}', 'Admin\Orders\PdfGenerateController@pdfview')->name('generate-pdf');
-    
     Route::get('/invoices',  'Admin\Invoices\InvoicesController@index');  //get invoices list
-    
-    Route::get('/invoices/generate-invoice/{slug}',  'Admin\Invoices\InvoicesController@invoice');  //get invoices list
-    
-    Route::get('/invoices/print-invoice/{slug}',  'Admin\Invoices\InvoicesController@printinvoice');  //print invoice
-    
     
     Route::get('/payments',  'Admin\Payments\PaymentController@index');  //get payments list     
     

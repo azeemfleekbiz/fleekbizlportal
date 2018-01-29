@@ -34,7 +34,6 @@ class LogoOrder extends Model
     protected $helpful_images;
     protected $created_at;
     protected $updated_at;
-    public $timestamps = false; // for false updated_at and created_at
     
     
         public function user() {
