@@ -8,6 +8,7 @@ Route::get('/', function () {
 Route::get('/', ['uses' => 'PagesController@homeVersion']);
 Route::post('/create', ['uses' => 'PagesController@createOrders']);
 Route::get('/payment', ['uses' => 'PagesController@payment']);
+Route::post('/usecoupon', ['uses' => 'PagesController@orderuseCoupon']);
 
 Route::get('/admin/dashboard', 'Admin\AdminController@index');
 
