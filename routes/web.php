@@ -57,17 +57,41 @@ Route::prefix('admin')->group(function(){
     
     Route::get('/orders',  'Admin\Orders\OrdersController@index');  //get orders list
     
+    Route::get('orders/generate-pdf', 'Admin\Orders\PdfGenerateController@orderPdfGenerate')->name('orders-pdf');
+    
+    Route::get('orders/complete-orders-pdf', 'Admin\Orders\PdfGenerateController@completeOrderPdfGenerate')->name('complete-orders-pdf');
+    
+    Route::get('orders/pending-orders-pdf', 'Admin\Orders\PdfGenerateController@pendingOrderPdfGenerate')->name('pending-orders-pdf');
+    
+    Route::get('orders/paid-orders-pdf', 'Admin\Orders\PdfGenerateController@paidOrderPdfGenerate')->name('paid-orders-pdf');
+    
+    Route::get('orders/unpaid-orders-pdf', 'Admin\Orders\PdfGenerateController@unpaidOrderPdfGenerate')->name('unpaid-orders-pdf');
+    
+    Route::get('orders/generatepdf/{slug}', 'Admin\Orders\PdfGenerateController@generateOrderPdf');
+    
     Route::get('/orders/order-detail/{slug}',  'Admin\Orders\OrdersController@viewOrder');  //get orders list
     
     Route::get('/orders/complete-orders',  'Admin\Orders\OrdersController@completOrders');  //get complete orders list
     
     Route::get('/orders/pending-orders',  'Admin\Orders\OrdersController@pendingOrders');  //get pending orders list
     
+    Route::get('/orders/paid-orders',  'Admin\Orders\OrdersController@paidOrders');  //get paid orders list
+    
+    Route::get('/orders/unpaid-orders',  'Admin\Orders\OrdersController@unpaidOrders');  //get un paid orders list
+    
+    Route::get('orders/generate-pdf/{slug}', 'Admin\Orders\PdfGenerateController@pdfview')->name('generate-pdf');
+    
     Route::get('/invoices',  'Admin\Invoices\InvoicesController@index');  //get invoices list
+    
+    Route::get('/invoices/generate-invoice/{slug}',  'Admin\Invoices\InvoicesController@invoice');  //get invoices list
+    
+    Route::get('/invoices/print-invoice/{slug}',  'Admin\Invoices\InvoicesController@printinvoice');  //print invoice
     
     Route::get('/payments',  'Admin\Payments\PaymentController@index');  //get payments list     
     
     Route::get('/users',  'Admin\Users\UsersController@index');  //get payments list   
+    
+     Route::get('users/users-pdf', 'Admin\Users\UsersController@userPdfGenerate')->name('users-pdf');
     
     Route::get('/order-type',  'Admin\OrdersType\OrderTypeController@index');  //get order types list
     
@@ -98,8 +122,7 @@ Route::prefix('admin')->group(function(){
     Route::post('/settings/create', 'Admin\Settings\SettingsController@create');  //add new Settings
     
     Route::post('/settings/update', 'Admin\Settings\SettingsController@update');  //update Setting 
-    
-    
+   
     Route::get('/change-password', 'Admin\AdminController@changePassword');
     
     Route::post('/password-reset', 'Admin\AdminController@resetPassword');

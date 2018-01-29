@@ -17,6 +17,9 @@
 
           <!-- Profile Image -->
           <div class="box box-primary">
+              <div class="box-header with-border">
+                <strong><h2 class="box-title">User Detail</h2></strong>
+            </div>
             <div class="box-body box-profile">
               <h3 class="profile-username text-center">{{$user->f_name}} {{$user->l_name}}</h3>
               <p class="text-muted text-center">{{$user->email}}</p>     
@@ -25,7 +28,66 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
+<div class="box box-primary">
+            <div class="box-header with-border">
+                <h2 class="box-title">{{$order_type->name}}</h2>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <strong></strong>
+              <p>
+                  <strong>Order Name:</strong>  {{$orders->logo_name}}               
+              </p>
+                
+                          <p>
+                              <strong> Category:</strong>  {{$orders->logo_cat}}                          
+                          </p>
+                          <!--
+                           <p>
+                              <strong> logo Slogan  : {{$orders->logo_slogan}}</strong>                              
+                          </p>
+                          <p>
+                              <strong> Estate Website  : {{$orders->logo_web_url}}</strong>                              
+                          </p>
+                          <p>
+                              <strong> Target Audience  : {{$orders->logo_target_audience}}</strong>                              
+                          </p>
+                          <p>
+                              <strong> Description  : {{$orders->logo_descrip}}</strong>                              
+                          </p>
+                          <p>
+                              <strong> Competitors URLs  : {{$orders->logo_competitor_url}}</strong>                              
+                          </p>
+                          -->
 
+              <hr>
+
+              
+
+              <strong><h2>Summery</h2> </strong>
+
+                    <p>
+                    <strong> {{$packages->title}}  : {{$settings->site_currency_symbol}}{{$packages->sale_price}}</strong>                              
+                    </p>
+                      @if($payment_adon)
+                    <p>
+                    <strong> {{$payment_adon->title}}: {{$settings->site_currency_symbol}} {{$payment_adon->price}}</strong>                              
+                    </p>
+                    @endif
+                    @if($coupon_code)
+                    <p>
+                    <strong> {{$coupon_code->coupon_code}}: {{$settings->site_currency_symbol}} {{$coupon_code->price}}</strong>                              
+                    </p>
+                    @endif
+                    
+              <hr>
+
+              <strong>Total Amount:{{$settings->site_currency_symbol}}{{$payment->total_amount}}</strong>
+
+              
+            </div>
+            <!-- /.box-body -->
+          </div>
           <!-- About Me Box -->
           
           <!-- /.box -->
@@ -264,20 +326,7 @@
               </div>
               
               <div class="tab-pane" id="packages">
-                <ul class="timeline timeline-inverse">
-                  <!-- timeline time label -->
-                 
-                  <!-- /.timeline-label -->
-                  <!-- timeline item -->
-                  
-                  <!-- END timeline item -->
-                  <!-- timeline item -->
-                  
-                  <!-- END timeline item -->
-                  <!-- timeline item -->
-                  
-                  <!-- END timeline item -->
-                  <!-- timeline time label -->
+                <ul class="timeline timeline-inverse">                 
                   <li class="time-label">
                         <span class="bg-green">
                          {{date("d M Y",strtotime($orders->created_at))}} 
@@ -289,15 +338,23 @@
                     <i class="fa fa-camera bg-purple"></i>
 
                     <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                      <h3 class="timeline-header"><a href="#">{{$user->f_name}} {{$user->l_name}}</a> Select Package</h3>
+                        <h3 class="timeline-header"><a href="#">{{$user->f_name}} {{$user->l_name}}</a> Select Package : <strong>{{$packages->title}}</strong></h3>
 
                       <div class="timeline-body">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                        <p>
+                              <strong> Package Name  : {{$packages->title}}</strong>                              
+                          </p>
+                          <p>
+                              <strong>Regular Price : {{$settings->site_currency_symbol}}{{$packages->regular_price}}</strong>                              
+                          </p>
+                          
+                          <p>
+                              <strong>Sale Price : {{$settings->site_currency_symbol}}{{$packages->sale_price}}</strong>                              
+                          </p>
+                          
+                          <p>
+                              <strong>Description : {{strip_tags($packages->descp)}}</strong>                              
+                          </p>
                       </div>
                     </div>
                   </li>
@@ -316,6 +373,18 @@
         </div>
         <!-- /.col -->
       </div>
+                    
+                    <div class="row no-print">
+        <div class="col-xs-12">
+                    
+          <button type="button" class="btn btn-success pull-right" id="generate_invoice"><i class="fa fa-credit-card"></i> Generate Invoice
+             </button>
+      
+            <button type="button" class="btn btn-primary pull-right" id="generate_pdf" style="margin-right: 5px;">
+            <i class="fa fa-download"></i> Generate PDF
+          </button>
+        </div>
+      </div>
       <!-- /.row -->
 
     </section>
@@ -323,6 +392,23 @@
 
 @extends('admin.layouts.footer')
 <script>
+    $("#generate_invoice").click(function(){
+     var order_id = {{$orders->id}};
+     var invoice_url = "/fleekbizportal/admin/invoices/generate-invoice/"+order_id;
+     window.location.href=invoice_url;
+})
+</script>
+
+<script>
+    $("#generate_pdf").click(function(){   
+     var order_id = {{$orders->id}};
+     var invoice_url = "/fleekbizportal/admin/orders/generatepdf/"+order_id;
+     window.location.href=invoice_url;
+})
+</script>
+<script>
+
+
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({

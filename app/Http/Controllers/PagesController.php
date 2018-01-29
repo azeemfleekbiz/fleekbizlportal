@@ -40,7 +40,7 @@ class PagesController extends Controller
           $userData = User::where('email', $request->input("email"))->first();
           $userId = $userData->id;
       }else{
-          
+    //------------------------------Insert User in Database-----------------      
         $user = new User();
         $user->f_name=$request->input("fname");
         $user->l_name=$request->input("lname");
@@ -53,6 +53,8 @@ class PagesController extends Controller
         $user->save();
         $userId = $user->id;
       }
+    //------------------------------Saving Images -----------------  
+      
       $uploadfiles_name = $request->input("uploadfiles_name");
       $remove_file_arr = explode(",",$uploadfiles_name);
       if ( Input::hasFile('sample_logos') ):
@@ -110,35 +112,37 @@ class PagesController extends Controller
                }
            }
       endif;
-      $order = new LogoOrder();
-      $order->user_id=$userId;
-      $order->order_type=$request->input("order_type");
-      $order->logo_name=$request->input("logo_name");
-      $order->logo_slogan=$request->input("slogan");
-      $order->logo_cat=$request->input("logo_category");
-      $order->logo_web_url=$request->input("website_url");
-      $order->logo_target_audience=$request->input("target_audience");
-      $order->logo_descrip=$request->input("descrp");
-      $order->logo_competitor_url=$request->input("compititor_url");
-      $order->logo_sample= Input::hasFile('sample_logos') ? implode(",",$sample_images_arr) : '';
-      $order->logo_visual_descp=$request->input("describe_imgs_dont_like");
-      $order->logo_visual_images=$request->input("describe_imgs_like");
-      $order->logo_type=implode(",",$request->input("logo_type"));
-      $order->logo_color=$request->input("choose_color");
-      $order->logo_other_color=$request->input("other_color");
-      $order->logo_usage=implode(",",$request->input("logo_usage"));
-      $order->logo_other_usage=$request->input("other_logo_usage");
-      $order->logo_fonts=implode(",",$request->input("font_type"));
-      $order->logo_other_fonts=$request->input("other_font_type");
-      $order->logo_feel=implode(",",$request->input("logo_feel"));
-      $order->communication_team=$request->input("communicate_designers");
-      $order->helpful_images=Input::hasFile('deigner_help_imgs') ? implode(",",$designer_help_images_arr) : '';
-      $order->created_at=date("Y-m-d H:i:s");
-      $order->updated_at=date("Y-m-d H:i:s");
-      $order->save();
-      $orderId = $order->id;
+      
+      //------------------------------Insert Orders in Database-----------------
+      $orders = new LogoOrder();
+      $orders->user_id=$userId;
+      $orders->order_type=$request->input("order_type");
+      $orders->logo_name=$request->input("logo_name");
+      $orders->logo_slogan=$request->input("slogan");
+      $orders->logo_cat=$request->input("logo_category");
+      $orders->logo_web_url=$request->input("website_url");
+      $orders->logo_target_audience=$request->input("target_audience");
+      $orders->logo_descrip=$request->input("descrp");
+      $orders->logo_competitor_url=$request->input("compititor_url");
+      $orders->logo_sample= Input::hasFile('sample_logos') ? implode(",",$sample_images_arr) : '';
+      $orders->logo_visual_descp=$request->input("describe_imgs_dont_like");
+      $orders->logo_visual_images=$request->input("describe_imgs_like");
+      $orders->logo_type=implode(",",$request->input("logo_type"));
+      $orders->logo_color=$request->input("choose_color");
+      $orders->logo_other_color=$request->input("other_color");
+      $orders->logo_usage=implode(",",$request->input("logo_usage"));
+      $orders->logo_other_usage=$request->input("other_logo_usage");
+      $orders->logo_fonts=implode(",",$request->input("font_type"));
+      $orders->logo_other_fonts=$request->input("other_font_type");
+      $orders->logo_feel=implode(",",$request->input("logo_feel"));
+      $orders->communication_team=$request->input("communicate_designers");
+      $orders->helpful_images=Input::hasFile('deigner_help_imgs') ? implode(",",$designer_help_images_arr) : '';
+      $orders->created_at=date("Y-m-d H:i:s");
+      $orders->updated_at=date("Y-m-d H:i:s");
+      $orders->save();
+      $orderId = $orders->id;
 
-
+    //------------------------------Insert Payment in Database-----------------
 
       $package_amount = $request->input("package_amount");
       $addon_amount = $request->input("addon_amount") ? $request->input("addon_amount"): 0;
@@ -152,7 +156,7 @@ class PagesController extends Controller
       $order_payment->payment_addon_id=$request->input("addon_name") ? $request->input("addon_name"): NULL;
       $order_payment->total_amount=$total;
       $order_payment->status=0;
-      $order_payment->create_at=date("Y-m-d H:i:s");
+      $order_payment->created_at=date("Y-m-d H:i:s");
       $order_payment->updated_at= date("Y-m-d H:i:s");
       $order_payment->save();
       $paymentId = $order_payment->id;
