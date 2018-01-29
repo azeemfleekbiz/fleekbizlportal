@@ -25,6 +25,8 @@
             <li class="active"><a href="{{ url('/admin/orders') }}"><i class="fa fa-circle-o"></i>Orders</a></li>
             <li><a href="{{ url('/admin/orders/complete-orders') }}"><i class="fa fa-circle-o"></i> Complete Orders</a></li>    
             <li><a href="{{ url('/admin/orders/pending-orders') }}"><i class="fa fa-circle-o"></i> Pending  Orders</a></li>    
+            <li><a href="{{ url('/admin/orders/paid-orders') }}"><i class="fa fa-circle-o"></i> Paid Orders</a></li>    
+            <li><a href="{{ url('/admin/orders/unpaid-orders') }}"><i class="fa fa-circle-o"></i> Un Paid Orders</a></li>    
             
             
           </ul>
@@ -60,12 +62,9 @@
               <li><a href="{{ url('/admin/coupons') }}"><i class="fa fa-gift" aria-hidden="true"></i>Coupon Codes</a></li>
              <li><a href="" style="display:none;"><i class="fa fa-gift" aria-hidden="true"></i>Used Coupons</a></li>
           </ul>
-        </li>  
-              
-              
+        </li> 
         
-        
-        <li style="display:none;">
+        <li>
           <a href="{{ url('/admin/users') }}">
             <i class="fa fa-user" aria-hidden="true"></i> <span>Users</span>        
             <span class="pull-right-container">

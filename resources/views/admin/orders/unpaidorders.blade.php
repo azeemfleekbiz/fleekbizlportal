@@ -2,10 +2,10 @@
 @section('contents')
 <section class="content-header">
       <h1>
-       Pending Orders        
+       UnPaid Orders        
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Pending Orders</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>UnPaid Orders</a></li>
         <li class="active">Dashboard</li>
       </ol>
     </section>
@@ -40,20 +40,19 @@
                   <th>Amount</th>                  
                   <th>Status</th>
                   <th>Payment</th>
-                  <th>Order Date</th>
+                   <th>Order Date</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                 @foreach( $orders as $order )
-                
+                 @foreach( $orders as $order )                
                 <tr>
                   <td>log00{{$order->id}}</td>
                   <td>{{$order->f_name}} {{$order->l_name}}</td>
                   <td>{{$order->logo_name}}</td>
                   <td>{{$settings->site_currency_symbol}}{{$order->total_amount}}</td>        
                   <td>@if($order->status==1)Complete @else Pending @endif</td>
-                  <td>@if($order->is_paid==1)Complete @else Pending @endif</td>
+                  <td>@if($order->is_paid==0)Unpaid @else Paid @endif</td>
                   <td>{{date("d M Y",strtotime($order->created_at))}}</td>
                   <td><a href="{{ url('/admin/orders/order-detail/'.$order->id) }}" rel="" type="button" 
                           class="btn btn-info make-modal-large iframe-form-open" 
@@ -65,8 +64,7 @@
                            data-toggle="modal"  title="Delete Order ">
                             <span class="glyphicon glyphicon-remove"></span>
                         </a></td>
-                </tr>   
-                              
+                </tr>          
                  @endforeach
                 </tbody>
                 
@@ -79,7 +77,7 @@
 @extends('admin.layouts.footer')
 <script>
     $("#generate_pdf").click(function(){
-    var invoice_url = "/fleekbizportal/admin/orders/complete-orders-pdf";
+    var invoice_url = "/fleekbizportal/admin/orders/unpaid-orders-pdf";
      window.location.href=invoice_url;
 })
 </script>

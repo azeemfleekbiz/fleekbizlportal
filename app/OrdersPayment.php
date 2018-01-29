@@ -18,11 +18,16 @@ class OrdersPayment extends Model
     protected $payment_addon_id;
     protected $total_amount;
     protected $status;
-    protected $create_at;
+    protected $is_paid;    
+    protected $created_at;
     protected $updated_at;
     public $timestamps = false; // for false updated_at and created_at
     
     public function logoorder() {
         return $this->belongsTo('App\LogoOrder','order_id');
     }
+    
+    public function paymentadon() {
+        return $this->belongsTo('App\PaymentAdons');
+        }
 }
