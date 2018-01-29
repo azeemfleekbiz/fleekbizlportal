@@ -1,4 +1,4 @@
-@extends('admin.layouts.header')
+@extends('contributor.layouts.header')
 @section('contents')
 <section class="content-header">
       <h1>
@@ -390,11 +390,11 @@
     </section>
 
 
-@extends('admin.layouts.footer')
+@extends('contributor.layouts.footer')
 <script>
     $("#generate_invoice").click(function(){
      var order_id = {{$orders->id}};
-     var invoice_url = "/fleekbizportal/admin/invoices/generate-invoice/"+order_id;
+     var invoice_url = "/fleekbizportal/contributor/invoices/generate-invoice/"+order_id;
      window.location.href=invoice_url;
 })
 </script>
@@ -402,7 +402,7 @@
 <script>
     $("#generate_pdf").click(function(){   
      var order_id = {{$orders->id}};
-     var invoice_url = "/fleekbizportal/admin/orders/generatepdf/"+order_id;
+     var invoice_url = "/fleekbizportal/contributor/orders/generatepdf/"+order_id;
      window.location.href=invoice_url;
 })
 </script>
