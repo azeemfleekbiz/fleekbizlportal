@@ -9,6 +9,9 @@ use App\LogoOrder;
 use App\logoType;
 use App\LogoUsage;
 use App\OrdersPayment;
+use App\CouponCode;
+use App\UserusecCoupon;
+use App\AdminSettings;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -153,15 +156,61 @@ class PagesController extends Controller
       $order_payment->updated_at= date("Y-m-d H:i:s");
       $order_payment->save();
       $paymentId = $order_payment->id;
-
+      $addon;
       $user = \App\User::find($userId);
       $order = \App\LogoOrder::find($orderId);
       $package = \App\Packages::find($request->input("package_name"));
       $addon = \App\PaymentAdons::find($request->input("addon_name"));
       $payment = \App\OrdersPayment::find($paymentId);
-      return view('pages.payment')->with(array('order'=>$order,'user'=>$user,'package'=>$package,'payment'=>$payment,'addon'=>$addon));
+      $setting = \App\AdminSettings::latest()->get();
+      return view('pages.payment')->with(array('order'=>$order,'user'=>$user,'package'=>$package,'payment'=>$payment,'addon'=>$addon,'setting'=>$setting));
 
       
 
+    }
+
+    public function orderuseCoupon(Request $request){
+
+        $coupon_codes = \App\CouponCode::where('coupon_code',$request->input("coupon_code"))->first();   
+        $get_couponId = json_decode($coupon_codes);
+        $payment = \App\OrdersPayment::where('order_id',$request->input("order_id"))->first();
+        $get_payment = json_decode($payment);
+        $setting = \App\AdminSettings::latest()->get();
+
+        if(isset($get_couponId->order_type_id) == $get_payment->order_type && $get_couponId->status == 1){
+        $coupon_codes->status         = 0;        
+        $coupon_codes->updated_at     = date("Y-m-d H:i:s");
+        $coupon_codes->save();
+
+        
+        $payment->coupon_id = $get_couponId->id;
+        $payment->save();
+
+        $user_used_coupon = new UserusecCoupon();
+        $user_used_coupon->coupon_id=$get_couponId->id;
+        $user_used_coupon->order_id=$request->input("order_id");
+        $user_used_coupon->user_id=$get_payment->user_id;
+        $user_used_coupon->create_at=date("Y-m-d H:i:s");
+        $user_used_coupon->updated_at= date("Y-m-d H:i:s");
+        $user_used_coupon->save(); 
+
+        $user = \App\User::find($request->input("user_id"));
+        $order = \App\LogoOrder::find($request->input("order_id"));
+        $package = \App\Packages::find($request->input("package"));
+        $addon = \App\PaymentAdons::find($request->input("addon"));
+        $payment = \App\OrdersPayment::find($request->input("payment"));
+        $message = 'Coupon code apply';
+        return view('pages.payment')->with(array('order'=>$order,'user'=>$user,'package'=>$package,'payment'=>$payment,'addon'=>$addon,'coupon'=>$coupon_codes,'message'=>$message,'setting'=>$setting));
+
+        }else{
+          $error = 'Please use valid coupon';
+          $user = \App\User::find($request->input("user_id"));
+          $order = \App\LogoOrder::find($request->input("order_id"));
+          $package = \App\Packages::find($request->input("package"));
+          $addon = \App\PaymentAdons::find($request->input("addon"));
+          $payment = \App\OrdersPayment::find($request->input("payment"));
+          return view('pages.payment')->with(array('order'=>$order,'user'=>$user,'package'=>$package,'payment'=>$payment,'addon'=>$addon,'error'=>$error,'setting'=>$setting));
+          
+        }
     }
 }

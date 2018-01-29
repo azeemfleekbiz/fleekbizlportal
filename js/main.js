@@ -76,6 +76,7 @@ $(document).ready(function() {
     $('body').on('change', '.user_picked_files', function() {
         var files = this.files;
         var i = 0;
+        $(".cvf_uploaded_files").html('');
         for (i = 0; i < files.length; i++) {
             var readImg = new FileReader();
             var file = files[i];
@@ -121,6 +122,7 @@ $(document).ready(function() {
     $('body').on('change', '.user_help_files', function() {
         var files = this.files;
         var i = 0;
+        $(".cvf_uploaded_help_files").html('');
         for (i = 0; i < files.length; i++) {
             var readImg = new FileReader();
             var file = files[i];
