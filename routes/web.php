@@ -133,13 +133,50 @@ Route::prefix('admin')->group(function(){
 
 Route::get('/contributor/dashboard', 'Contributor\ContributorController@index');
 
-Route::prefix('contributor')->group(function(){    
+Route::prefix('contributor')->group(function(){
+   Route::get('/', 'Contributor\ContributorController@index');  
     
-    Route::get('/', 'Contributor\ContributorController@index');  
     Route::get('/login', 'Auth\ContributorAdminController@showLoginForm')->name('contributor.login');
+    
     Route::post('/login', 'Auth\ContributorAdminController@login')->name('contributor.login.submit');
+    
     Route::get('/profile', 'Contributor\ContributorController@profile');
+    
     Route::post('/update-profile', 'Contributor\ContributorController@updateProfile');
+    
+    Route::get('/orders', 'Contributor\Orders\OrdersController@index');  //get orders list
+    
+    Route::get('/orders/edit-order/{slug}', 'Contributor\Orders\OrdersController@editOrder');  //get orders list
+    
+    Route::get('orders/generate-pdf', 'Contributor\Orders\PdfGenerateController@orderPdfGenerate')->name('orders-pdf');
+    
+    Route::get('orders/complete-orders-pdf', 'Contributor\Orders\PdfGenerateController@completeOrderPdfGenerate')->name('complete-orders-pdf');
+    
+    Route::get('orders/pending-orders-pdf', 'Contributor\Orders\PdfGenerateController@pendingOrderPdfGenerate')->name('pending-orders-pdf');
+    
+    Route::get('orders/paid-orders-pdf', 'Contributor\Orders\PdfGenerateController@paidOrderPdfGenerate')->name('paid-orders-pdf');
+    
+    Route::get('orders/unpaid-orders-pdf', 'Contributor\Orders\PdfGenerateController@unpaidOrderPdfGenerate')->name('unpaid-orders-pdf');
+    
+    Route::get('orders/generatepdf/{slug}', 'Contributor\Orders\PdfGenerateController@generateOrderPdf');
+    
+    Route::get('/orders/order-detail/{slug}',  'Contributor\Orders\OrdersController@viewOrder');  //get orders list
+    
+    Route::get('/orders/complete-orders',  'Contributor\Orders\OrdersController@completOrders');  //get complete orders list
+    
+    Route::get('/orders/pending-orders',  'Contributor\Orders\OrdersController@pendingOrders');  //get pending orders list
+    
+    Route::get('/orders/paid-orders',  'Contributor\Orders\OrdersController@paidOrders');  //get paid orders list
+    
+    Route::get('/orders/unpaid-orders',  'Contributor\Orders\OrdersController@unpaidOrders');  //get un paid orders list
+    
+    Route::get('orders/generate-pdf/{slug}', 'Contributor\Orders\PdfGenerateController@pdfview')->name('generate-pdf');
+    
+    Route::get('/invoices',  'Contributor\Invoices\InvoicesController@index');  //get invoices list
+    
+    Route::get('/invoices/generate-invoice/{slug}',  'Contributor\Invoices\InvoicesController@invoice');  //get invoices list
+    
+    Route::get('/invoices/print-invoice/{slug}',  'Contributor\Invoices\InvoicesController@printinvoice');  //print invoice
 });
 
 Auth::routes();
