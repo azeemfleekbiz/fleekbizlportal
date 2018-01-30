@@ -12,6 +12,5 @@ yarn-error.log
 /nbproject/private/
 .env
 .env
-
 *.jpg
 *.png
