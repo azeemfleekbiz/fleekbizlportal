@@ -26,6 +26,9 @@
 <script src="{{asset('public/dist/js/adminlte.min.js')}}"></script>
 <script src="{{asset('public/dist/js/pages/dashboard.js')}}"></script>
 <script src="{{asset('public/dist/js/demo.js')}}"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.mask.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
 

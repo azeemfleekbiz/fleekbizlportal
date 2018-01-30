@@ -1,4 +1,4 @@
-@extends('admin.layouts.header')
+@extends('contributor.layouts.header')
 @section('contents')
 <section class="content-header">
       <h1>
@@ -13,7 +13,7 @@
 <div class="box">
             <div class="box box-info">
             
-           <form class="form-horizontal" method="POST" action="{{url('/admin/password-reset')}}">
+           <form class="form-horizontal" method="POST" action="{{url('/contributor/password-reset')}}">
                  {{ csrf_field() }}
               <div class="box-body">                  
                  <div class="form-group">
@@ -47,7 +47,7 @@
           </div>
 
 
-@extends('admin.layouts.footer')
+@extends('contributor.layouts.footer')
 <script>
   $(function () {
     $('#example1').DataTable()

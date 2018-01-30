@@ -14,6 +14,12 @@
      <div class="clearfix" style="margin-top: 20px"></div>
      <div class="row no-print">
         <div class="col-xs-12">
+            <a href="{{url('admin/orders/create-order')}}">   <button type="button" 
+                class="btn btn-info make-modal-large iframe-form-open" 
+                title="Add Order">
+            <span class="glyphicon glyphicon-plus"></span>Add
+        </button>
+            </a>
             <button type="button" class="btn btn-primary pull-right" id="generate_pdf" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
           </button>

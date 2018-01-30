@@ -53,7 +53,30 @@ class ContributorController extends Controller
         
     }
     
+    public function changePassword()
+    {
+        $user_role = Auth::user()->user_role;
+        if($user_role==3)
+        {
+         return view('contributor.changepassword')->with('page_title', "Change Password");
+        }else
+        {      
+            Auth::logout();
+            return redirect('login');
+        }
+    }
     
+    public function resetPassword(Request $request)
+    {
+        $user_id = Auth::user()->id;
+        $password  = bcrypt($request->input('password'));
+        DB::table('users')
+                   ->where('id', $user_id)->update(
+                    ['password' => $password]
+        );        
+        Auth::logout();
+        return redirect('login');
+    }
     
     
     

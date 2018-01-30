@@ -81,6 +81,10 @@ Route::prefix('admin')->group(function(){
     
     Route::get('orders/generate-pdf/{slug}', 'Admin\Orders\PdfGenerateController@pdfview')->name('generate-pdf');
     
+    Route::get('/orders/create-order',  'Admin\Orders\OrdersController@create');  //create new order 
+     
+    Route::post('/orders/createorder',  'Admin\Orders\OrdersController@createOrder');  //create new order  
+    
     Route::get('/invoices',  'Admin\Invoices\InvoicesController@index');  //get invoices list
     
     Route::get('/invoices/generate-invoice/{slug}',  'Admin\Invoices\InvoicesController@invoice');  //get invoices list
@@ -183,6 +187,10 @@ Route::prefix('contributor')->group(function(){
     Route::get('/invoices/generate-invoice/{slug}',  'Contributor\Invoices\InvoicesController@invoice');  //get invoices list
     
     Route::get('/invoices/print-invoice/{slug}',  'Contributor\Invoices\InvoicesController@printinvoice');  //print invoice
+    
+    Route::get('/change-password', 'Contributor\ContributorController@changePassword');
+    
+    Route::post('/password-reset', 'Contributor\ContributorController@resetPassword');
 });
 
 Auth::routes();

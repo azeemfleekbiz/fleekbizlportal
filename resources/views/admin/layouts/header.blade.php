@@ -27,6 +27,9 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
   
+  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -71,10 +74,10 @@
               
               <span class="hidden-xs">{{ Auth::user()->f_name }}  {{ Auth::user()->l_name }}</span>
             </a>
-            <ul class="dropdown-menu" style="display:none">
+            <ul class="dropdown-menu">
               <li class="user-footer">               
                 <div class="pull-right">
-                     <a href="{{ url('/admin/change-password') }}" class="btn btn-default btn-flat">Change Password</a>
+                     <a href="{{ url('/contributor/change-password') }}" class="btn btn-default btn-flat">Change Password</a>
                      <div style="height: 20px;"></div>
                   <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
                 </div>

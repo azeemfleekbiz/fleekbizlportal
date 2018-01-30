@@ -54,9 +54,11 @@ class AdminController extends Controller
     public function resetPassword(Request $request)
     {
         $user_id = Auth::user()->id;
-        $obj_user = User::find($user_id);
-        $obj_user->password  = bcrypt($request->input("password"));
-        $obj_user->save();
+        $password  = bcrypt($request->input('password'));
+        DB::table('users')
+                   ->where('id', $user_id)->update(
+                    ['password' => $password]
+        );        
         Auth::logout();
         return redirect('login');
     }
