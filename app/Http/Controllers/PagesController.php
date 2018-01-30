@@ -34,6 +34,12 @@ class PagesController extends Controller
         $payment = 'payment';
         return view('pages.'.$payment);
     }
+
+    public function thanks(){
+        $thanks = 'thanks';
+        return view('pages.'.$thanks);
+    }
+
     public function createOrders(Request $request)
     {
       if (User::where('email', '=', Input::get('email'))->count() > 0) {
@@ -166,7 +172,7 @@ class PagesController extends Controller
       $package = \App\Packages::find($request->input("package_name"));
       $addon = \App\PaymentAdons::find($request->input("addon_name"));
       $payment = \App\OrdersPayment::find($paymentId);
-      $setting = \App\AdminSettings::latest()->get();
+      $setting = \App\AdminSettings::latest('id', 'asc')->first();
       return view('pages.payment')->with(array('order'=>$order,'user'=>$user,'package'=>$package,'payment'=>$payment,'addon'=>$addon,'setting'=>$setting));
 
       
@@ -179,7 +185,7 @@ class PagesController extends Controller
         $get_couponId = json_decode($coupon_codes);
         $payment = \App\OrdersPayment::where('order_id',$request->input("order_id"))->first();
         $get_payment = json_decode($payment);
-        $setting = \App\AdminSettings::latest()->get();
+        $setting = \App\AdminSettings::latest('id', 'asc')->first();
 
         if(isset($get_couponId->order_type_id) == $get_payment->order_type && $get_couponId->status == 1){
         $coupon_codes->status         = 0;        
