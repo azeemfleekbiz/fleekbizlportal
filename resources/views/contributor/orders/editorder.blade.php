@@ -1,4 +1,4 @@
-@extends('admin.layouts.header')
+@extends('contributor.layouts.header')
 @section('contents')
 <section class="content-header">
       <h1>
@@ -10,6 +10,9 @@
       </ol>
     </section>
  <div class="box">
+        @if (Session::has('message'))
+                <div class="alert alert-success">{{ Session::get('message') }}</div>
+            @endif
        <div class="clearfix" style="margin-top: 20px"></div>
      <div class="container">
     <div class="stepwizard">
@@ -26,7 +29,10 @@
         </div>
     </div>
     
-    <form role="form">
+         <form role="form" method="POST" action="{{url('/contributor/orders/update-order')}}" enctype="multipart/form-data">
+         {{ csrf_field() }}
+             <input type="hidden" name="order_id" value="{{$order->id}}">
+        <input type="hidden" name="order_type" value="{{$order->order_type}}">
         <div class="panel panel-primary setup-content" id="step-1">
             <div class="panel-heading">
                  <h3 class="panel-title">Project Brief</h3>
@@ -206,7 +212,7 @@
 </div>
 
 
-@extends('admin.layouts.footer')
+@extends('contributor.layouts.footer')
 <style>
 .container {
     width: 842px !important;

@@ -170,6 +170,8 @@ Route::prefix('contributor')->group(function(){
     
     Route::get('/orders/unpaid-orders',  'Contributor\Orders\OrdersController@unpaidOrders');  //get un paid orders list
     
+    Route::post('/orders/update-order',  'Contributor\Orders\OrdersController@updateOrder');  //get un paid orders list
+    
     Route::get('orders/generate-pdf/{slug}', 'Contributor\Orders\PdfGenerateController@pdfview')->name('generate-pdf');
     
     Route::get('/invoices',  'Contributor\Invoices\InvoicesController@index');  //get invoices list

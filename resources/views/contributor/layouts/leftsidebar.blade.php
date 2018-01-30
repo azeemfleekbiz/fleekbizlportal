@@ -38,7 +38,7 @@
             
           </ul>
         </li>  
-            <li>
+        <li style="display:none;">
                 <a href=""><i class="fa fa-envelope" aria-hidden="true"></i> 
                     Invoices
                 </a>
