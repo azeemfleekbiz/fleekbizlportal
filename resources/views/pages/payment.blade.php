@@ -35,5 +35,26 @@
 </form>	
 </div>
 </div>
-		</div>	
+</div>	
+<div class="col-md-6 scr_pay_left">
+<form action="{{ url('/stripe/charge.php') }}" method="POST" id="firstform">
+<input type="hidden" name="order_id" id="order_id" value="{{$payment->id}}">
+@if(isset($coupon))
+<input type="hidden" name="pckg_amount" id="pckg_amount" value="{{$payment->total_amount - $coupon->price}}">
+<input type="hidden" name="pckg_month" id="pckg_month" value="">
+<input type="hidden" name="pckg_decp" id="pckg_decp" value="LogoDesign Order ({{$setting->site_currency_symbol}}{{$payment->total_amount - $coupon->price}})">	
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_5Mz31JYBByF1DhXtHEQDdGbB"
+data-name="Fleekbiz Portal" data-description="LogoDesign Order ({{$setting->site_currency_symbol}}{{$payment->total_amount - $coupon->price}})">
+</script>
+@else
+<input type="hidden" name="pckg_amount" id="pckg_amount" value="{{$payment->total_amount}}">
+<input type="hidden" name="pckg_month" id="pckg_month" value="">
+<input type="hidden" name="pckg_decp" id="pckg_decp" value="LogoDesign Order ({{$setting->site_currency_symbol}}{{$payment->total_amount}})">	
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_5Mz31JYBByF1DhXtHEQDdGbB"
+data-name="Fleekbiz Portal" data-description="LogoDesign Order ({{$setting->site_currency_symbol}}{{$payment->total_amount}})">
+</script>
+@endif
+</form>
+
+</div>	
 @include('layout.footer')

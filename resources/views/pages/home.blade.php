@@ -104,7 +104,7 @@
 <h3>COLORS</h3>
 <div class="form-group">
 <label class="control-label">Color *</label>
-<input type="text" name="choose_color" id="choose_color" required="required" class="form-control" />
+<input type="text" name="choose_color" id="choose_color" required="required" class="form-control jscolor" />
 </div>
 <div class="form-group">
 <label class="control-label">Mention Your Specific Color (If any)</label>
