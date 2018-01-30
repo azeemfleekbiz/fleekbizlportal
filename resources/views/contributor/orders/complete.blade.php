@@ -1,4 +1,4 @@
-@extends('admin.layouts.header')
+@extends('contributor.layouts.header')
 @section('contents')
 <section class="content-header">
       <h1>
@@ -13,6 +13,12 @@
        <div class="clearfix" style="margin-top: 20px"></div>
      <div class="row no-print">
         <div class="col-xs-12">
+            <a href="{{url('contributor/orders/create-order')}}">   <button type="button" 
+                class="btn btn-info make-modal-large iframe-form-open" 
+                title="Add Order">
+            <span class="glyphicon glyphicon-plus"></span>Add
+        </button>
+            </a>
             <button type="button" class="btn btn-primary pull-right" id="generate_pdf" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
           </button>
@@ -46,6 +52,7 @@
                 </thead>
                 <tbody>
                  @foreach( $orders as $order )
+                
                 <tr>
                   <td>log00{{$order->id}}</td>
                   <td>{{$order->f_name}} {{$order->l_name}}</td>
@@ -58,13 +65,19 @@
                           class="btn btn-info make-modal-large iframe-form-open" 
                           data-toggle="modal"  title="Edit logo font {{$order->logo_name}}">
                           <span class="glyphicon glyphicon-arrow-right"></span>
-                       </a>
-                        <a href="#deleteorder{{$order->id}}" rel="" type="button" 
-                           class="btn btn-info make-modal-large iframe-form-open" 
-                           data-toggle="modal"  title="Delete Order ">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a></td>
-                </tr>
+                       </a>                       
+                  @if($order->is_paid==0)
+                  <a href="{{ url('/contributor/orders/pay-order/'.$order->id) }}" rel="" type="button" 
+                          class="btn btn-info make-modal-large iframe-form-open" 
+                          data-toggle="modal"  title="Edit logo font {{$order->logo_name}}">
+                          <span class="glyphicon glyphicon-shopping-cart"></span>
+                       </a>                 
+                  @endif
+                  
+                  
+                  </td>
+                </tr>   
+                              
                  @endforeach
                 </tbody>
                 
@@ -74,10 +87,10 @@
           </div>
 
 
-@extends('admin.layouts.footer')
+@extends('contributor.layouts.footer')
 <script>
     $("#generate_pdf").click(function(){
-    var invoice_url = "/fleekbizportal/admin/orders/pending-orders-pdf";
+    var invoice_url = "/fleekbizportal/admin/orders/complete-orders-pdf";
      window.location.href=invoice_url;
 })
 </script>

@@ -2,19 +2,23 @@
 @section('contents')
 <section class="content-header">
       <h1>
-        Contributor Dashboard
+        Update {{$user->f_name}} {{$user->l_name}}
         <small></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Contributor Dashboard</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Update Profile</a></li>
+        <li class="active">Dashboard</li>
       </ol>
     </section>
 <div class="box">
-            <div class="box box-info">
-              @if (Session::has('message'))
+            <div class="box-header">
+                @if (Session::has('message'))
                 <div class="alert alert-success">{{ Session::get('message') }}</div>
             @endif
+            @if (Session::has('error'))
+                <div class="alert alert-danger">{{ Session::get('error') }}</div>
+            @endif        
+            </div>   
             <!-- /.box-header -->
             <!-- form start -->
             <div class="form-horizontal">      
@@ -96,16 +100,9 @@
                 <form role="form" method="POST" action="{{url('contributor/update-profile')}}" enctype="multipart/form-data" >
                     {{ csrf_field() }}
                     <input type="hidden" name="user_id" value="{{$user->id}}">
+                     <input type="hidden" name="user_role" value="{{$user->user_role}}">
                     <div class="box-body">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Select User Role</label>
-                            <select class="form-control" name="user_role" id="user_role" required="required">
-                     <option value="">Select User Role</option> 
-                      @foreach( $user_role as $userrole )
-                      <option value="{{$userrole->id}}" @if ($userrole->id === $user->user_role) selected="selected"   @endif   >{{$userrole->name}}</option>                   
-                     @endforeach
-                  </select>        
-                        </div>                         
+                                               
                         
                         <div class="form-group">
                             <label for="exampleInputEmail1">First Name</label>

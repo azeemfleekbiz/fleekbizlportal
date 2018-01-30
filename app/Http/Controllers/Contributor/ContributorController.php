@@ -20,7 +20,9 @@ class ContributorController extends Controller
         $user_role = Auth::user()->user_role;
         if($user_role==3)
         { 
-        return view('contributor.dashboard')->with('page_title', "Contributor Dashboard");
+          $user_id = Auth::user()->id;
+          $orders  = \App\LogoOrder::latest('id', 'asc')->where('user_id',$user_id)->count();
+          return view('contributor.dashboard')->with(array('page_title'=>"Contributor Dashboard",'orders'=>$orders));
         }
         else
         {      
@@ -39,8 +41,6 @@ class ContributorController extends Controller
     //---------------------------update Profile----------------------------------------------
     public function updateProfile(Request $request)
     {
-        if($request->input('submit'))
-        {
         $user = \App\User::find($request->input('user_id'));
         $user->user_role = $request->input('user_role');
         $user->f_name = $request->input('f_name');
@@ -49,10 +49,8 @@ class ContributorController extends Controller
         $user->phone = $request->input('phone');
         $user->updated_at     = date("Y-m-d H:i:s");
         $user->save();
-        return Redirect::back()->with('message','User Detail Successfuly Updated.');
-        } else {
-            return Redirect::back()->with('error','Error occured! Try again later.'); 
-        }
+        return Redirect::back()->withMessage('User Detail Successfuly Updated.');
+        
     }
     
     

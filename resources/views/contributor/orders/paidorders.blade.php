@@ -1,11 +1,11 @@
-@extends('admin.layouts.header')
+@extends('contributor.layouts.header')
 @section('contents')
 <section class="content-header">
       <h1>
-       Pending Orders        
+       Paid Orders        
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Pending Orders</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Paid Orders</a></li>
         <li class="active">Dashboard</li>
       </ol>
     </section>
@@ -13,6 +13,12 @@
        <div class="clearfix" style="margin-top: 20px"></div>
      <div class="row no-print">
         <div class="col-xs-12">
+            <a href="{{url('contributor/orders/create-order')}}">   <button type="button" 
+                class="btn btn-info make-modal-large iframe-form-open" 
+                title="Add Order">
+            <span class="glyphicon glyphicon-plus"></span>Add
+        </button>
+            </a>
             <button type="button" class="btn btn-primary pull-right" id="generate_pdf" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
           </button>
@@ -40,12 +46,12 @@
                   <th>Amount</th>                  
                   <th>Status</th>
                   <th>Payment</th>
-                  <th>Order Date</th>
+                   <th>Order Date</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                 @foreach( $orders as $order )
+                 @foreach( $orders as $order )             
                 <tr>
                   <td>log00{{$order->id}}</td>
                   <td>{{$order->f_name}} {{$order->l_name}}</td>
@@ -54,17 +60,13 @@
                   <td>@if($order->status==1)Complete @else Pending @endif</td>
                   <td>@if($order->is_paid==1)Paid @else Unpaid @endif</td>
                   <td>{{date("d M Y",strtotime($order->created_at))}}</td>
-                  <td><a href="{{ url('/admin/orders/order-detail/'.$order->id) }}" rel="" type="button" 
+                  <td><a href="{{ url('/contributor/orders/order-detail/'.$order->id) }}" rel="" type="button" 
                           class="btn btn-info make-modal-large iframe-form-open" 
                           data-toggle="modal"  title="Edit logo font {{$order->logo_name}}">
                           <span class="glyphicon glyphicon-arrow-right"></span>
                        </a>
-                        <a href="#deleteorder{{$order->id}}" rel="" type="button" 
-                           class="btn btn-info make-modal-large iframe-form-open" 
-                           data-toggle="modal"  title="Delete Order ">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a></td>
-                </tr>
+                  </td>
+                </tr>          
                  @endforeach
                 </tbody>
                 
@@ -74,10 +76,10 @@
           </div>
 
 
-@extends('admin.layouts.footer')
+@extends('contributor.layouts.footer')
 <script>
     $("#generate_pdf").click(function(){
-    var invoice_url = "/fleekbizportal/admin/orders/pending-orders-pdf";
+    var invoice_url = "/fleekbizportal/contributor/orders/paid-orders-pdf";
      window.location.href=invoice_url;
 })
 </script>
