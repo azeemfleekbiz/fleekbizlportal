@@ -51,7 +51,7 @@ class PagesController extends Controller
         $user->f_name=$request->input("fname");
         $user->l_name=$request->input("lname");
         $user->email=$request->input("email");
-        $user->password='test';
+        $user->password = bcrypt("flk@123");
         $user->phone=$request->input("phone");
         $user->user_role=$request->input("user_role");
         $user->created_at=date("Y-m-d H:i:s");

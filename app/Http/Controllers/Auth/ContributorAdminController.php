@@ -26,13 +26,12 @@ class ContributorAdminController extends Controller
         ]);
         
         //--------------Atempt to login--------------
-        if(Auth::guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password],$request->remember))
-        {
-             // if successful then redirect to intended locations
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password],$request->remember))
+        {            
             return redirect('contributor/dashboard');
         } else {
              // if unsucceful then redirect to login form
-             return redirect()->back()->withInput($request->only('email','remember'));
+             return redirect('contributor/login');
         } 
            
           

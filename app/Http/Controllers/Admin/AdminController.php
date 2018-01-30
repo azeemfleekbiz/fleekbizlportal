@@ -47,7 +47,7 @@ class AdminController extends Controller
         }else
         {      
             Auth::logout();
-            return redirect('login');
+            return redirect('admin/login');
         }
     }
     
@@ -60,7 +60,7 @@ class AdminController extends Controller
                     ['password' => $password]
         );        
         Auth::logout();
-        return redirect('login');
+        return redirect('admin/login');
     }
     
     

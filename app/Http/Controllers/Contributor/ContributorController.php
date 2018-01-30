@@ -27,7 +27,7 @@ class ContributorController extends Controller
         else
         {      
             Auth::logout();
-            return redirect('login');
+            return redirect('contributor/login');
         }
     }
     
@@ -62,7 +62,8 @@ class ContributorController extends Controller
         }else
         {      
             Auth::logout();
-            return redirect('login');
+            return redirect('contributor/login');
+            
         }
     }
     
@@ -75,7 +76,7 @@ class ContributorController extends Controller
                     ['password' => $password]
         );        
         Auth::logout();
-        return redirect('login');
+        return redirect('contributor/login');      
     }
     
     

@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class AuthorController extends Controller
 {
     public function __construct() {
-        $this->middleware('guest:admin');
+        $this->middleware('guest');
     }
 
 
@@ -24,15 +24,14 @@ class AuthorController extends Controller
            'email'=>'required|email',
             'password'=>'required'
         ]);
-        
+
         //--------------Atempt to login--------------
-        if(Auth::guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password],$request->remember))
-        {
-             // if successful then redirect to intended locations
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password],$request->remember))
+        {            
             return redirect('admin/dashboard');
         } else {
              // if unsucceful then redirect to login form
-             return redirect()->back()->withInput($request->only('email','remember'));
+             return redirect('admin/login');
         } 
            
           
