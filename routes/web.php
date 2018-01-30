@@ -168,9 +168,13 @@ Route::prefix('contributor')->group(function(){
     
     Route::get('/orders/paid-orders',  'Contributor\Orders\OrdersController@paidOrders');  //get paid orders list
     
-    Route::get('/orders/unpaid-orders',  'Contributor\Orders\OrdersController@unpaidOrders');  //get un paid orders list
+    Route::get('/orders/unpaid-orders',  'Contributor\Orders\OrdersController@unpaidOrders');  //edit order
     
-    Route::post('/orders/update-order',  'Contributor\Orders\OrdersController@updateOrder');  //get un paid orders list
+    Route::post('/orders/update-order',  'Contributor\Orders\OrdersController@updateOrder');  //update order
+    
+    Route::get('/orders/create-order',  'Contributor\Orders\OrdersController@create');  //create new order 
+    
+    Route::post('/orders/createorder',  'Contributor\Orders\OrdersController@createOrder');  //create new order    
     
     Route::get('orders/generate-pdf/{slug}', 'Contributor\Orders\PdfGenerateController@pdfview')->name('generate-pdf');
     
