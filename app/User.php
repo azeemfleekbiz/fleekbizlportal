@@ -38,4 +38,8 @@ class User extends Authenticatable
     public function logoorders() {
       return $this->hasMany('\App\LogoOrder');
     }
+    
+    public function usercoupon() {
+        return $this->hasMany('\App\UserusecCoupon','id');
+   }
 }

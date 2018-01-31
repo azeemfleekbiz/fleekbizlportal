@@ -16,4 +16,18 @@ class UserusecCoupon extends Model
     protected $create_at;
     protected $updated_at;
     public $timestamps = false; // for false updated_at and created_at
+    
+    public function user() 
+    {
+      return $this->belongsTo('App\User');
+    }    
+    
+    public function coupon() 
+    {
+      return $this->belongsTo('App\CouponCode');
+    }
+    
+    
+    
+    
 }

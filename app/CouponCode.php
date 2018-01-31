@@ -18,4 +18,12 @@ class CouponCode extends Model
     protected $create_at;
     protected $updated_at;
     public $timestamps = false; // for false updated_at and created_at
+    
+    public function usedcoupons() {
+      return $this->hasOne('\App\UserusecCoupon','id');
+    }
+    
+    public function payment() {
+        return $this->hasOne('App\OrdersPayment','id');
+        }
 }

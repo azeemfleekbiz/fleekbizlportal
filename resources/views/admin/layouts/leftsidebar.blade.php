@@ -60,7 +60,7 @@
           </a>
           <ul class="treeview-menu">
               <li><a href="{{ url('/admin/coupons') }}"><i class="fa fa-gift" aria-hidden="true"></i>Coupon Codes</a></li>
-             <li><a href="" style="display:none;"><i class="fa fa-gift" aria-hidden="true"></i>Used Coupons</a></li>
+             <li><a href="{{ url('/admin/used-coupons') }}"><i class="fa fa-gift" aria-hidden="true"></i>Used Coupons</a></li>
           </ul>
         </li> 
         

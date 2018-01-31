@@ -169,7 +169,7 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-@extends('admin.layouts.footer')
+@extends('admin.layouts.footerinner')
 <script>
     $(function () {
         $('#example1').DataTable()

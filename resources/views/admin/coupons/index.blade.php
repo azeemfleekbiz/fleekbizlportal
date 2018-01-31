@@ -37,7 +37,7 @@
                 @foreach( $coupon_codes as $coupon_code )
                 <tr>                              
                     <td>{{$coupon_code->coupon_code}}</td>
-                    <td>{{$coupon_code->price}}</td>
+                    <td>{{$coupon_code->price}}%</td>
                     <td><a href="#editcoupons{{$coupon_code->id}}" rel="" type="button" 
                            class="btn btn-info make-modal-large iframe-form-open" 
                            data-toggle="modal"  title="Edit logo font {{$coupon_code->coupon_code}}">
@@ -169,7 +169,7 @@
                         
                         <div class="form-group">
                             <label for="exampleInputEmail1">Coupon Price</label>
-                            <input type="text" name="price" class="form-control" id="exampleInputEmail1" placeholder="Enter Coupon Code Price" required="required">
+                            <input type="text" name="price" class="form-control" id="exampleInputEmail1" placeholder="Enter Coupon Amount in %" required="required">
                         </div> 
                         
                          <div class="form-group">
@@ -196,7 +196,7 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-@extends('admin.layouts.footer')
+@extends('admin.layouts.footerinner')
 <script>
     $(function () {
         $('#example1').DataTable()

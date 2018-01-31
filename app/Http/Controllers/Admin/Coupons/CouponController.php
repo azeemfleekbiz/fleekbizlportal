@@ -73,4 +73,12 @@ class CouponController extends Controller
          $coupons->delete();     
         return Redirect::back()->withMessage('Logo Font Successfuly deleted.');  
     }
+    
+    //------------------------------used coupons lis--------------------------------------
+    public function usedCoupons()
+    {
+        $setting       =\App\AdminSettings::latest('id', 'asc')->first(); 
+        $used_coupons  = \App\UserusecCoupon::latest('id', 'asc')->get(); 
+        return view('admin.coupons.used_coupons',array('page_title'=>'Used Coupons Codes','used_coupons'=>$used_coupons,'settings'=>$setting));
+    }
 }
