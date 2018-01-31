@@ -31,7 +31,7 @@ class ContributorAdminController extends Controller
             return redirect('contributor/dashboard');
         } else {
              // if unsucceful then redirect to login form
-             return redirect('contributor/login');
+             return redirect('contributor/login')->withErrors("Invlaid email address or password");
         } 
            
           

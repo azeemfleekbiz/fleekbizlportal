@@ -36,21 +36,18 @@
 <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Status</th>
-                  <th>Created Date</th>                  
+                  <th>Name</th>                 
+                  <th>Email</th>                  
+                  <th>Orders</th>   
+                 
                 </tr>
                 </thead>
                 <tbody>
                 @foreach( $users as $user )    
                 <tr>
-                  <td>{{$user->f_name}}</td>
-                  <td>{{$user->l_name}}</td>
+                  <td>{{$user->f_name}} {{$user->l_name}}</td>
                   <td>{{$user->email}}</td>
-                  <td> @if($user->is_active==1)Active @else No Active @endif</td>
-                  <td> {{date("d M Y",strtotime($user->created_at))}}</td>                
+                  <td>{{count($user->logoorders)}}</td>
                 </tr>
                 @endforeach
                 </tbody>                

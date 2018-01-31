@@ -31,7 +31,7 @@ class AuthorController extends Controller
             return redirect('admin/dashboard');
         } else {
              // if unsucceful then redirect to login form
-             return redirect('admin/login');
+             return redirect('admin/login')->withErrors("Invlaid email address or password");
         } 
            
           

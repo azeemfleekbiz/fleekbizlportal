@@ -29,6 +29,7 @@
 
                   <div class="col-sm-10">
                       <input type="password" name="password_confirmation" class="form-control" id="password-confirm" placeholder="Confirm Password" required="required">
+                     <span id='message'></span>
                   </div>
                 </div>                  
                 
@@ -48,6 +49,17 @@
 
 
 @extends('admin.layouts.footer')
+<script>
+ $('#password, #password-confirm').on('keyup', function () {s     
+  if ($('#password').val() == $('#password-confirm').val()) {
+    $('#message').html('Matching').css('color', 'green');
+     return true;
+  } else 
+    $('#message').html('Password and Confime Passwod Not Matching').css('color', 'red');
+    $("input[type=submit]").attr("disabled", "disabled");
+});
+
+</script>
 <script>
   $(function () {
     $('#example1').DataTable()

@@ -7,14 +7,14 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-      @if ($errors->has('email'))
+     @if (Session::has('errors'))
       <div class="bs-example">
     <div class="alert alert-danger fade in">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
         <strong>Error!</strong> Invalid Email Address/Password.
     </div>
 </div>
-      @endif
+   @endif
      <form class="form-horizontal" method="POST" action="{{ route('contributor.login.submit') }}">
   {{ csrf_field() }}
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
