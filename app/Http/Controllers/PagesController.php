@@ -40,6 +40,34 @@ class PagesController extends Controller
         return view('pages.'.$thanks);
     }
 
+    public function userInfoSave(Request $request){
+
+      if (User::where('email', '=', $request->input("email"))->count() > 0) {
+        return true;
+      }else{
+        $user = new \App\User();
+        $user->f_name=$request->input("fname");
+        $user->l_name=$request->input("lname");
+        $user->email=$request->input("email");
+        $user->password = bcrypt($this->randomPassword());
+        $user->phone=$request->input("phone");
+        $user->user_role=$request->input("user_role");
+        $user->created_at=date("Y-m-d H:i:s");
+        $user->updated_at=date("Y-m-d H:i:s");
+        $user->save();
+        $userId = $user->id;
+
+         // Send email
+        $message =  "Hello ".ucfirst($request->input("fname")).' '.ucfirst($request->input("lname")).",<br><br>You have successfully registered with FleekbizPortal.<br><br>Please click <a href='".url('/contributor/login')."'>here</a> to login your account with the given credentials.<br><br>User: ".$request->input("email")."<br><br>Password: ".$this->randomPassword()."<br><br>Thanks & Regards<br><br>Fleekbiz Portal";
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= 'From: FleekbizPortal<info@flekbiz.com>' . "\r\n";
+        $to = $request->input("email");
+        $subject = "FleekbizPortal Registration";
+        $mail = mail($to,$subject,$message,$headers);
+      }
+
+    }
     public function createOrders(Request $request)
     {
       if (User::where('email', '=', Input::get('email'))->count() > 0) {
@@ -51,7 +79,7 @@ class PagesController extends Controller
         $user->f_name=$request->input("fname");
         $user->l_name=$request->input("lname");
         $user->email=$request->input("email");
-        $user->password = bcrypt("flk@123");
+        $user->password = bcrypt($this->randomPassword());
         $user->phone=$request->input("phone");
         $user->user_role=$request->input("user_role");
         $user->created_at=date("Y-m-d H:i:s");
@@ -222,5 +250,16 @@ class PagesController extends Controller
           return view('pages.payment')->with(array('order'=>$order,'user'=>$user,'package'=>$package,'payment'=>$payment,'addon'=>$addon,'error'=>$error,'setting'=>$setting));
           
         }
+    }
+
+      public function randomPassword() {
+        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
     }
 }

@@ -10,6 +10,7 @@ Route::post('/create', ['uses' => 'PagesController@createOrders']);
 Route::get('/payment', ['uses' => 'PagesController@payment']);
 Route::post('/usecoupon', ['uses' => 'PagesController@orderuseCoupon']);
 Route::get('/thanks', ['uses' => 'PagesController@thanks']);
+Route::post('/userinfosave', ['uses' => 'PagesController@userInfoSave']);
 
 Route::get('/admin/dashboard', 'Admin\AdminController@index');
 

@@ -47,7 +47,7 @@
 <label class="control-label">Phone Number *</label>
 <input type="text" name="phone" id="phone" required="required" class="form-control" />
 </div>
-<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+<button class="btn btn-primary nextBtn btn-lg pull-right userdatasave" type="button" >Next</button>
 </div>
 </div>
 </div>
@@ -156,4 +156,29 @@
 </div>
 </div>
 </form>
+<script type="text/javascript">
+	$(document).on("click", ".userdatasave", function () { 
+        var fname = $('#fname').val();
+        var lname = $('#lname').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+        var user_role = $('#user_role').val();
+        var _token = $( "input[name*='_token']" ).val();
+
+        if(fname != '' && lname != '' && email != '' && phone != ''){
+                $.ajax({
+                url: "userinfosave",
+                data: {fname:fname,lname:lname,email:email,phone:phone,user_role:user_role,_token:_token},
+                type: 'POST',
+                beforeSend: function () {
+                },
+                success: function (result) {
+                },
+                error: function () {
+                }
+            });
+        }
+
+    }); 
+</script>
 @include('layout.footer')

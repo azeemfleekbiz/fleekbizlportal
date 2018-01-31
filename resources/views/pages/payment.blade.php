@@ -13,7 +13,7 @@
 @if(isset($coupon))
 <p>{{$coupon->coupon_code}} <span>{{$setting->site_currency_symbol}}{{$coupon->price}}</span></p>
 
-<h2 class="order_total">Total <span>{{$setting->site_currency_symbol}}{{$payment->total_amount - $coupon->price}}</span></h2>
+<h2 class="order_total">Total <span>{{$setting->site_currency_symbol}}{{$payment->total_amount - (($payment->total_amount * $coupon->price) / 100)}}</span></h2>
 @else
 <h2 class="order_total">Total <span>{{$setting->site_currency_symbol}}{{$payment->total_amount}}</span></h2>
 @endif
@@ -40,11 +40,11 @@
 <form action="{{ url('/stripe/charge.php') }}" method="POST" id="firstform">
 <input type="hidden" name="order_id" id="order_id" value="{{$payment->id}}">
 @if(isset($coupon))
-<input type="hidden" name="pckg_amount" id="pckg_amount" value="{{$payment->total_amount - $coupon->price}}">
+<input type="hidden" name="pckg_amount" id="pckg_amount" value="{{$payment->total_amount - (($payment->total_amount * $coupon->price) / 100)}}">
 <input type="hidden" name="pckg_month" id="pckg_month" value="">
-<input type="hidden" name="pckg_decp" id="pckg_decp" value="LogoDesign Order ({{$setting->site_currency_symbol}}{{$payment->total_amount - $coupon->price}})">	
+<input type="hidden" name="pckg_decp" id="pckg_decp" value="LogoDesign Order ({{$setting->site_currency_symbol}}{{$payment->total_amount - (($payment->total_amount * $coupon->price) / 100)}})">	
 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_5Mz31JYBByF1DhXtHEQDdGbB"
-data-name="Fleekbiz Portal" data-description="LogoDesign Order ({{$setting->site_currency_symbol}}{{$payment->total_amount - $coupon->price}})">
+data-name="Fleekbiz Portal" data-description="LogoDesign Order ({{$setting->site_currency_symbol}}{{$payment->total_amount - (($payment->total_amount * $coupon->price) / 100)}})">
 </script>
 @else
 <input type="hidden" name="pckg_amount" id="pckg_amount" value="{{$payment->total_amount}}">
