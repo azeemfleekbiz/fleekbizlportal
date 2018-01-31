@@ -59,7 +59,7 @@ class PagesController extends Controller
         $userId = $user->id;
        
          // Send email
-        $message =  "Hello ".ucfirst($request->input("fname")).' '.ucfirst($request->input("lname")).",<br><br>You have successfully registered with FleekbizPortal.<br><br>Please click <a href='".url('/contributor/login')."'>here</a> to login your account with the given credentials.<br><br>User: ".$request->input("email")."<br><br>Password: ".$this->randomPassword()."<br><br>Thanks & Regards<br><br>Fleekbiz Portal";
+        $message =  "Hello ".ucfirst($request->input("fname")).' '.ucfirst($request->input("lname")).",<br><br>You have successfully registered with FleekbizPortal.<br><br>Please click <a href='".url('/contributor/login')."'>here</a> to login your account with the given credentials.<br><br>User: ".$request->input("email")."<br><br>Password: ".$user_password."<br><br>Thanks & Regards<br><br>Fleekbiz Portal";
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
         $headers .= 'From: FleekbizPortal<info@flekbiz.com>' . "\r\n";
