@@ -5,8 +5,9 @@
         Users        
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Users</a></li>
-        <li class="active">Dashboard</li>
+         <li class="active"><a href="{{ url('/admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>  
+        <li> Users</li>
+        
       </ol>
     </section>
  <div class="box">

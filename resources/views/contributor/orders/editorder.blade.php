@@ -5,8 +5,8 @@
        Edit Order {{$order->logo_name}}
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Pending Orders</a></li>
-        <li class="active">Dashboard</li>
+          <li class="active"><i class="fa fa-dashboard"></i> <a href="{{ url('/contributor/dashboard') }}"> Dashboard</a></li>
+        <li>Edit Order</li>
       </ol>
     </section>
  <div class="box">

@@ -5,8 +5,8 @@
         Change Password     
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Change Password</a></li>
-        <li class="active">Dashboard</li>
+           <li class="active"><i class="fa fa-dashboard"></i> <a href="{{ url('/contributor/dashboard') }}"> Dashboard</a></li>
+           <li> Change Password</li>
       </ol>
     </section>
 
@@ -50,9 +50,10 @@
 
 @extends('contributor.layouts.footer')
 <script>
- $('#password, #password-confirm').on('keyup', function () {s     
+ $('#password, #password-confirm').on('keyup', function () {  
   if ($('#password').val() == $('#password-confirm').val()) {
     $('#message').html('Matching').css('color', 'green');
+    $("input[type=submit]").removeAttr("disabled");
      return true;
   } else 
     $('#message').html('Password and Confime Passwod Not Matching').css('color', 'red');

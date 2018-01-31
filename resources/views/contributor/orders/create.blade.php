@@ -5,8 +5,9 @@
        Add New Order
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Add New Order</a></li>
-        <li class="active">Dashboard</li>
+          <li class="active"><i class="fa fa-dashboard"></i> <a href="{{ url('/contributor/dashboard') }}"> Dashboard</a></li>
+        <li>Add New Order</li>
+        
       </ol>
     </section>
 <div class="box">

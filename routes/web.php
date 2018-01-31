@@ -19,7 +19,9 @@ Route::prefix('admin')->group(function(){
     
     Route::post('/login', 'Auth\AuthorController@login')->name('admin.login.submit');    
     
-    Route::get('/coupons',  'Admin\Coupons\CouponController@index');  //get coupons list
+    Route::get('/coupons',  'Admin\Coupons\CouponController@index');  //get coupons list    
+    
+    Route::get('/used-coupons',  'Admin\Coupons\CouponController@usedCoupons');  //get coupons list 
     
     Route::get('/packages', 'Admin\Packages\PackagesController@index');  //get packages list
     

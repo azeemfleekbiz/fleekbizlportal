@@ -5,8 +5,8 @@
         Setting        
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Setting</a></li>
-        <li class="active">Dashboard</li>
+        <li class="active"><a href="{{ url('/admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>  
+        <li> Setting</li>        
     </ol>
 </section>
 <div class="box">

@@ -5,8 +5,8 @@
        Used Coupons        
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Used Coupons</a></li>
-        <li class="active">Dashboard</li>
+          <li class="active"><a href="{{ url('/admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>     
+          <li>Used Coupons</li>        
       </ol>
     </section>
  <div class="box">
@@ -28,7 +28,7 @@
                   <th>User Name</th>
                   <th>Coupon Code</th>
                   <th>Payment</th>
-                  <th>Coupon Price</th>
+                  <th>Coupon Percent</th>
                   <th>Order Date</th>
                  
                 </tr>
@@ -40,7 +40,7 @@
                     <td>{{$coupon_code->user->f_name}} {{$coupon_code->user->l_name}} </td>
                     <td>{{$coupon_code->coupon->coupon_code}}</td>
                     <td>{{$settings->site_currency_symbol}}{{$coupon_code->coupon->payment->total_amount}}</td>
-                    <td>{{$coupon_code->coupon->price}}</td>
+                    <td>{{$coupon_code->coupon->price}}%</td>
                      <td>{{date("d M Y",strtotime($coupon_code->coupon->payment->created_at))}}</td>
                 </tr>
 

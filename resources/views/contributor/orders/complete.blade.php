@@ -2,23 +2,17 @@
 @section('contents')
 <section class="content-header">
       <h1>
-       Pending Orders        
+       Complete Orders        
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Pending Orders</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
+        <li class="active"><i class="fa fa-dashboard"></i> <a href="{{ url('/contributor/dashboard') }}"> Dashboard</a></li>
+        <li>Pending Orders</li>
+        </ol>
     </section>
  <div class="box">
        <div class="clearfix" style="margin-top: 20px"></div>
      <div class="row no-print">
-        <div class="col-xs-12">
-            <a href="{{url('contributor/orders/create-order')}}">   <button type="button" 
-                class="btn btn-info make-modal-large iframe-form-open" 
-                title="Add Order">
-            <span class="glyphicon glyphicon-plus"></span>Add
-        </button>
-            </a>
+        <div class="col-xs-12">            
             <button type="button" class="btn btn-primary pull-right" id="generate_pdf" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
           </button>

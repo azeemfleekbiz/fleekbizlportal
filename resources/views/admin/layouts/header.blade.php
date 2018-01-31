@@ -103,7 +103,7 @@
           
           <footer class="main-footer">
     
-    <strong>Copyright &copy; 2018 <a href="http://www.fleekbiz.com/">FleekBiz</a>.</strong> All rights
+              <strong>Copyright &copy; 2018 <a href="http://www.fleekbiz.com/" target="_blank">FleekBiz</a>.</strong> All rights
     reserved.
   </footer>
 

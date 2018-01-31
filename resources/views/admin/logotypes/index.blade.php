@@ -5,8 +5,8 @@
         Logos 
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Logos     </a></li>
-        <li class="active">Dashboard</li>
+        <li class="active"><a href="{{ url('/admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>  
+        <li>Logos</li>        
     </ol>
 </section>
 

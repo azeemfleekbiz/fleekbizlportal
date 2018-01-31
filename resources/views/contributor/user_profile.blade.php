@@ -6,8 +6,9 @@
         <small></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Update Profile</a></li>
-        <li class="active">Dashboard</li>
+          <li class="active"><i class="fa fa-dashboard"></i> <a href="{{ url('/contributor/dashboard') }}"> Dashboard</a></li>
+         <li> Update Profile</li>
+        
       </ol>
     </section>
 <div class="box">
@@ -22,18 +23,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="form-horizontal">      
-              <div class="box-body">                  
-                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">User Role</label>
-
-                  <div class="col-sm-10">
-                      <span>
-                      @foreach( $user_role as $userrole )
-                      @if ($userrole->id === $user->user_role) {{$userrole->name}}   @endif                              
-                     @endforeach
-                      </span>                </div>
-                </div> 
-                  
+              <div class="box-body">                                   
                   
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">First Name</label>
@@ -138,5 +128,5 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
- @extends('contributor.layouts.footer')
+ @extends('contributor.layouts.footerinner')
 @endsection

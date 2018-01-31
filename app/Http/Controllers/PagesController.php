@@ -49,14 +49,15 @@ class PagesController extends Controller
         $user->f_name=$request->input("fname");
         $user->l_name=$request->input("lname");
         $user->email=$request->input("email");
-        $user->password = bcrypt($this->randomPassword());
+        $user_password = $this->randomPassword();
+        $user->password = bcrypt("$user_password");
         $user->phone=$request->input("phone");
         $user->user_role=$request->input("user_role");
         $user->created_at=date("Y-m-d H:i:s");
         $user->updated_at=date("Y-m-d H:i:s");
         $user->save();
         $userId = $user->id;
-
+       
          // Send email
         $message =  "Hello ".ucfirst($request->input("fname")).' '.ucfirst($request->input("lname")).",<br><br>You have successfully registered with FleekbizPortal.<br><br>Please click <a href='".url('/contributor/login')."'>here</a> to login your account with the given credentials.<br><br>User: ".$request->input("email")."<br><br>Password: ".$this->randomPassword()."<br><br>Thanks & Regards<br><br>Fleekbiz Portal";
         $headers = "MIME-Version: 1.0" . "\r\n";
@@ -65,6 +66,7 @@ class PagesController extends Controller
         $to = $request->input("email");
         $subject = "FleekbizPortal Registration";
         $mail = mail($to,$subject,$message,$headers);
+       
       }
 
     }
@@ -79,7 +81,7 @@ class PagesController extends Controller
         $user->f_name=$request->input("fname");
         $user->l_name=$request->input("lname");
         $user->email=$request->input("email");
-        $user->password = bcrypt($this->randomPassword());
+        $user->password = bcrypt($this->randomPassword());        
         $user->phone=$request->input("phone");
         $user->user_role=$request->input("user_role");
         $user->created_at=date("Y-m-d H:i:s");

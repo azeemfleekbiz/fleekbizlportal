@@ -5,8 +5,9 @@
         View Order {{$orders->logo_name}}        
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Orders</a></li>
-        <li class="active">Dashboard</li>
+          <li class="active"><a href="{{ url('/admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>  
+          <li> <a href="{{ url('/admin/orders') }}"><i class="fa fa-first-order"></i> Orders</a></li>     
+          <li> View Order  {{$orders->logo_name}}</li>        
       </ol>
     </section>
  
