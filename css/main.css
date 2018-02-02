@@ -209,7 +209,7 @@ p, a, li
 
 
 .skybluestep::after {
-	background-image: url(../images/click.png);
+	background-image: url(../public/images/click.png);
 	width: 25px;
 	height: 25px;
 	background-repeat: no-repeat;
@@ -411,7 +411,7 @@ p, a, li
 	margin-bottom: 37px;
 	margin-right: 0;
 	float: left;
-	background-image: url(../images/circle.png) !important;
+	background-image: url(../public/images/circle.png) !important;
 	background-position: left;
 	background-repeat: no-repeat;
 	padding-left: 42px;
@@ -421,7 +421,7 @@ p, a, li
 
 .font-type-logo1.active
 {
-	background-image: url(../images/click.png) !important;
+	background-image: url(../public/images/click.png) !important;
 }
 
 
@@ -453,7 +453,7 @@ p, a, li
 .logo-type-col-1 {
 	float: left;
 	margin-bottom: 41px;
-	background-image: url(../images/circle.png) !important;
+	background-image: url(../public/images/circle.png) !important;
 	background-position: left 4px;
 	background-repeat: no-repeat;
 	padding-left: 38px;
@@ -699,7 +699,7 @@ p, a, li
 .logo_use_box {
     position: relative;
     margin-bottom: 41px;
-    background-image: url(../images/circle.png) !important;
+    background-image: url(../public/images/circle.png) !important;
     background-position: left 4px;
     background-repeat: no-repeat;
     padding-left: 38px;
@@ -711,7 +711,7 @@ p, a, li
 }
 .logo_use_box.active
 {
-	background-image: url(../images/click.png) !important;
+	background-image: url(../public/images/click.png) !important;
 }
 
 .logo_use_box p {
@@ -863,7 +863,7 @@ input[type="checkbox"]
     content: "";
     width: 26px;
     height: 25px;
-    background: url('../images/order2-icon1.png');
+    background: url('../public/images/order2-icon1.png');
     display: inline-block;
     margin: 0 auto;
 }

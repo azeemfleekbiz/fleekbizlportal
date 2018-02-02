@@ -88,7 +88,7 @@
 <div class="col-md-6 scr_pay_left">
 
 <div class="scr_pay_left_inner">
-<img src="images/pay_stripe_logo.jpg" class="img-responsive" style="margin-bottom: 20px;">
+<img src="public/images/pay_stripe_logo.jpg" class="img-responsive" style="margin-bottom: 20px;">
 <form action="{{ url('/stripe/charge.php') }}" method="POST" id="firstform">
 <input type="hidden" name="order_id" id="order_id" value="{{$payment->id}}">
 @if(isset($coupon))
