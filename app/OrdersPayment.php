@@ -34,5 +34,9 @@ class OrdersPayment extends Model
      public function coupon() {
         return $this->belongsTo('\App\CouponCode');
         }    
+        
+    public function package() {
+        return $this->belongsTo('App\Packages');
+        }    
     
 }

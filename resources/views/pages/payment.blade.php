@@ -54,7 +54,7 @@ data-name="Fleekbiz Portal" data-description="LogoDesign Order ({{$setting->site
 data-name="Fleekbiz Portal" data-description="LogoDesign Order ({{$setting->site_currency_symbol}}{{$payment->total_amount}})">
 </script>
 @endif
-</form>
+</form>  
 
 </div>	
 @include('layout.footer')

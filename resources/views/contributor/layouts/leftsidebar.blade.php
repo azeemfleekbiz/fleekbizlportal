@@ -49,7 +49,7 @@
           </a>
         </li>
             <li>
-                <a href="{{url('logout')}}"><i class="fa fa-power-off" aria-hidden="true"></i>
+                <a href="{{url('contributor/logout')}}"><i class="fa fa-power-off" aria-hidden="true"></i>
                     SignOut</a>
             </li>
 

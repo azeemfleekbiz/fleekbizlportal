@@ -17,4 +17,8 @@ class Packages extends Model
     protected $createdAt;
     protected $updatedAt;
     public $timestamps = false; // for false updated_at and created_at
+    
+    public function orderpayment() {
+        return $this->hasOne('\App\OrdersPayment','id');
+    }
 }
