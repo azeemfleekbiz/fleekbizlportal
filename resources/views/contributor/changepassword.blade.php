@@ -48,7 +48,7 @@
           </div>
 
 
-@extends('contributor.layouts.footer')
+@extends('contributor.layouts.footerinner')
 <script>
  $('#password, #password-confirm').on('keyup', function () {  
   if ($('#password').val() == $('#password-confirm').val()) {

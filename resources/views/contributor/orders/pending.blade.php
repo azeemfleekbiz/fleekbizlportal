@@ -86,7 +86,7 @@
           </div>
 
 
-@extends('contributor.layouts.footer')
+@extends('contributor.layouts.footerinner')
 <script>
     $("#generate_pdf").click(function(){
     var invoice_url = "/fleekbizportal/contributor/orders/pending-orders-pdf";

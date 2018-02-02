@@ -141,7 +141,7 @@
     <!-- /.content -->
     <div class="clearfix"></div>
 
-@extends('contributor.layouts.footer')
+@extends('contributor.layouts.footerinner')
 <script>
   $(function () {
     $('#example1').DataTable()

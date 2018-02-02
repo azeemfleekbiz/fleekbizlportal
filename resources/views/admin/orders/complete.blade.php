@@ -73,7 +73,7 @@
           </div>
 
 
-@extends('admin.layouts.footer')
+@extends('admin.layouts.footerinner')
 <script>
     $("#generate_pdf").click(function(){
     var invoice_url = "/fleekbizportal/admin/orders/complete-orders-pdf";

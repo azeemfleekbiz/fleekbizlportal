@@ -390,7 +390,7 @@
     </section>
 
 
-@extends('contributor.layouts.footer')
+@extends('contributor.layouts.footerinner')
 <script>
     $("#generate_invoice").click(function(){
      var order_id = {{$orders->id}};

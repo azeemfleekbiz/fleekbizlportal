@@ -157,5 +157,5 @@
      
 
     </section>
- @extends('contributor.layouts.footer')
+ @extends('contributor.layouts.footerinner')
 @endsection

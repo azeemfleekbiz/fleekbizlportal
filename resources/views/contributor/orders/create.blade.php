@@ -231,7 +231,7 @@
     </form>
 </div>
 </div>
-@extends('contributor.layouts.footer')
+@extends('contributor.layouts.footerinner')
 <style>
 .container {
     width: 842px !important;
@@ -281,6 +281,7 @@
     border-radius: 15px;
 }
 </style>
+
 <script>
     $(document).ready(function () {
 

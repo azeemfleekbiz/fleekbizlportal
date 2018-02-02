@@ -1,16 +1,14 @@
 
   
   
-
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
 <script src="{{asset('public/bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('public/bower_components/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
-
-<script src="{{asset('public/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="{{asset('public/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('public/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{asset('public/bower_components/raphael/raphael.min.js')}}"></script>
@@ -28,7 +26,8 @@
 <script src="{{asset('public/dist/js/adminlte.min.js')}}"></script>
 <script src="{{asset('public/dist/js/pages/dashboard.js')}}"></script>
 <script src="{{asset('public/dist/js/demo.js')}}"></script>
-
+<script type="text/javascript" src="{{ asset('js/jquery.mask.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
 
