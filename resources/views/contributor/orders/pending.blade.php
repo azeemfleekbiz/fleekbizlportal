@@ -60,7 +60,7 @@
                           data-toggle="modal"  title="Edit logo font {{$order->logo_name}}">
                           <span class="glyphicon glyphicon-arrow-right"></span>
                        </a>
-                      @if($order->status==0 || $order->is_paid==0)
+                      @if($order->status==0 and $order->is_paid==0)
                   <a href="{{ url('/contributor/orders/edit-order/'.$order->id) }}" rel="" type="button" 
                           class="btn btn-info make-modal-large iframe-form-open" 
                           data-toggle="modal"  title="Edit logo font {{$order->logo_name}}">
@@ -69,10 +69,10 @@
                   @endif
                   @if($order->is_paid==0)
                   <a href="{{ url('/contributor/orders/pay-order/'.$order->id) }}" rel="" type="button" 
-                          class="btn btn-info make-modal-large iframe-form-open" 
-                          data-toggle="modal"  title="Edit logo font {{$order->logo_name}}">
-                          <span class="glyphicon glyphicon-pencil"></span>
-                       </a>
+                           class="btn btn-info make-modal-large iframe-form-open" 
+                           data-toggle="modal"  title="Order Payment {{$order->logo_name}}">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                        </a>
                  
                   @endif
                         </td>
