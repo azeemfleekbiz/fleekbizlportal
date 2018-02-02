@@ -79,6 +79,11 @@ class ContributorController extends Controller
         return redirect('contributor/login');      
     }
     
+    public function contributerLogout()
+    {
+        Auth::logout();
+        return redirect('contributor/login');  
+    }
     
     
     

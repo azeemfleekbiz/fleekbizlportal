@@ -78,8 +78,8 @@
                                         <label for="exampleInputEmail1">Logo Type</label>
                                         <select class="form-control" name="type_of_logo" id="type_of_logo" required="required">
                                             <option value="">Select Logo Type</option>                                
-                                            <option value="Logo Type" @if ($logo_type->type_of_logo == 'Logo Type') selected="selected"  @endif>Logo Type</option>  
-                                            <option value="Logo Feel" @if ($logo_type->type_of_logo == 'Logo Feel') selected="selected"  @endif>Logo Feel</option>
+                                            <option value="Logo_type" @if ($logo_type->type_of_logo == 'Logo Type') selected="selected"  @endif>Logo Type</option>  
+                                            <option value="Logo_feel" @if ($logo_type->type_of_logo == 'Logo Feel') selected="selected"  @endif>Logo Feel</option>
                                         </select>
                                     </div>                 
 
@@ -165,8 +165,8 @@
                             <label for="exampleInputEmail1">Logo Type</label>
                             <select class="form-control" name="type_of_logo" id="type_of_logo" required="required">
                                 <option value="">Select Logo Type</option>                                
-                                <option value="logo type">Logo Type</option>  
-                                <option value="logo feel">Logo Feel</option>
+                                <option value="Logo_type">Logo Type</option>  
+                                <option value="Logo_feel">Logo Feel</option>
                             </select>
                         </div> 
                         <div class="form-group">

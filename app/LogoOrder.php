@@ -46,6 +46,9 @@ class LogoOrder extends Model
         return $this->hasOne('\App\OrdersPayment','id');
         }
         
+        
+        
+        
        
         
         

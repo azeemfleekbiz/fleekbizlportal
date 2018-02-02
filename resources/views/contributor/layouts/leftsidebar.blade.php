@@ -42,14 +42,11 @@
             </li>
             <li>
           <a href="{{ url('/contributor/change-password') }}">
-            <i class="fa fa-user" aria-hidden="true"></i> <span>Change Password</span>        
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            <i class="fa fa-user" aria-hidden="true"></i> <span>Change Password</span>                    
           </a>
         </li>
             <li>
-                <a href="{{url('logout')}}"><i class="fa fa-power-off" aria-hidden="true"></i>
+                <a href="{{url('contributor/logout')}}"><i class="fa fa-power-off" aria-hidden="true"></i>
                     SignOut</a>
             </li>
 

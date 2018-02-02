@@ -5,6 +5,7 @@ use DB,Auth,Redirect,PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use \Illuminate\Http\Response;
 
 class OrdersController extends Controller
 {
@@ -354,4 +355,48 @@ class OrdersController extends Controller
      return Redirect::back()->withMessage('Logo order Successfuly Created.');        
     }
     
+    //----------------------------------order used coupons--------------------------------------------------
+    public function orderUseCoupon(Request $request)
+    {
+        $coupon_codes = \App\CouponCode::where('coupon_code',$request->input("coupon_code"))->first();   
+        $get_couponId = json_decode($coupon_codes);
+        $payment = \App\OrdersPayment::where('order_id',$request->input("order_id"))->first();
+        $get_payment = json_decode($payment);
+       
+        if(isset($get_couponId->order_type_id) == $get_payment->order_type && $get_couponId->status == 1){
+        $coupon_codes->status         = 0;        
+        $coupon_codes->updated_at     = date("Y-m-d H:i:s");
+        $coupon_codes->save();
+
+        
+        $payment->coupon_id = $get_couponId->id;        
+        $payment->save();
+
+        $user_used_coupon = new \App\UserusecCoupon();
+        $user_used_coupon->coupon_id=$get_couponId->id;
+        $user_used_coupon->order_id=$request->input("order_id");
+        $user_used_coupon->user_id=$get_payment->user_id;
+        $user_used_coupon->create_at=date("Y-m-d H:i:s");
+        $user_used_coupon->updated_at= date("Y-m-d H:i:s");
+        $user_used_coupon->save();                 
+        return Redirect::back()->withMessage('Coupon code apply successfuly.');     
+        }else{      
+            return Redirect::back()->withError('Please use valid coupon.');     
+           
+        }
+    }
+    
+    //----------------------------------payorder----------------------------------------------
+     public function paymentOrder($order_id)
+     {
+         $orders = \App\LogoOrder::find($order_id);  
+         $setting=\App\AdminSettings::latest('id', 'asc')->first(); 
+         return view('contributor.orders.payorder')->with(array('page_title'=>'Pay Orders','order'=>$orders,'settings'=>$setting ));
+     }
+    
+     //-------------------------------thanks pay----------------------------------------------
+     public function paythanks()
+     {
+         return view('contributor.orders.paymentthanks',array('page_title'=>'Payment Thanks'));
+     }
 }

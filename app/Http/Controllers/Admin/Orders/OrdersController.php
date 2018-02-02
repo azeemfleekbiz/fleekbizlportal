@@ -49,6 +49,17 @@ class OrdersController extends Controller
     }
     
     
+    //--------------------------------Complete order option for admin----------------------------
+    public function competeOrder($order_id)
+    {
+        $order = \App\LogoOrder::find($order_id);  
+        $payment = \App\OrdersPayment::find($order->id);
+        $payment->status =1;
+        $payment->save();
+        return Redirect::back()->withMessage('Logo order Successfuly Completed.');    
+    }
+    
+    
     //------------------------get complete orders list--------------------------------
     public function completOrders()
     {

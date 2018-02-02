@@ -34,8 +34,8 @@
         
        <li class="treeview">
           <a href="">
-           <i class="fa fa-gears" aria-hidden="true"></i><span>Settings</span>
-            <span class="pull-right-container">
+           <i class="fa fa-gears" aria-hidden="true"></i><span>Settings</span>  
+           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
@@ -66,24 +66,18 @@
         
         <li>
           <a href="{{ url('/admin/users') }}">
-            <i class="fa fa-user" aria-hidden="true"></i> <span>Users</span>        
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            <i class="fa fa-user" aria-hidden="true"></i> <span>Users</span>                    
           </a>
         </li>
         
         <li>
           <a href="{{ url('/admin/change-password') }}">
-            <i class="fa fa-user" aria-hidden="true"></i> <span>Change Password</span>        
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            <i class="fa fa-user" aria-hidden="true"></i> <span>Change Password</span>                    
           </a>
         </li>
         
         <li>
-          <a href="{{ route('logout') }}">
+          <a href="{{ url('admin/logout') }}">
             <i class="fa fa-sign-out" aria-hidden="true"></i> <span>Logout</span>  
           </a>
         </li>

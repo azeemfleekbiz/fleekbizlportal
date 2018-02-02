@@ -212,7 +212,7 @@
 </div>
 
 
-@extends('contributor.layouts.footer')
+@extends('contributor.layouts.footerinner')
 <style>
 .container {
     width: 842px !important;

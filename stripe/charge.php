@@ -36,10 +36,17 @@ try {
  
 //you can send the file to this email:
 //echo $_POST['stripeEmail'].' properti Id'.$_POST['pid'];
-$update = mysqli_query($con,"UPDATE `orders_payments` SET `is_paid` = '1'WHERE `id`='" . $_POST['order_id'] . "'");
+$update = mysqli_query($con,"UPDATE `orders_payments` SET `is_paid` = '1' WHERE `id`='" . $_POST['order_id'] . "'");
 
 if($update){
-  header('Location: http://localhost/fleekbizportal/thanks');
+    if($_POST['login_user'])
+    {
+      header('Location: http://localhost/fleekbizportal/contributor/orders/thanks');
+    } 
+    else
+    {
+      header('Location: http://localhost/fleekbizportal/thanks');
+    } 
 }
 }
 //catch the errors in any way you like

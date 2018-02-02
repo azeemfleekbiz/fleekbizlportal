@@ -85,7 +85,10 @@ Route::prefix('admin')->group(function(){
     
     Route::get('orders/generate-pdf/{slug}', 'Admin\Orders\PdfGenerateController@pdfview')->name('generate-pdf');
     
-    Route::get('/orders/create-order',  'Admin\Orders\OrdersController@create');  //create new order 
+    Route::get('/orders/create-order',  'Admin\Orders\OrdersController@create');  //create new order     
+   
+    
+    Route::get('/orders/complete/{slug}',  'Admin\Orders\OrdersController@competeOrder');  //get orders list
      
     Route::post('/orders/createorder',  'Admin\Orders\OrdersController@createOrder');  //create new order  
     
@@ -133,9 +136,11 @@ Route::prefix('admin')->group(function(){
    
     Route::get('/change-password', 'Admin\AdminController@changePassword');
     
+    Route::get('/logout', 'Admin\AdminController@adminLogout');
+    
     Route::post('/password-reset', 'Admin\AdminController@resetPassword');
     
-    Route::get('/', 'Admin\AdminController@index');    
+    Route::get('/', 'Admin\AdminController@index');  
 });
 
 
@@ -182,9 +187,13 @@ Route::prefix('contributor')->group(function(){
     
     Route::get('/orders/create-order',  'Contributor\Orders\OrdersController@create');  //create new order 
     
-    Route::post('/orders/createorder',  'Contributor\Orders\OrdersController@createOrder');  //create new order    
+    Route::post('/orders/createorder',  'Contributor\Orders\OrdersController@createOrder');  //create new order  
+    
+     Route::get('/orders/pay-order/{slug}',  'Contributor\Orders\OrdersController@paymentOrder');  //get orders list
     
     Route::get('orders/generate-pdf/{slug}', 'Contributor\Orders\PdfGenerateController@pdfview')->name('generate-pdf');
+    
+    Route::get('/orders/thanks',  'Contributor\Orders\OrdersController@paythanks');  //get invoices list
     
     Route::get('/invoices',  'Contributor\Invoices\InvoicesController@index');  //get invoices list
     
@@ -192,9 +201,13 @@ Route::prefix('contributor')->group(function(){
     
     Route::get('/invoices/print-invoice/{slug}',  'Contributor\Invoices\InvoicesController@printinvoice');  //print invoice
     
+    Route::post('/usecoupon', 'Contributor\Orders\OrdersController@orderUseCoupon');
+    
     Route::get('/change-password', 'Contributor\ContributorController@changePassword');
     
     Route::post('/password-reset', 'Contributor\ContributorController@resetPassword');
+    
+    Route::get('/logout', 'Contributor\ContributorController@contributerLogout');
 });
 
 Auth::routes();

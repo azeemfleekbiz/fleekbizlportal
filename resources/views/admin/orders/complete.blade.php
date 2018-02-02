@@ -61,11 +61,7 @@
                           data-toggle="modal"  title="Edit logo font {{$order->logo_name}}">
                           <span class="glyphicon glyphicon-arrow-right"></span>
                        </a>
-                        <a href="#deleteorder{{$order->id}}" rel="" type="button" 
-                           class="btn btn-info make-modal-large iframe-form-open" 
-                           data-toggle="modal"  title="Delete Order ">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a></td>
+                  </td>
                 </tr>   
                               
                  @endforeach
@@ -77,7 +73,7 @@
           </div>
 
 
-@extends('admin.layouts.footer')
+@extends('admin.layouts.footerinner')
 <script>
     $("#generate_pdf").click(function(){
     var invoice_url = "/fleekbizportal/admin/orders/complete-orders-pdf";
