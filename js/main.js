@@ -53,8 +53,10 @@ $(document).ready(function() {
                 $(curInputs[i]).closest(".form-group").addClass("has-error");
             }
         }
-        if (isValid)
+        if (isValid){
+            nextStepWizard.closest(".stepwizard-step").prev().addClass('skybluestep');
             nextStepWizard.removeAttr('disabled').trigger('click');
+		}
     });
     allPrevBtn.click(function() {
         var curStep = $(this).closest(".setup-content"),
@@ -63,6 +65,7 @@ $(document).ready(function() {
             curInputs = curStep.find("input[type='text'],input[type='url'],input[type='number'],input[type='email']"),
             isValid = true;
         prevStepWizard.removeAttr('disabled').trigger('click');
+            prevStepWizard.closest(".stepwizard-step").removeClass('skybluestep');
     });
     $('div.setup-panel div .navButton.first').trigger('click');
 
