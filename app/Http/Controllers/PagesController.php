@@ -203,11 +203,16 @@ class PagesController extends Controller
       $addon = \App\PaymentAdons::find($request->input("addon_name"));
       $payment = \App\OrdersPayment::find($paymentId);
       $setting = \App\AdminSettings::latest('id', 'asc')->first();
-      return view('pages.payment')->with(array('order'=>$order,'user'=>$user,'package'=>$package,'payment'=>$payment,'addon'=>$addon,'setting'=>$setting));
-
-      
-
-    }
+              
+    $message =  "Hello ".ucfirst($request->input("fname")).' '.ucfirst($request->input("lname")).",<br><br>Thank for your order at our portal .<br><br>Please click here to check your order status <a href='".url('/contributor/login')."'>here</a> <br><br>Thanks & Regards<br><br>Fleekbiz Portal";
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= 'From: FleekbizPortal<info@flekbiz.com>' . "\r\n";
+    $to = $request->input("email");
+    $subject = "FleekbizPortal Registration";
+    mail($to,$subject,$message,$headers);
+    return view('pages.payment')->with(array('order'=>$order,'user'=>$user,'package'=>$package,'payment'=>$payment,'addon'=>$addon,'setting'=>$setting));
+  }
 
     public function orderuseCoupon(Request $request){
 
