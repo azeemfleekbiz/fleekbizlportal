@@ -214,10 +214,8 @@
 						<br>
 						<span>Share logos which you<br> like</span>
 					</p>
-					<input type="file" name="sample_logos[]" id="sample_logos" class="form-control user_picked_files" multiple="multiple"/>
-					<input type="hidden" name="sample_file_total" id="sample_file_total" value="">
-					<input type="hidden" name="uploadfiles_name" id="uploadfiles_name" value="">
-					<ul class = "cvf_uploaded_files"></ul>
+					<div id="filediv"><input name="file[]" type="file" id="file"/></div>
+					<input type="button" id="add_more" class="upload" value="Add More Files"/>
 				</div>
 			</div>
 		</div>
@@ -390,9 +388,8 @@
 				<div class="ul_for_file">
 					<ul class = "cvf_uploaded_help_files"></ul>
 					<div class="btn_for_file_up">
-						<input type="file" name="deigner_help_imgs[]" id="deigner_help_imgs" class="form-control user_help_files" multiple="multiple"/>
-						<input type="hidden" name="deigner_help_file_total" id="deigner_help_file_total" value="">
-						<input type="hidden" name="deigner_help_files_name" id="deigner_help_files_name" value="">
+						<div id="filediv2"><input name="file2[]" type="file" id="file2"/></div>
+						<input type="button" id="add_more2" class="upload" value="Add More Files"/>
 					</div>
 				</div>
 			</div>

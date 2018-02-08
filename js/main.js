@@ -41,7 +41,7 @@ $(document).ready(function() {
                 var chkName = $(curInputs[i]).attr("name");
                 $("input[name='"+chkName+"']").closest(".form-group").find(".error-message").hide();
                 $("input[name='"+chkName+"']").closest(".form-group").removeClass("has-error");
-                if(!$("input[name='"+chkName+"']:checked").length && chkCheck){
+                if((!$("input[name='"+chkName+"']:checked").length || $("input[name='"+chkName+"']:checked").length > 3) && chkCheck){
 	                chkCheck = false;
 	                isValid = false;
 	                $("input[name='"+chkName+"']").closest(".form-group").find(".error-message").show();
@@ -185,4 +185,83 @@ $(document).ready(function() {
 
     //Save UserData
     
+    var abc = 0;
+    //  To add new input file field dynamically, on click of "Add More Files" button below function will be executed.
+    $('#add_more').click(function() {
+    $(this).before($("<div/>", {
+    id: 'filediv'
+    }).fadeIn('slow').append($("<input/>", {
+    name: 'file[]',
+    type: 'file',
+    id: 'file'
+    }), $("<br/><br/>")));
+    });
+    // Following function will executes on change event of file input to select different file.
+    $('body').on('change', '#file', function() {
+    if (this.files && this.files[0]) {
+    abc += 1; // Incrementing global variable by 1.
+    var z = abc - 1;
+    var x = $(this).parent().find('#previewimg' + z).remove();
+    $(this).before("<div id='abcd" + abc + "' class='abcd'><img id='previewimg" + abc + "' src=''/></div>");
+    var reader = new FileReader();
+    reader.onload = imageIsLoaded;
+    reader.readAsDataURL(this.files[0]);
+    $(this).hide();
+    $("#abcd" + abc).append($("<img/>", {
+    id: 'img',
+    src: 'x.png',
+    alt: 'delete'
+    }).click(function() {
+    $(this).parent().parent().remove();
+    }));
+    }
+    });
+    // To Preview Image
+    function imageIsLoaded(e) {
+    $('#previewimg' + abc).attr('src', e.target.result);
+    };
+    $('#upload').click(function(e) {
+    var name = $(":file").val();
+    if (!name) {
+    alert("First Image Must Be Selected");
+    e.preventDefault();
+    }
+    });
+
+
+    var xyz = 0;
+    $('#add_more2').click(function() {
+    $(this).before($("<div/>", {
+    id: 'filediv2'
+    }).fadeIn('slow').append($("<input/>", {
+    name: 'file2[]',
+    type: 'file',
+    id: 'file2'
+    }), $("<br/><br/>")));
+    });
+    // Following function will executes on change event of file input to select different file.
+    $('body').on('change', '#file2', function() {
+    if (this.files && this.files[0]) {
+    xyz += 1; // Incrementing global variable by 1.
+    var z = xyz - 1;
+    var x = $(this).parent().find('#previewimg2' + z).remove();
+    $(this).before("<div id='abcd2" + xyz + "' class='abcd2'><img id='previewimg2" + xyz + "' src=''/></div>");
+    var reader2 = new FileReader();
+    reader2.onload = imageIsLoaded2;
+    reader2.readAsDataURL(this.files[0]);
+    $(this).hide();
+    $("#abcd2" + xyz).append($("<img/>", {
+    id: 'img',
+    src: 'x.png',
+    alt: 'delete'
+    }).click(function() {
+    $(this).parent().parent().remove();
+    }));
+    }
+    });
+    // To Preview Image
+    function imageIsLoaded2(e) {
+    $('#previewimg2' + xyz).attr('src', e.target.result);
+    };
+
 });

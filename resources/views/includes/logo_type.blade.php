@@ -14,5 +14,5 @@
 	</div>
 </div>
 @endforeach		
-<span class="error-message" style="display:none;">Please check atleast one checkbox!</span>
+<span class="error-message" style="display:none;">Please check atleast 1 and atmost 3 checkbox!</span>
 </div>

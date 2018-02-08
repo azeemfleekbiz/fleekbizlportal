@@ -59,13 +59,13 @@ class PagesController extends Controller
         $userId = $user->id;
        
          // Send email
-        $message =  "Hello ".ucfirst($request->input("fname")).' '.ucfirst($request->input("lname")).",<br><br>You have successfully registered with FleekbizPortal.<br><br>Please click <a href='".url('/contributor/login')."'>here</a> to login your account with the given credentials.<br><br>User: ".$request->input("email")."<br><br>Password: ".$user_password."<br><br>Thanks & Regards<br><br>Fleekbiz Portal";
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: FleekbizPortal<info@flekbiz.com>' . "\r\n";
-        $to = $request->input("email");
-        $subject = "FleekbizPortal Registration";
-        $mail = mail($to,$subject,$message,$headers);
+        // $message =  "Hello ".ucfirst($request->input("fname")).' '.ucfirst($request->input("lname")).",<br><br>You have successfully registered with FleekbizPortal.<br><br>Please click <a href='".url('/contributor/login')."'>here</a> to login your account with the given credentials.<br><br>User: ".$request->input("email")."<br><br>Password: ".$user_password."<br><br>Thanks & Regards<br><br>Fleekbiz Portal";
+        // $headers = "MIME-Version: 1.0" . "\r\n";
+        // $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        // $headers .= 'From: FleekbizPortal<info@flekbiz.com>' . "\r\n";
+        // $to = $request->input("email");
+        // $subject = "FleekbizPortal Registration";
+        // $mail = mail($to,$subject,$message,$headers);
        
       }
 
@@ -93,62 +93,93 @@ class PagesController extends Controller
       
       $uploadfiles_name = $request->input("uploadfiles_name");
       $remove_file_arr = explode(",",$uploadfiles_name);
-      if ( Input::hasFile('sample_logos') ):
-            $file = Input::file();
-           for ($j=0; $j < count($file['sample_logos']); $j++) { 
-              $sample_images_name_arr[] = $file['sample_logos'][$j]->getClientOriginalName();
-            } 
-           if(count($remove_file_arr) > 0){
-              for ($i=0; $i < count($file['sample_logos']) ; $i++) {
-                   $sample_images_name = $file['sample_logos'][$i]->getClientOriginalName();
-                   if(in_array($sample_images_name_arr[$i], $remove_file_arr)){
-                      //echo 'Delete Files '.$sample_images_name.'<br>';
-                   }else{
-                      $destinationPath = $file['sample_logos'][$i];  
-                      $image_path ="public/uploads/order_logo/".$sample_images_name;  
-                      move_uploaded_file($destinationPath, $image_path); 
-                      $sample_images_arr[] = $sample_images_name;
-                   }
-              }
-           }else{
-               for ($i=0; $i < count($file['sample_logos']) ; $i++) {
-                   $sample_images_name = $file['sample_logos'][$i]->getClientOriginalName();
-                   $destinationPath = $file['sample_logos'][$i];  
-                   $image_path ="public/uploads/order_logo/".$sample_images_name;  
-                   move_uploaded_file($destinationPath, $image_path); 
-                   $sample_images_arr[] = $sample_images_name;
-               }
-           }
+      if ( Input::hasFile('file') ):
+          $j = 0; 
+          $target_path = "public/uploads/order_logo/";
+          for ($i = 0; $i < count($_FILES['file']['name']); $i++) {
+          $validextensions = array("jpeg", "jpg", "png");
+          $ext = explode('.', basename($_FILES['file']['name'][$i]));
+          $file_extension = end($ext);
+          $target_path = $target_path . md5(uniqid()) . "." . $ext[count($ext) - 1];
+          $filename = md5(uniqid()) . "." . $ext[count($ext) - 1];
+          $j = $j + 1;
+          $sample_images_arr[] = $target_path;
+          if (move_uploaded_file($_FILES['file']['tmp_name'][$i], $target_path)) {
+          } else {
+            echo $j. ').<span id="error">please try again!.</span><br/><br/>';
+          }
+          }
+           //  $file = Input::file();
+           // for ($j=0; $j < count($file['sample_logos']); $j++) { 
+           //    $sample_images_name_arr[] = $file['sample_logos'][$j]->getClientOriginalName();
+           //  } 
+           // if(count($remove_file_arr) > 0){
+           //    for ($i=0; $i < count($file['sample_logos']) ; $i++) {
+           //         $sample_images_name = $file['sample_logos'][$i]->getClientOriginalName();
+           //         if(in_array($sample_images_name_arr[$i], $remove_file_arr)){
+           //            //echo 'Delete Files '.$sample_images_name.'<br>';
+           //         }else{
+           //            $destinationPath = $file['sample_logos'][$i];  
+           //            $image_path ="public/uploads/order_logo/".$sample_images_name;  
+           //            move_uploaded_file($destinationPath, $image_path); 
+           //            $sample_images_arr[] = $sample_images_name;
+           //         }
+           //    }
+           // }else{
+           //     for ($i=0; $i < count($file['sample_logos']) ; $i++) {
+           //         $sample_images_name = $file['sample_logos'][$i]->getClientOriginalName();
+           //         $destinationPath = $file['sample_logos'][$i];  
+           //         $image_path ="public/uploads/order_logo/".$sample_images_name;  
+           //         move_uploaded_file($destinationPath, $image_path); 
+           //         $sample_images_arr[] = $sample_images_name;
+           //     }
+           // }
       endif;
       $deigner_help_files_name = $request->input("deigner_help_files_name");
       $remove_deigner_help_files_arr = explode(",",$deigner_help_files_name);
-      if ( Input::hasFile('deigner_help_imgs') ):
-            $help_file = Input::file();
-           for ($j=0; $j < count($help_file['deigner_help_imgs']); $j++) { 
-              $deigner_help_imgs_arr[] = $help_file['deigner_help_imgs'][$j]->getClientOriginalName();
-            } 
-           if(count($remove_deigner_help_files_arr) > 0){
-              for ($i=0; $i < count($help_file['deigner_help_imgs']) ; $i++) {
-                   $deigner_help_name = $help_file['deigner_help_imgs'][$i]->getClientOriginalName();
-                   if(in_array($deigner_help_imgs_arr[$i], $remove_deigner_help_files_arr)){
-                   }else{
-                      $destinationPath_help_imgs = $help_file['deigner_help_imgs'][$i];  
-                      $deigner_help_image_path ="public/uploads/order_logo/".$deigner_help_name;  
-                      move_uploaded_file($destinationPath_help_imgs, $deigner_help_image_path); 
-                      $designer_help_images_arr[] = $deigner_help_name;
-                   }
-              }
-           }else{
-               for ($i=0; $i < count($help_file['deigner_help_imgs']) ; $i++) {
-                   $deigner_help_name = $help_file['deigner_help_imgs'][$i]->getClientOriginalName();
-                   $destinationPath_help_imgs = $help_file['deigner_help_imgs'][$i];  
-                   $deigner_help_image_path ="public/uploads/order_logo/".$deigner_help_name;  
-                   move_uploaded_file($destinationPath_help_imgs, $deigner_help_image_path); 
-                   $designer_help_images_arr[] = $deigner_help_name;
-               }
-           }
+      if ( Input::hasFile('file2') ):
+            $jx = 0; 
+            $target_path2 = "public/uploads/order_logo/";
+            for ($x = 0; $x < count($_FILES['file2']['name']); $x++) {
+            $validextensions = array("jpeg", "jpg", "png");
+            $ext2 = explode('.', basename($_FILES['file2']['name'][$x]));
+            $file_extension = end($ext2);
+            $target_path2 = $target_path2 . md5(uniqid()) . "." . $ext2[count($ext2) - 1];
+            //$filename = md5(uniqid()) . "." . $ext2[count($ext2) - 1];
+            $jx = $jx + 1;
+            $designer_help_images_arr[] = $target_path2;
+            if (move_uploaded_file($_FILES['file2']['tmp_name'][$x], $target_path2)) {
+            } else {
+              //echo $jx. ').<span id="error">please try again2!.</span><br/><br/>';
+            }
+            }
+           //  $help_file = Input::file();
+           // for ($j=0; $j < count($help_file['deigner_help_imgs']); $j++) { 
+           //    $deigner_help_imgs_arr[] = $help_file['deigner_help_imgs'][$j]->getClientOriginalName();
+           //  } 
+           // if(count($remove_deigner_help_files_arr) > 0){
+           //    for ($i=0; $i < count($help_file['deigner_help_imgs']) ; $i++) {
+           //         $deigner_help_name = $help_file['deigner_help_imgs'][$i]->getClientOriginalName();
+           //         if(in_array($deigner_help_imgs_arr[$i], $remove_deigner_help_files_arr)){
+           //         }else{
+           //            $destinationPath_help_imgs = $help_file['deigner_help_imgs'][$i];  
+           //            $deigner_help_image_path ="public/uploads/order_logo/".$deigner_help_name;  
+           //            move_uploaded_file($destinationPath_help_imgs, $deigner_help_image_path); 
+           //            $designer_help_images_arr[] = $deigner_help_name;
+           //         }
+           //    }
+           // }else{
+           //     for ($i=0; $i < count($help_file['deigner_help_imgs']) ; $i++) {
+           //         $deigner_help_name = $help_file['deigner_help_imgs'][$i]->getClientOriginalName();
+           //         $destinationPath_help_imgs = $help_file['deigner_help_imgs'][$i];  
+           //         $deigner_help_image_path ="public/uploads/order_logo/".$deigner_help_name;  
+           //         move_uploaded_file($destinationPath_help_imgs, $deigner_help_image_path); 
+           //         $designer_help_images_arr[] = $deigner_help_name;
+           //     }
+           // }
       endif;
-      
+      // print_r($sample_images_arr);
+      // exit;
       //------------------------------Insert Orders in Database-----------------
       $orders = new LogoOrder();
       $orders->user_id=$userId;
@@ -160,7 +191,7 @@ class PagesController extends Controller
       $orders->logo_target_audience=$request->input("target_audience");
       $orders->logo_descrip=$request->input("descrp");
       $orders->logo_competitor_url=$request->input("compititor_url");
-      $orders->logo_sample= Input::hasFile('sample_logos') ? implode(",",$sample_images_arr) : '';
+      $orders->logo_sample= Input::hasFile('file') ? implode(",",$sample_images_arr) : '';
       $orders->logo_visual_descp=$request->input("describe_imgs_dont_like");
       $orders->logo_visual_images=$request->input("describe_imgs_like");
       $orders->logo_type=implode(",",$request->input("logo_type"));
@@ -172,7 +203,7 @@ class PagesController extends Controller
       $orders->logo_other_fonts=$request->input("other_font_type");
       $orders->logo_feel=implode(",",$request->input("logo_feel"));
       $orders->communication_team=$request->input("communicate_designers");
-      $orders->helpful_images=Input::hasFile('deigner_help_imgs') ? implode(",",$designer_help_images_arr) : '';
+      $orders->helpful_images=Input::hasFile('file2') ? implode(",",$designer_help_images_arr) : '';
       $orders->created_at=date("Y-m-d H:i:s");
       $orders->updated_at=date("Y-m-d H:i:s");
       $orders->save();
@@ -204,14 +235,14 @@ class PagesController extends Controller
       $payment = \App\OrdersPayment::find($paymentId);
       $setting = \App\AdminSettings::latest('id', 'asc')->first();
               
-    $message =  "Hello ".ucfirst($request->input("fname")).' '.ucfirst($request->input("lname")).",<br><br>Thank for your order at our portal .<br><br>Please click here to check your order status <a href='".url('/contributor/login')."'>here</a> <br><br>Thanks & Regards<br><br>Fleekbiz Portal";
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= 'From: FleekbizPortal<info@flekbiz.com>' . "\r\n";
-    $to = $request->input("email");
-    $subject = "FleekbizPortal Registration";
-    mail($to,$subject,$message,$headers);
-    return view('pages.payment')->with(array('order'=>$order,'user'=>$user,'package'=>$package,'payment'=>$payment,'addon'=>$addon,'setting'=>$setting));
+    // $message =  "Hello ".ucfirst($request->input("fname")).' '.ucfirst($request->input("lname")).",<br><br>Thank for your order at our portal .<br><br>Please click here to check your order status <a href='".url('/contributor/login')."'>here</a> <br><br>Thanks & Regards<br><br>Fleekbiz Portal";
+    // $headers = "MIME-Version: 1.0" . "\r\n";
+    // $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    // $headers .= 'From: FleekbizPortal<info@flekbiz.com>' . "\r\n";
+    // $to = $request->input("email");
+    // $subject = "FleekbizPortal Registration";
+    // mail($to,$subject,$message,$headers);
+     return view('pages.payment')->with(array('order'=>$order,'user'=>$user,'package'=>$package,'payment'=>$payment,'addon'=>$addon,'setting'=>$setting));
   }
 
     public function orderuseCoupon(Request $request){
